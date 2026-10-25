@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "main-minimal",
+  "description": "The UI talks to the game backend over HTTP; it needs no Tauri IPC permissions.",
+  "windows": ["main"],
+  "permissions": []
+}

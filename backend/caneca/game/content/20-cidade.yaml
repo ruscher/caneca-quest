@@ -1,0 +1,865 @@
+# Capítulo 2 — A Cidade Gigantesca
+locations:
+  - id: parapeito
+    region: cidade
+    ambient_temp: 12
+    map_pos: [0.12, 0.10]
+    name: { pt-BR: "Parapeito externo", en: "Outer Windowsill" }
+    description:
+      pt-BR: "O parapeito do lado de fora é um penhasco de concreto encharcado. A chuva cai em cortinas, e lá embaixo a calçada brilha sob a luz dos postes. Atrás de você, a janela aberta do Café Aurora deixa escapar um resto de calor."
+      en: "The outer sill is a drenched concrete cliff. Rain falls in curtains, and far below the sidewalk gleams under the streetlights. Behind you, Café Aurora's open window lets out a last breath of warmth."
+    short:
+      pt-BR: "O parapeito molhado do lado de fora da janela."
+      en: "The wet sill outside the window."
+    sounds:
+      pt-BR: "Chuva, muita chuva. E o ronco distante de motores que parecem trovões com pneus."
+      en: "Rain, so much rain. And the distant roar of engines that sound like thunder on tires."
+    on_enter:
+      - objective: q_despertar.sair_cafeteria
+      - achievement: out_the_door
+      - when: [{ objective: q_despertar.descobrir_voz }, { objective: q_despertar.segredo_ilda }]
+        quest_complete: { id: q_despertar, outcome: com_respostas }
+      - when: [{ any: [{ objective: q_despertar.descobrir_voz }, { objective: q_despertar.segredo_ilda }] }]
+        quest_complete: { id: q_despertar, outcome: meias_respostas }
+      - quest_complete: { id: q_despertar, outcome: sem_respostas }
+      - chapter: 2
+      - quest_start: q_cidade
+      - when: [{ flag: sabe_do_bosque }]
+        objective: q_cidade.orientar
+    exits:
+      - to: janela
+        keywords: [janela, entrar, voltar, cafe, café, window, back, inside]
+        label: { pt-BR: "Voltar para dentro pela janela", en: "Go back inside through the window" }
+        conditions: [{ flag: janela_aberta }]
+        energy: 3
+      - to: calcada
+        kind: jump
+        keywords: [calcada, calçada, descer, pular, rua, sidewalk, down, jump, street]
+        label: { pt-BR: "Saltar do parapeito para a calçada", en: "Jump from the sill to the sidewalk" }
+        check: { stat: courage, dc: 12, bonus_ability: { porcelain_leap: 5 } }
+        energy: 8
+        text:
+          pt-BR: "Você mede a altura, respira o vapor do próprio café e salta. O vento assobia na sua alça — e você aterrissa numa poça rasa com um 'splash' elegante."
+          en: "You measure the drop, breathe in your own coffee's steam and leap. Wind whistles through your handle — and you land in a shallow puddle with an elegant 'splash'."
+        fail_text:
+          pt-BR: "O salto sai torto. Você bate na borda do degrau e rola até a calçada, com um estalo que ecoa em toda a sua porcelana."
+          en: "The jump goes wrong. You hit the edge of the step and roll onto the sidewalk with a crack that echoes through all your porcelain."
+        fail_effects: [{ stats: { integrity: -12 }, move_player: calcada }]
+
+  - id: calcada
+    region: cidade
+    ambient_temp: 12
+    map_pos: [0.30, 0.30]
+    name: { pt-BR: "Calçada do Café Aurora", en: "Café Aurora Sidewalk" }
+    description:
+      pt-BR: "A calçada é um deserto de pedras portuguesas, cada uma do tamanho de uma praça para você. Postes sobem como torres até perder de vista. À direita, uma poça imensa reflete as luzes como um mar noturno. À esquerda, a rua ruge com carros. Um pombo gordo se abriga sob o toldo do café."
+      en: "The sidewalk is a desert of mosaic stones, each the size of a plaza to you. Lampposts rise like towers out of sight. To the right, an immense puddle mirrors the lights like a night sea. To the left, the street roars with cars. A plump pigeon sheltering under the café's awning."
+    short:
+      pt-BR: "A calçada em frente ao café, sob o toldo."
+      en: "The sidewalk in front of the café, under the awning."
+    sounds:
+      pt-BR: "Carros chiando no asfalto molhado. O arrulho de um pombo que parece estar contando fofoca para si mesmo."
+      en: "Cars hissing on wet asphalt. The cooing of a pigeon that seems to be gossiping with himself."
+    on_enter:
+      - objective: q_despertar.sair_cafeteria
+      - achievement: out_the_door
+      - when: [{ objective: q_despertar.descobrir_voz }, { objective: q_despertar.segredo_ilda }]
+        quest_complete: { id: q_despertar, outcome: com_respostas }
+      - when: [{ any: [{ objective: q_despertar.descobrir_voz }, { objective: q_despertar.segredo_ilda }] }]
+        quest_complete: { id: q_despertar, outcome: meias_respostas }
+      - quest_complete: { id: q_despertar, outcome: sem_respostas }
+      - chapter: 2
+      - quest_start: q_cidade
+      - when: [{ flag: sabe_do_bosque }]
+        objective: q_cidade.orientar
+    features:
+      - id: toldo
+        keywords: [toldo, cobertura, awning, canopy]
+        name: { pt-BR: "toldo do café", en: "café awning" }
+        description:
+          pt-BR: "O toldo listrado do Café Aurora, rasgado num canto. A água escorre pelo rasgo como uma cachoeira."
+          en: "Café Aurora's striped awning, torn at one corner. Water pours through the tear like a waterfall."
+    exits:
+      - to: porta_entrada
+        keywords: [porta, cafe, café, entrar, voltar, door, inside, back]
+        label: { pt-BR: "Voltar para o café pela porta", en: "Go back into the café through the door" }
+        conditions: [{ flag: porta_aberta }]
+        blocked_text:
+          pt-BR: "A porta do café está fechada. Daqui de fora, a maçaneta é inalcançável."
+          en: "The café door is closed. From out here, the knob is unreachable."
+        energy: 3
+      - to: beco
+        keywords: [beco, viela, fundos, alley, back alley]
+        label: { pt-BR: "Contornar o café até o beco", en: "Go around the café to the alley" }
+        energy: 4
+      - to: poca_oceano
+        keywords: [poca, poça, oceano, mar, agua, água, puddle, ocean, sea, water]
+        label: { pt-BR: "Ir até a margem da poça gigante", en: "Go to the shore of the giant puddle" }
+        energy: 3
+      - to: cruzamento
+        keywords: [cruzamento, esquina, rua, faixa, semaforo, semáforo, crossing, corner, street, crosswalk, traffic light]
+        label: { pt-BR: "Seguir até o cruzamento", en: "Head to the crossing" }
+        energy: 5
+
+  - id: beco
+    region: cidade
+    ambient_temp: 11
+    map_pos: [0.55, 0.12]
+    name: { pt-BR: "Beco dos fundos", en: "Back Alley" }
+    description:
+      pt-BR: "O beco atrás do café é um cânion estreito de tijolos e canos. Caixas de papelão desmancham na chuva. Uma lata de conserva amassada, de pé no meio do caminho, encara você com a tampa entreaberta como um sorriso torto."
+      en: "The alley behind the café is a narrow canyon of bricks and pipes. Cardboard boxes melt in the rain. A dented food tin, standing in the middle of the path, stares at you with its half-open lid like a crooked grin."
+    short:
+      pt-BR: "O beco estreito atrás do café."
+      en: "The narrow alley behind the café."
+    sounds:
+      pt-BR: "Uma calha pinga em ritmo de bateria. A lata no meio do beco assobia uma música desafinada."
+      en: "A gutter drips in a drumbeat. The tin in the middle of the alley whistles an off-key tune."
+    on_enter:
+      - objective: q_despertar.sair_cafeteria
+      - achievement: out_the_door
+      - when: [{ objective: q_despertar.descobrir_voz }, { objective: q_despertar.segredo_ilda }]
+        quest_complete: { id: q_despertar, outcome: com_respostas }
+      - when: [{ any: [{ objective: q_despertar.descobrir_voz }, { objective: q_despertar.segredo_ilda }] }]
+        quest_complete: { id: q_despertar, outcome: meias_respostas }
+      - quest_complete: { id: q_despertar, outcome: sem_respostas }
+      - chapter: 2
+      - quest_start: q_cidade
+      - when: [{ flag: sabe_do_bosque }]
+        objective: q_cidade.orientar
+    exits:
+      - to: cozinha
+        keywords: [portinhola, cozinha, cafe, café, voltar, cat flap, kitchen, back]
+        label: { pt-BR: "Voltar para a cozinha pela portinhola", en: "Go back into the kitchen through the cat flap" }
+        conditions: [{ flag: portinhola_aberta }]
+        energy: 3
+      - to: calcada
+        keywords: [calcada, calçada, rua, frente, sidewalk, street, front]
+        label: { pt-BR: "Seguir pelo beco até a calçada", en: "Follow the alley to the sidewalk" }
+        conditions: [{ any: [{ flag: lata_liberou }, { flag: "companion:noir" }] }]
+        blocked_text:
+          pt-BR: "A lata amassada se planta no meio do caminho. — Ninguém passa pelo beco do Ferrugem sem pagar pedágio, porcelana."
+          en: "The dented tin plants itself in the way. \"Nobody passes Rusty's alley without paying the toll, porcelain.\""
+        energy: 4
+      - to: lixeira
+        keywords: [lixeira, lixo, latao, latão, trash, bin, dumpster, garbage]
+        label: { pt-BR: "Escalar até a montanha de lixo", en: "Climb the trash mountain" }
+        kind: climb
+        check: { stat: energy, dc: 6 }
+        energy: 7
+        fail_text:
+          pt-BR: "Você escorrega numa casca de banana — sim, de verdade — e volta ao chão do beco."
+          en: "You slip on a banana peel — yes, really — and slide back to the alley floor."
+
+  - id: lixeira
+    region: cidade
+    ambient_temp: 13
+    map_pos: [0.75, 0.08]
+    name: { pt-BR: "Montanha de lixo", en: "Trash Mountain" }
+    description:
+      pt-BR: "O topo da lixeira é uma cordilheira de sacos, embalagens e tesouros esquecidos. Daqui você vê telhados, antenas e, ao longe, as copas escuras de um bosque atrás da praça. Entre o lixo, algo metálico brilha."
+      en: "The top of the dumpster is a mountain range of bags, wrappers and forgotten treasures. From here you see rooftops, antennas and, far off, the dark treetops of a grove behind the square. Among the trash, something metallic gleams."
+    short:
+      pt-BR: "O topo da montanha de lixo, com vista para o bosque."
+      en: "The top of the trash mountain, overlooking the grove."
+    sounds:
+      pt-BR: "Plástico farfalhando com o vento. E, muito longe, vindo do bosque, um tique-taque que não existe."
+      en: "Plastic rustling in the wind. And, very far away, from the grove, a ticking that isn't there."
+    features:
+      - id: vista_bosque
+        keywords: [bosque, arvores, árvores, copas, vista, grove, trees, view, forest]
+        name: { pt-BR: "vista do bosque", en: "view of the grove" }
+        description:
+          pt-BR: "Atrás da praça, depois do jardim, um bosque escuro. Uma névoa prateada paira sobre ele mesmo com a chuva. Parece que o tempo, lá, anda mais devagar — ou não anda."
+          en: "Past the square, beyond the garden, a dark grove. A silvery mist hangs over it even in the rain. It looks as if time there moves slower — or not at all."
+    exits:
+      - to: beco
+        kind: jump
+        keywords: [descer, beco, voltar, down, alley, back]
+        label: { pt-BR: "Descer para o beco", en: "Climb down to the alley" }
+        check: { stat: courage, dc: 7, bonus_ability: { porcelain_leap: 4 } }
+        energy: 3
+        fail_text:
+          pt-BR: "Você escorrega pelo saco plástico como num tobogã e aterrissa sem graça — e com um arranhão."
+          en: "You slide down a plastic bag like a slide and land clumsily — with a scratch."
+        fail_effects: [{ stats: { integrity: -4 }, move_player: beco }]
+
+  - id: poca_oceano
+    region: cidade
+    ambient_temp: 9
+    map_pos: [0.30, 0.62]
+    name: { pt-BR: "Oceano da calçada", en: "Sidewalk Ocean" }
+    description:
+      pt-BR: "Uma poça tão grande que tem ondas. A chuva crava pontinhos na superfície escura, e o reflexo dos postes se estica como faróis. Do outro lado, numa ilhota de pedra, a boca de um bueiro respira um ar morno e úmido."
+      en: "A puddle so big it has waves. Rain pricks the dark surface, and the lampposts' reflections stretch like lighthouses. On the far side, on a little stone island, the mouth of a storm drain breathes warm, damp air."
+    short:
+      pt-BR: "A margem da poça gigante."
+      en: "The shore of the giant puddle."
+    sounds:
+      pt-BR: "Ondas minúsculas batendo na pedra. Do bueiro, do outro lado, um eco fundo — como uma floresta inteira sussurrando debaixo da terra."
+      en: "Tiny waves lapping against stone. From the drain across the water, a deep echo — like an entire forest whispering underground."
+    features:
+      - id: agua_poca
+        keywords: [agua, água, onda, ondas, superficie, water, waves, surface]
+        name: { pt-BR: "água da poça", en: "puddle water" }
+        description:
+          pt-BR: "Água gelada e escura. Uma caneca cheia afundaria como pedra. Uma caneca leve — ou com um barco — talvez flutuasse."
+          en: "Icy, dark water. A full mug would sink like a stone. A light mug — or one with a boat — might float."
+    exits:
+      - to: calcada
+        keywords: [calcada, calçada, voltar, sidewalk, back]
+        label: { pt-BR: "Voltar para a calçada", en: "Go back to the sidewalk" }
+        energy: 3
+      - to: bueiro
+        kind: swim
+        keywords: [bueiro, ilha, ilhota, atravessar, navegar, nadar, outro lado, drain, island, cross, sail, swim, other side]
+        label: { pt-BR: "Atravessar a poça até o bueiro", en: "Cross the puddle to the storm drain" }
+        conditions: [{ any: [{ has_item: barquinho }, { has_status: buoyant }, { has_status: empty }] }]
+        blocked_text:
+          pt-BR: "Você encosta a borda na água e sente o peso do próprio café. Cheia assim, afundaria como pedra. Talvez um barco... ou menos café."
+          en: "You touch the water with your rim and feel the weight of your own coffee. This full, you'd sink like a stone. Maybe a boat... or less coffee."
+        check: { stat: courage, dc: 11, bonus_item: { barquinho: 8 }, bonus_ability: { advanced_balance: 1 } }
+        energy: 8
+        minutes: 8
+        text:
+          pt-BR: "Você se lança na água. As ondas balançam, a chuva bate, e por um momento o mundo é só reflexo e frio. Mas você segue — remando com a alça — até tocar a pedra da ilhota."
+          en: "You launch onto the water. The waves rock you, the rain pounds, and for a moment the world is only reflection and cold. But you keep going — paddling with your handle — until you touch the island stone."
+        fail_text:
+          pt-BR: "Uma onda vira você de lado. Água gelada entra pela borda e você volta à margem, tremendo, com o café aguado e frio."
+          en: "A wave tips you over. Icy water pours over your rim and you drift back to shore, shivering, your coffee watered-down and cold."
+        fail_effects: [{ stats: { temperature: -15 }, status_add: watered }]
+
+  - id: bueiro
+    region: cidade
+    ambient_temp: 15
+    dark: true
+    map_pos: [0.15, 0.82]
+    name: { pt-BR: "Boca do bueiro", en: "Storm Drain Mouth" }
+    description:
+      pt-BR: "Uma ilhota de pedra diante da boca escura do bueiro. Grades de ferro descem para um túnel onde a água corre fazendo música. O ar que sobe é morno e cheira a folhas, não a esgoto — como se algum lugar lá embaixo fosse uma floresta."
+      en: "A stone islet before the drain's dark mouth. Iron bars lead down into a tunnel where water runs making music. The air rising from it is warm and smells of leaves, not sewage — as if somewhere down there were a forest."
+    short:
+      pt-BR: "A boca do bueiro, na ilhota da poça."
+      en: "The storm drain mouth, on the puddle's islet."
+    sounds:
+      pt-BR: "Água corrente. Um vento morno. E, bem no fundo, folhas farfalhando onde não deveria haver folhas."
+      en: "Running water. A warm breeze. And, deep down, leaves rustling where there should be no leaves."
+    features:
+      - id: grade_bueiro
+        keywords: [grade, grades, tunel, túnel, boca, bueiro, grate, bars, tunnel, drain]
+        name: { pt-BR: "grade do bueiro", en: "drain grate" }
+        description:
+          pt-BR: "Entre duas barras há um vão do tamanho exato de uma caneca. Lá embaixo, a correnteza desaparece na escuridão. Ninguém entraria aí sem saber para onde leva."
+          en: "Between two bars there's a gap exactly the size of a mug. Below, the current vanishes into darkness. No one would go in without knowing where it leads."
+    exits:
+      - to: poca_oceano
+        kind: swim
+        keywords: [voltar, poca, poça, margem, back, puddle, shore]
+        label: { pt-BR: "Atravessar de volta para a margem", en: "Cross back to the shore" }
+        energy: 6
+        minutes: 6
+        text:
+          pt-BR: "Você volta pela água fria, remando com a alça até a margem."
+          en: "You cross back through the cold water, paddling with your handle to the shore."
+      - to: orla
+        kind: secret
+        keywords: [tunel, túnel, descer, correnteza, floresta, entrar no bueiro, tunnel, down, current, forest, into the drain]
+        label: { pt-BR: "Deixar a correnteza levar você pelo túnel", en: "Let the current carry you through the tunnel" }
+        visible_if: [{ any: [{ flag: sente_bueiro }, { flag: bueiro_revelado }] }]
+        energy: 6
+        minutes: 15
+        text:
+          pt-BR: "Você se espreme entre as grades e mergulha na correnteza. O túnel gira, desce, sobe — escuridão, eco, frio — até que uma luz prateada aparece adiante. A água a cospe suavemente sobre um tapete de musgo. Você está em outro lugar."
+          en: "You squeeze between the bars and plunge into the current. The tunnel turns, drops, rises — darkness, echo, cold — until a silver light appears ahead. The water gently spits you out onto a carpet of moss. You're somewhere else."
+
+  - id: cruzamento
+    region: cidade
+    ambient_temp: 12
+    map_pos: [0.55, 0.45]
+    name: { pt-BR: "Cruzamento", en: "Crossing" }
+    description:
+      pt-BR: "A faixa de pedestres é uma escada de listras brancas sobre um rio de asfalto. Carros passam como cometas, jogando ondas de água suja. No alto, um semáforo pisca entre verde, amarelo e vermelho. Do outro lado, as árvores escuras da praça."
+      en: "The crosswalk is a ladder of white stripes over a river of asphalt. Cars pass like comets, throwing waves of dirty water. Above, a traffic light blinks green, yellow, red. On the other side, the dark trees of the square."
+    short:
+      pt-BR: "A beira do cruzamento perigoso."
+      en: "The edge of the dangerous crossing."
+    sounds:
+      pt-BR: "O rugido dos motores. O clique do semáforo mudando de cor. Um ritmo — se você prestar atenção."
+      en: "The roar of engines. The click of the traffic light changing color. A rhythm — if you pay attention."
+    features:
+      - id: semaforo
+        keywords: [semaforo, semáforo, sinal, farol, luz, traffic light, signal, light]
+        name: { pt-BR: "semáforo", en: "traffic light" }
+        description:
+          pt-BR: "O semáforo segue um ciclo paciente: verde longo, amarelo curto, vermelho. Quando fica vermelho para os carros, eles param — quase todos."
+          en: "The traffic light follows a patient cycle: long green, short yellow, red. When it turns red for the cars, they stop — almost all of them."
+    exits:
+      - to: calcada
+        keywords: [calcada, calçada, voltar, cafe, café, sidewalk, back]
+        label: { pt-BR: "Voltar para a calçada do café", en: "Go back to the café sidewalk" }
+        energy: 5
+      - to: jardim
+        keywords: [jardim, praca, praça, atravessar, outro lado, faixa, garden, square, cross, other side, crosswalk]
+        label: { pt-BR: "Atravessar a rua correndo", en: "Dash across the street" }
+        check: { stat: courage, dc: 14, bonus_ability: { advanced_balance: 1 } }
+        energy: 10
+        text:
+          pt-BR: "Você corre listra por listra, o coração de café batendo na borda. Um farol enorme cresce à sua esquerda — buzina! — mas você já está do outro lado, ofegante e viva."
+          en: "You run stripe by stripe, your coffee heart pounding at your rim. A huge headlight grows on your left — honk! — but you're already across, panting and alive."
+        fail_text:
+          pt-BR: "No meio da faixa, um carro passa rente e uma onda de água suja derruba você de volta à calçada. Fria, encharcada e com uma nova rachadura."
+          en: "Halfway across, a car passes close and a wave of dirty water knocks you back to the curb. Cold, soaked and with a new crack."
+        fail_effects: [{ stats: { integrity: -12, temperature: -10 }, status_add: wet }]
+
+  - id: jardim
+    region: cidade
+    ambient_temp: 11
+    map_pos: [0.80, 0.55]
+    name: { pt-BR: "Jardim da praça", en: "Square Garden" }
+    description:
+      pt-BR: "O jardim da praça é uma selva de grama alta e canteiros alagados. Uma fonte de pedra murmura no centro. No fundo, uma cerca viva escura separa a praça de um bosque envolto em névoa prateada. Do outro lado da rua, uma casa amarela tem a luz da varanda acesa."
+      en: "The square's garden is a jungle of tall grass and flooded flowerbeds. A stone fountain murmurs in the middle. At the back, a dark hedge separates the square from a grove wrapped in silver mist. Across the street, a yellow house has its porch light on."
+    short:
+      pt-BR: "O jardim da praça, diante da cerca viva."
+      en: "The square garden, before the hedge."
+    sounds:
+      pt-BR: "A fonte. Grilos teimosos apesar da chuva. E, atrás da cerca, um tique... um silêncio longo... nenhum taque."
+      en: "The fountain. Stubborn crickets despite the rain. And, behind the hedge, a tick... a long silence... no tock."
+    features:
+      - id: cerca_viva
+        keywords: [cerca, cerca viva, sebe, grade, buraco, hedge, fence, hole]
+        name: { pt-BR: "cerca viva", en: "hedge" }
+        description:
+          pt-BR: "Uma cerca viva densa e alta. Na base, entre as raízes, um ar frio sai de algum lugar — talvez de um buraco escondido."
+          en: "A dense, tall hedge. At its base, among the roots, cold air seeps out from somewhere — maybe a hidden hole."
+      - id: casa_amarela
+        keywords: [casa amarela, casa, varanda, janela da casa, yellow house, house, porch]
+        name: { pt-BR: "casa amarela", en: "yellow house" }
+        description:
+          pt-BR: "Uma casa amarela do outro lado da rua, com uma varanda iluminada e uma cadeira de balanço vazia. Um vaso de flores, um tapete de boas-vindas, e na janela, uma silhueta parada."
+          en: "A yellow house across the street, with a lit porch and an empty rocking chair. A flowerpot, a welcome mat, and in the window, a still silhouette."
+      - id: fonte
+        keywords: [fonte, chafariz, fountain]
+        name: { pt-BR: "fonte de pedra", en: "stone fountain" }
+        description:
+          pt-BR: "Uma fonte coberta de musgo. Moedas antigas brilham no fundo. A água é fria demais para uma caneca, mas o som acalma."
+          en: "A moss-covered fountain. Old coins glimmer at the bottom. The water is too cold for a mug, but the sound is soothing."
+    exits:
+      - to: cruzamento
+        keywords: [cruzamento, rua, voltar, crossing, street, back]
+        label: { pt-BR: "Voltar para o cruzamento", en: "Go back to the crossing" }
+        energy: 4
+        text:
+          pt-BR: "Você espera o sinal fechar e volta pela faixa, com cuidado."
+          en: "You wait for the light to change and cross back carefully."
+      - to: orla
+        kind: secret
+        keywords: [buraco, cerca, bosque, floresta, atravessar a cerca, hole, hedge, grove, forest, through the hedge]
+        label: { pt-BR: "Passar pelo buraco na cerca viva", en: "Slip through the hole in the hedge" }
+        visible_if: [{ any: [{ flag: sabe_do_bosque }, { flag: cerca_encontrada }] }]
+        conditions: [{ any: [{ flag: sabe_do_bosque }, { flag: cerca_encontrada }] }]
+        energy: 6
+        minutes: 6
+        text:
+          pt-BR: "Você afasta as raízes e encontra o buraco, exatamente onde a seta vermelha do mapa indicava. Lá dentro, o ar muda: fica mais frio, mais quieto, com cheiro de folhas e de coisas guardadas há muito tempo. A névoa prateada se abre para você."
+          en: "You push the roots aside and find the hole, right where the map's red arrow pointed. Inside, the air changes: colder, quieter, smelling of leaves and of things kept for a long time. The silver mist parts for you."
+
+items:
+  - id: tampinha
+    initial: lixeira
+    icon: cap
+    keywords: [tampinha, tampa de garrafa, tampa, bottle cap, cap]
+    name: { pt-BR: "tampinha de garrafa", en: "bottle cap" }
+    description:
+      pt-BR: "Uma tampinha de metal vermelha, virada para cima como um pequeno bote. Brilha bem — pombos e ratos adorariam."
+      en: "A red metal bottle cap, upside down like a tiny boat. Quite shiny — pigeons and rats would love it."
+  - id: palito
+    initial: lixeira
+    icon: stick
+    keywords: [palito, palito de sorvete, vareta, mastro, popsicle stick, stick, mast]
+    name: { pt-BR: "palito de sorvete", en: "popsicle stick" }
+    description:
+      pt-BR: "Um palito de sorvete ainda doce. Daria um ótimo remo — ou um mastro."
+      en: "A popsicle stick, still sweet. It would make a great oar — or a mast."
+  - id: casca_pao
+    initial: lixeira
+    icon: bread
+    keywords: [pao, pão, casca de pao, casca, migalha, bread, crust, crumbs]
+    name: { pt-BR: "casca de pão", en: "bread crust" }
+    description:
+      pt-BR: "Uma casca de pão francês, crocante por fora e molhada por dentro. Para um pombo, um banquete."
+      en: "A crust of French bread, crunchy outside and soggy inside. For a pigeon, a feast."
+  - id: barquinho
+    icon: boat
+    weight: 2
+    keywords: [barquinho, barco, bote, boat, little boat, raft]
+    name: { pt-BR: "barquinho de tampinha", en: "bottle-cap boat" }
+    description:
+      pt-BR: "Uma tampinha com um palito como mastro: um barquinho perfeito para cruzar oceanos de calçada."
+      en: "A bottle cap with a stick for a mast: the perfect little boat for crossing sidewalk oceans."
+  - id: pena_zeca
+    icon: feather
+    keywords: [pena, pena de pombo, feather, pigeon feather]
+    name: { pt-BR: "pena do Zeca", en: "Zeca's feather" }
+    description:
+      pt-BR: "Uma pena cinza-azulada que Zeca arrancou do próprio peito. \"Mostra pra qualquer pombo da cidade e diz que é amiga do Zeca.\""
+      en: "A blue-grey feather Zeca plucked from his own chest. \"Show it to any pigeon in town and say you're Zeca's friend.\""
+
+recipes:
+  - id: fazer_barquinho
+    inputs: [tampinha, palito]
+    output: barquinho
+    text:
+      pt-BR: "Você encaixa o palito na tampinha, firme como um mastro. Um barquinho! Pequeno, vermelho e absolutamente navegável."
+      en: "You wedge the stick into the cap, firm as a mast. A little boat! Small, red and absolutely seaworthy."
+    effects: [{ stats: { creativity: 3 } }]
+
+npcs:
+  - id: pombo_zeca
+    location: calcada
+    relationship: 5
+    mood: chatty
+    befriend_dc: 9
+    icon: pigeon
+    keywords: [pombo, zeca, passaro, pássaro, ave, pigeon, bird]
+    likes: [casca_pao, tampinha, botao_dourado, moeda_antiga]
+    name: { pt-BR: "Zeca", en: "Zeca" }
+    kind: { pt-BR: "pombo mensageiro", en: "messenger pigeon" }
+    description:
+      pt-BR: "Um pombo gordo de penas cinza-azuladas e pescoço furta-cor. Tem uma pata com anilha e um olhar de quem sabe todas as fofocas da cidade."
+      en: "A plump pigeon with blue-grey feathers and an iridescent neck. One foot has a band, and his eyes say he knows every rumor in town."
+    personality:
+      pt-BR: "Malandro, falante, generoso com os amigos, sempre com fome."
+      en: "Streetwise, chatty, generous with friends, always hungry."
+    voice:
+      pt-BR: "Fala como um carioca bonachão: \"ô, parceira\", \"tá ligada?\", gírias e arrulhos."
+      en: "Talks like a jovial street hustler: \"hey, partner\", \"you get me?\", slang and coos."
+    background:
+      pt-BR: "Pombo-correio aposentado. Ilda dava migalhas para ele toda manhã. Conhece cada telhado, praça e atalho da cidade."
+      en: "A retired carrier pigeon. Ilda gave him crumbs every morning. Knows every rooftop, square and shortcut in town."
+    goals:
+      pt-BR: "Comer bem, saber de tudo e, secretamente, voltar a ter uma mensagem importante para entregar."
+      en: "Eat well, know everything and, secretly, carry an important message again."
+    knowledge:
+      - { pt-BR: "Sabe que atrás da cerca viva do jardim há um bosque onde vivem objetos perdidos.", en: "Knows that behind the garden hedge there's a grove where lost objects live." }
+      - { pt-BR: "Sabe que o semáforo do cruzamento fecha a cada poucos minutos.", en: "Knows the crossing's traffic light turns red every few minutes." }
+    greetings:
+      - conditions: [{ rel: pombo_zeca, gte: 35 }]
+        text:
+          pt-BR: "— Ô, parceira de porcelana! — Zeca estufa o peito. — Manda que eu obedeço."
+          en: "\"Hey, porcelain partner!\" Zeca puffs out his chest. \"Say the word and I'm on it.\""
+      - conditions: [{ met: pombo_zeca }]
+        text:
+          pt-BR: "— Olha ela aí de novo! Trouxe alguma coisinha pro Zeca, trouxe?"
+          en: "\"Look who's back! Brought something for Zeca, did you?\""
+      - text:
+          pt-BR: "O pombo dá três passinhos para trás e inclina a cabeça. — Rruu? Uma caneca andando na chuva? Agora eu vi tudo. Prazer, Zeca, pombo-correio aposentado, fofoqueiro profissional. E você, parceira, tá perdida, tá?"
+          en: "The pigeon takes three little steps back and tilts his head. \"Rroo? A mug walking in the rain? Now I've seen everything. Pleasure, Zeca, retired carrier pigeon, professional gossip. And you, partner, you lost, huh?\""
+    topics:
+      - id: zeca_floresta
+        keywords: [floresta, bosque, objetos perdidos, caminho, onde, forest, grove, lost objects, way, where]
+        label: { pt-BR: "Perguntar a Zeca sobre o bosque dos objetos perdidos", en: "Ask Zeca about the grove of lost objects" }
+        text:
+          pt-BR: "— Ah, o bosque! Tá ligada a praça depois do cruzamento? Atrás do jardim tem uma cerca viva com um buraco embaixo. Lá dentro vivem as coisas que o povo esqueceu: guarda-chuva, chaveiro, bule... Dizem que tá tudo esquisito lá, que o tempo parou. Eu não entro, não. Pombo que entra lá esquece até que é pombo."
+          en: "\"Oh, the grove! You know the square past the crossing? Behind the garden there's a hedge with a hole at the bottom. Inside live the things people forgot: umbrellas, keychains, teapots... They say it's all weird in there, that time stopped. I don't go in, no sir. A pigeon goes in there, forgets he's a pigeon.\""
+        effects:
+          - set_flag: sabe_do_bosque
+          - objective: q_cidade.orientar
+          - fact: { id: zeca_falou_cerca, importance: 3, tags: [pombo_zeca, jardim], text: { pt-BR: "Zeca contou que há um buraco na cerca viva do jardim que leva ao bosque.", en: "Zeca said there's a hole in the garden hedge leading to the grove." } }
+      - id: zeca_cruzamento
+        keywords: [cruzamento, rua, carros, atravessar, semaforo, semáforo, sinal, crossing, street, cars, cross, traffic light]
+        label: { pt-BR: "Pedir a Zeca uma dica para atravessar a rua", en: "Ask Zeca for advice on crossing the street" }
+        text:
+          pt-BR: "— Atravessar correndo é coisa de pombo novo. Espera o sinal ficar vermelho pros carros, parceira. É só esperar. Paciência é o que separa pombo vivo de pombo achatado."
+          en: "\"Running across is for young pigeons. Wait for the light to turn red for the cars, partner. Just wait. Patience is what separates a live pigeon from a flat one.\""
+        effects: [{ set_flag: dica_do_sinal }]
+      - id: zeca_lata
+        keywords: [lata, ferrugem, beco, pedagio, pedágio, tin, rusty, alley, toll]
+        label: { pt-BR: "Perguntar a Zeca sobre a lata do beco", en: "Ask Zeca about the tin in the alley" }
+        text:
+          pt-BR: "— O Ferrugem? Faz pose de durão, mas tem medo de virar lixo de verdade. Dizem que ele já foi até o bosque e voltou. Quem trata ele com respeito ganha um amigo. Quem trata como lata... ganha uma lata brava."
+          en: "\"Rusty? Acts tough, but he's scared of becoming real trash. They say he went to the grove once and came back. Treat him with respect and you get a friend. Treat him like a tin... you get an angry tin.\""
+        effects: [{ set_flag: sabe_segredo_lata }]
+      - id: zeca_ilda
+        keywords: [ilda, senhora, cafe, café, dona, lady, owner]
+        label: { pt-BR: "Perguntar a Zeca sobre Ilda", en: "Ask Zeca about Ilda" }
+        text:
+          pt-BR: "Zeca para de ciscar. — Dona Ilda... Migalha toda manhã, chovesse ou fizesse sol. Uma vez ela me chamou pelo nome do meu avô. Achei bonito. Depois achei triste. — Ele olha para a casa amarela do outro lado da praça, mas não diz mais nada."
+          en: "Zeca stops pecking. \"Miss Ilda... Crumbs every morning, rain or shine. Once she called me by my grandfather's name. I thought it was sweet. Later I thought it was sad.\" He glances toward the yellow house across the square, but says nothing more."
+    smalltalk:
+      - { pt-BR: "— Sabia que o padeiro da esquina tá namorando a florista? Ninguém sabe. Só eu. Rruu.", en: "\"Did you know the corner baker is dating the florist? Nobody knows. Just me. Rroo.\"" }
+      - { pt-BR: "Zeca bica uma pedrinha, decepcionado ao descobrir que não é comida.", en: "Zeca pecks a pebble, disappointed to learn it isn't food." }
+      - { pt-BR: "— Chuva boa pra minhoca, ruim pra pena. A vida é assim, parceira.", en: "\"Good rain for worms, bad for feathers. That's life, partner.\"" }
+
+  - id: lata_ferrugem
+    location: beco
+    relationship: -15
+    mood: defiant
+    befriend_dc: 14
+    icon: can
+    keywords: [lata, ferrugem, lata de conserva, lata amassada, tin, rusty, tin can, can]
+    likes: [tampinha, moeda_antiga, botao_dourado]
+    name: { pt-BR: "Ferrugem", en: "Rusty" }
+    kind: { pt-BR: "lata de conserva amassada", en: "dented food tin" }
+    description:
+      pt-BR: "Uma lata de conserva amassada, de rótulo descascado onde ainda se lê \"PÊSSEGOS\". A tampa entreaberta faz as vezes de boca. Tem pontos de ferrugem como sardas e uma postura de quem já brigou com muitos gatos."
+      en: "A dented food tin, its peeling label still reading \"PEACHES\". The half-open lid serves as a mouth. Rust spots dot it like freckles, and it stands like someone who has fought a lot of cats."
+    personality:
+      pt-BR: "Durão, desconfiado e orgulhoso por fora; inseguro e leal por dentro. Morre de medo de ser só lixo."
+      en: "Tough, suspicious and proud outside; insecure and loyal inside. Terrified of being nothing but trash."
+    voice:
+      pt-BR: "Fala grosso, com gírias de malandro antigo: \"porcelana\", \"meu chapa\", \"aqui quem manda sou eu\"."
+      en: "Talks gruff, old-time hoodlum slang: \"porcelain\", \"pal\", \"I run this place\"."
+    background:
+      pt-BR: "Jogado no beco anos atrás. Já se perdeu na Floresta dos Objetos Perdidos e voltou pelo túnel do bueiro, sozinho. Desde então, se diz rei do beco."
+      en: "Tossed into the alley years ago. Once got lost in the Forest of Lost Objects and came back through the storm-drain tunnel, alone. Since then, calls himself king of the alley."
+    goals:
+      pt-BR: "Ser respeitado. Secretamente, ter algum propósito além de ocupar espaço."
+      en: "To be respected. Secretly, to have a purpose beyond taking up space."
+    knowledge:
+      - { pt-BR: "Conhece o túnel do bueiro que leva até a floresta.", en: "Knows the storm-drain tunnel that leads to the forest." }
+    secrets:
+      - id: lata_tunel
+        reveal_if: [{ rel: lata_ferrugem, gte: 20 }]
+        text:
+          pt-BR: "Ferrugem voltou da floresta pelo túnel do bueiro, do outro lado da poça grande."
+          en: "Rusty came back from the forest through the storm-drain tunnel, across the big puddle."
+    greetings:
+      - conditions: [{ flag: lata_liberou }]
+        text:
+          pt-BR: "— Fala, porcelana. Aqui no beco você é de casa. Precisando, é só chamar o Ferrugem."
+          en: "\"Hey, porcelain. In this alley, you're family. You need something, just call Rusty.\""
+      - text:
+          pt-BR: "A lata amassada gira devagar até ficar de frente para você. — Ora, ora. Louça fina no meu beco. Aqui quem manda é o Ferrugem, meu chapa. Quer passar? Paga pedágio. Coisa brilhante. Ou volta pro seu armário."
+          en: "The dented tin turns slowly to face you. \"Well, well. Fine china in my alley. Rusty runs this place, pal. Want to pass? Pay the toll. Something shiny. Or go back to your cupboard.\""
+    topics:
+      - id: lata_respeito
+        keywords: [lixo, respeito, rei, importante, valor, voce nao e lixo, trash, respect, king, important, worth, not trash]
+        label: { pt-BR: "Dizer a Ferrugem que ele não é lixo", en: "Tell Rusty he isn't trash" }
+        text:
+          pt-BR: "A lata fica em silêncio. A tampa treme. — Ninguém nunca... — Ele pigarreia, metálico. — Hunf. Você é estranha, porcelana. Mas é estranha do bem. Pode passar. E escuta: se for pro bosque, tem um caminho que só eu conheço. Pelo bueiro, do outro lado da poça grande. A correnteza leva direto pra lá."
+          en: "The tin falls silent. Its lid trembles. \"Nobody ever...\" He clears his throat, metallically. \"Hmph. You're weird, porcelain. But the good kind of weird. You can pass. And listen: if you're going to the grove, there's a way only I know. Through the storm drain, across the big puddle. The current takes you straight there.\""
+        conditions: [{ any: [{ flag: sabe_segredo_lata }, { stat: courage, gte: 55 }] }]
+        effects:
+          - set_flag: [lata_liberou, bueiro_revelado]
+          - rel: { lata_ferrugem: 35 }
+          - quest_complete: { id: q_lata, outcome: respeito }
+          - fact: { id: lata_respeitado, importance: 3, tags: [lata_ferrugem], text: { pt-BR: "A caneca tratou Ferrugem com respeito; ele revelou o túnel do bueiro.", en: "The mug treated Rusty with respect; he revealed the storm-drain tunnel." } }
+      - id: lata_floresta
+        keywords: [floresta, bosque, perdido, voltou, forest, grove, lost, came back]
+        conditions: [{ rel: lata_ferrugem, gte: 20 }]
+        label: { pt-BR: "Perguntar a Ferrugem sobre a floresta", en: "Ask Rusty about the forest" }
+        text:
+          pt-BR: "— Fiquei lá três semanas. Ou três anos, sei lá, o tempo lá é esquisito. Comecei a esquecer meu próprio rótulo. PÊSSEGOS. Eu repetia isso toda noite pra não esquecer. Aí achei a correnteza e voltei. — Ele bate a tampa. — Se for lá, porcelana, não esquece quem você é."
+          en: "\"I stayed there three weeks. Or three years, who knows, time is weird there. I started forgetting my own label. PEACHES. I said it every night so I wouldn't forget. Then I found the current and came back.\" He clanks his lid. \"If you go, porcelain, don't forget who you are.\""
+        effects:
+          - set_flag: bueiro_revelado
+          - fact: { id: lata_contou_floresta, importance: 3, tags: [lata_ferrugem, floresta], text: { pt-BR: "Ferrugem contou que na floresta os objetos começam a esquecer quem são.", en: "Rusty said that in the forest objects begin to forget who they are." } }
+    smalltalk:
+      - { pt-BR: "— Tá olhando o quê, porcelana? Nunca viu lata com estilo?", en: "\"What're you looking at, porcelain? Never seen a tin with style?\"" }
+      - { pt-BR: "Ferrugem assobia uma música desafinada e finge que não está prestando atenção em você.", en: "Rusty whistles an off-key tune and pretends not to be paying attention to you." }
+      - { pt-BR: "— Pêssegos. Eu era de pêssegos. Do bom. Em calda.", en: "\"Peaches. I used to be peaches. The good kind. In syrup.\"" }
+
+interactions:
+  - &lata_pedagio
+    id: lata_pedagio_tampinha
+    verbs: [give]
+    target: lata_ferrugem
+    item: tampinha
+    conditions: [{ not_flag: lata_liberou }]
+    priority: 1
+    text:
+      pt-BR: "Ferrugem examina o pagamento, gira a tampa e solta um assobio. — Isso sim é pedágio. Pode passar, porcelana. E se precisar de alguma coisa no beco, fala com o Ferrugem."
+      en: "Rusty examines the payment, turns his lid and whistles. \"Now that's a toll. You can pass, porcelain. And if you need anything in the alley, talk to Rusty.\""
+    effects:
+      - take_item: tampinha
+      - set_flag: lata_liberou
+      - rel: { lata_ferrugem: 10 }
+      - quest_complete: { id: q_lata, outcome: pedagio }
+  - <<: *lata_pedagio
+    id: lata_pedagio_botao
+    item: botao_dourado
+    effects:
+      - take_item: botao_dourado
+      - set_flag: lata_liberou
+      - rel: { lata_ferrugem: 10 }
+      - quest_complete: { id: q_lata, outcome: pedagio }
+  - <<: *lata_pedagio
+    id: lata_pedagio_moeda
+    item: moeda_antiga
+    effects:
+      - take_item: moeda_antiga
+      - set_flag: lata_liberou
+      - rel: { lata_ferrugem: 15 }
+      - quest_complete: { id: q_lata, outcome: pedagio }
+  - id: lata_encarar
+    verbs: [attack, shout]
+    target: lata_ferrugem
+    conditions: [{ not_flag: lata_liberou }]
+    check: { stat: courage, dc: 13, bonus_ability: { steam_control: 3 } }
+    priority: 1
+    suggest: { pt-BR: "Encarar Ferrugem sem recuar", en: "Stare Rusty down without backing off" }
+    energy: 4
+    text:
+      pt-BR: "Você se planta diante da lata, solta um fio de vapor pela borda e não recua um milímetro. Ferrugem encara de volta... e pisca primeiro. — Hunf! Tá bom, tá bom. Tem fibra, a porcelana. Pode passar."
+      en: "You plant yourself before the tin, let a wisp of steam curl from your rim and don't back off an inch. Rusty stares back... and blinks first. \"Hmph! Fine, fine. Porcelain's got grit. You can pass.\""
+    effects:
+      - set_flag: lata_liberou
+      - rel: { lata_ferrugem: 5 }
+      - stats: { courage: 3 }
+      - quest_complete: { id: q_lata, outcome: coragem }
+    fail_text:
+      pt-BR: "Ferrugem ri, um riso de metal enferrujado. — Precisa mais que isso pra assustar o rei do beco, louça."
+      en: "Rusty laughs, a rusty-metal laugh. \"Takes more than that to scare the king of the alley, crockery.\""
+    fail_effects: [{ rel: { lata_ferrugem: -3 } }]
+  - id: lata_noir
+    verbs: [talk, give, befriend]
+    target: lata_ferrugem
+    conditions: [{ not_flag: lata_liberou }, { npc_at: [noir, beco] }]
+    priority: 3
+    text:
+      pt-BR: "Antes que você diga qualquer coisa, Noir surge da sombra atrás de você e se senta, lambendo a pata. Ferrugem engole em seco. — A... amiga do Noir? Por que não disse antes? Pode passar, pode passar!"
+      en: "Before you can say anything, Noir emerges from the shadows behind you and sits, licking a paw. Rusty gulps. \"F... friend of Noir? Why didn't you say so? Go right ahead, go right ahead!\""
+    effects:
+      - set_flag: lata_liberou
+      - rel: { lata_ferrugem: -5, noir: 3 }
+      - quest_complete: { id: q_lata, outcome: noir }
+
+  - id: esperar_sinal
+    verbs: [wait, examine, use]
+    at: cruzamento
+    keywords: [sinal, semaforo, semáforo, vermelho, farol, light, signal, red, traffic]
+    suggest: { pt-BR: "Esperar o sinal fechar para os carros", en: "Wait for the light to turn red for the cars" }
+    conditions: [{ not_flag: sinal_fechado }]
+    text:
+      pt-BR: "Você espera, contando os ciclos: verde longo, amarelo curto... vermelho. Os carros param, roncando, como feras contidas. A faixa está livre. É agora!"
+      en: "You wait, counting the cycles: long green, short yellow... red. The cars stop, growling, like restrained beasts. The crosswalk is clear. Now!"
+    effects: [{ set_flag: sinal_fechado }]
+    minutes: 6
+    energy: 0
+  - id: atravessar_no_sinal
+    verbs: [go]
+    target: "exit:jardim"
+    conditions: [{ flag: sinal_fechado }]
+    priority: 3
+    suggest: { pt-BR: "Atravessar na faixa enquanto o sinal está vermelho", en: "Cross at the crosswalk while the light is red" }
+    text:
+      pt-BR: "Você atravessa listra por listra, sem pressa, entre faróis parados que parecem olhos de dragões adormecidos. Do outro lado, a grama alta do jardim recebe você como uma floresta macia."
+      en: "You cross stripe by stripe, unhurried, between stopped headlights like the eyes of sleeping dragons. On the other side, the garden's tall grass welcomes you like a soft forest."
+    effects:
+      - clear_flag: sinal_fechado
+      - objective: q_cidade.atravessar
+      - xp: 10
+      - move_player: jardim
+    energy: 6
+  - id: zeca_voar
+    verbs: [ride, talk]
+    target: pombo_zeca
+    at: cruzamento
+    keywords: [voar, carregar, levar, atravessar, fly, carry, take me, cross]
+    conditions: [{ npc_at: [pombo_zeca, cruzamento] }, { rel: pombo_zeca, gte: 30 }]
+    priority: 2
+    suggest: { pt-BR: "Pedir a Zeca que a carregue voando pelo cruzamento", en: "Ask Zeca to fly you over the crossing" }
+    text:
+      pt-BR: "— Segura na minha pata, parceira! — Zeca agarra sua alça e bate as asas com esforço heroico. Vocês sobem, desviam de um ônibus, sobrevoam a faixa e pousam — meio desajeitados — na grama do jardim. — Rruu... você pesa mais que pão de forma."
+      en: "\"Grab my foot, partner!\" Zeca grips your handle and flaps with heroic effort. You rise, dodge a bus, soar over the crosswalk and land — somewhat clumsily — in the garden grass. \"Rroo... you're heavier than a loaf of bread.\""
+    effects:
+      - objective: q_cidade.atravessar
+      - move_npc: { pombo_zeca: jardim }
+      - move_player: jardim
+      - xp: 10
+  - id: noir_atravessar
+    verbs: [ride]
+    target: noir
+    at: cruzamento
+    conditions: [{ npc_at: [noir, cruzamento] }, { rel: noir, gte: 50 }]
+    priority: 3
+    suggest: { pt-BR: "Montar em Noir para atravessar a rua", en: "Ride Noir across the street" }
+    text:
+      pt-BR: "Você sobe nas costas de Noir. Ele espera o momento exato — três batidas de coração — e cruza a rua num salto longo e silencioso, entre dois carros. Gatos não pedem licença ao trânsito."
+      en: "You climb onto Noir's back. He waits for the exact moment — three heartbeats — and crosses the street in one long, silent leap between two cars. Cats don't ask traffic for permission."
+    effects:
+      - achievement: cat_rider
+      - objective: q_cidade.atravessar
+      - move_player: jardim
+      - xp: 10
+  - id: zeca_presente_pao
+    verbs: [give]
+    target: pombo_zeca
+    item: casca_pao
+    priority: 2
+    text:
+      pt-BR: "Os olhos de Zeca brilham. Ele devora a casca de pão em bicadas rápidas, arrulhando de felicidade. — Parceira! Você é das minhas! Toma aqui — ele arranca uma pena do peito — mostra pra qualquer pombo da cidade e diz que é amiga do Zeca. E se precisar atravessar o cruzamento, me chama lá. Eu voo baixo, mas voo."
+      en: "Zeca's eyes shine. He devours the bread crust in quick pecks, cooing with joy. \"Partner! You're one of us! Here\" — he plucks a feather from his chest — \"show it to any pigeon in town and say you're Zeca's friend. And if you need to cross the crossing, call me there. I fly low, but I fly.\""
+    conditions: [{ not_flag: zeca_agradado }]
+    effects:
+      - take_item: casca_pao
+      - set_flag: zeca_agradado
+      - give_item: pena_zeca
+      - rel: { pombo_zeca: 30 }
+      - move_npc: { pombo_zeca: cruzamento }
+      - quest_complete: { id: q_zeca, outcome: pao }
+  - &zeca_brilho
+    id: zeca_presente_tampinha
+    verbs: [give]
+    target: pombo_zeca
+    item: tampinha
+    conditions: [{ not_flag: zeca_agradado }]
+    priority: 1
+    text:
+      pt-BR: "Zeca bica o presente, admirando o brilho. — Rruu! Coisa fina! Fico te devendo, parceira. Te espero no cruzamento — se quiser atravessar voando, é só pedir."
+      en: "Zeca pecks at the gift, admiring its shine. \"Rroo! Fancy stuff! I owe you one, partner. I'll wait at the crossing — if you want to fly across, just ask.\""
+    effects:
+      - take_item: tampinha
+      - set_flag: zeca_agradado
+      - rel: { pombo_zeca: 25 }
+      - move_npc: { pombo_zeca: cruzamento }
+      - quest_complete: { id: q_zeca, outcome: brilho }
+  - <<: *zeca_brilho
+    id: zeca_presente_botao
+    item: botao_dourado
+    effects:
+      - take_item: botao_dourado
+      - set_flag: zeca_agradado
+      - rel: { pombo_zeca: 25 }
+      - move_npc: { pombo_zeca: cruzamento }
+      - quest_complete: { id: q_zeca, outcome: brilho }
+  - <<: *zeca_brilho
+    id: zeca_presente_moeda
+    item: moeda_antiga
+    effects:
+      - take_item: moeda_antiga
+      - set_flag: zeca_agradado
+      - rel: { pombo_zeca: 25 }
+      - move_npc: { pombo_zeca: cruzamento }
+      - quest_complete: { id: q_zeca, outcome: brilho }
+  - id: lixeira_procurar
+    verbs: [examine]
+    at: lixeira
+    keywords: [lixo, procurar, revirar, brilho, tesouro, metalico, metálico, trash, search, dig, shine, treasure, metallic]
+    once: true
+    suggest: { pt-BR: "Revirar o lixo atrás do brilho metálico", en: "Dig through the trash toward the metallic gleam" }
+    text:
+      pt-BR: "Você revira embalagens e papéis molhados. Uma tampinha vermelha, um palito de sorvete, uma casca de pão — tesouros, para quem tem o tamanho certo."
+      en: "You dig through wrappers and soggy paper. A red bottle cap, a popsicle stick, a bread crust — treasures, for anyone the right size."
+    effects: [{ discover: tampinha }, { discover: palito }, { xp: 5 }]
+  - id: procurar_cerca
+    verbs: [examine, use]
+    target: cerca_viva
+    conditions: [{ not_flag: cerca_encontrada }, { not_flag: sabe_do_bosque }]
+    check: { stat: creativity, dc: 11, bonus_ability: { vibration_sense: 4 } }
+    text:
+      pt-BR: "Você segue o ar frio rente ao chão, afasta folhas e raízes... e encontra: um buraco escuro na base da cerca viva, do tamanho exato de uma caneca."
+      en: "You follow the cold draft along the ground, push aside leaves and roots... and find it: a dark hole at the base of the hedge, exactly the size of a mug."
+    effects:
+      - set_flag: cerca_encontrada
+      - objective: q_cidade.orientar
+      - xp: 8
+    fail_text:
+      pt-BR: "Você procura entre as raízes, mas a cerca viva é densa demais. Alguém que conheça o caminho saberia onde olhar."
+      en: "You search among the roots, but the hedge is too dense. Someone who knows the way would know where to look."
+  - id: vibracoes_bueiro
+    verbs: [ability]
+    target: vibration_sense
+    at: [bueiro, poca_oceano, calcada]
+    priority: 1
+    text:
+      pt-BR: "Você encosta o fundo na pedra molhada. Lá embaixo, uma corrente forte segue um túnel longo, longo... e no fim, você sente raízes. Muitas raízes. O bueiro leva a uma floresta."
+      en: "You press your base against the wet stone. Down below, a strong current follows a long, long tunnel... and at the end, you feel roots. So many roots. The drain leads to a forest."
+    effects: [{ set_flag: bueiro_revelado }, { objective: q_cidade.orientar }]
+  - id: olhar_casa_amarela
+    verbs: [examine]
+    target: casa_amarela
+    once: true
+    text:
+      pt-BR: "Você observa a casa amarela. Na janela, uma senhora de cabelos brancos olha a chuva, segurando uma xícara vazia com as duas mãos, como quem segura uma lembrança. Ela não vê você. Mas, por um instante, sorri para o nada — e você sente seu café esquentar dois graus."
+      en: "You watch the yellow house. In the window, a white-haired lady watches the rain, holding an empty cup in both hands, the way one holds a memory. She doesn't see you. But for a moment she smiles at nothing — and you feel your coffee warm up two degrees."
+    effects:
+      - set_flag: viu_ilda
+      - stats: { temperature: 2, courage: 5 }
+      - objective: q_despertar.segredo_ilda
+      - fact: { id: viu_ilda_janela, importance: 4, tags: [ilda], text: { pt-BR: "A caneca viu Ilda na janela da casa amarela, segurando uma xícara vazia.", en: "The mug saw Ilda in the window of the yellow house, holding an empty cup." } }
+      - journal:
+          title: { pt-BR: "A senhora na janela", en: "The Lady in the Window" }
+          text: { pt-BR: "Do jardim da praça, vi Ilda pela janela da casa amarela. Ela segurava uma xícara vazia e sorriu para o nada.", en: "From the square garden, I saw Ilda through the yellow house's window. She held an empty cup and smiled at nothing." }
+
+quests:
+  - id: q_cidade
+    kind: main
+    xp: 60
+    name: { pt-BR: "A Cidade Gigantesca", en: "The Gigantic City" }
+    description:
+      pt-BR: "A cidade é imensa para uma caneca. Em algum lugar dela existe um caminho para a Floresta dos Objetos Perdidos."
+      en: "The city is immense for a mug. Somewhere in it there's a way to the Forest of Lost Objects."
+    objectives:
+      - id: orientar
+        optional: true
+        text: { pt-BR: "Descobrir onde fica a floresta", en: "Find out where the forest is" }
+      - id: atravessar
+        optional: true
+        text: { pt-BR: "Atravessar o cruzamento até a praça", en: "Get across the crossing to the square" }
+      - id: encontrar_floresta
+        text: { pt-BR: "Encontrar a Floresta dos Objetos Perdidos", en: "Find the Forest of Lost Objects" }
+  - id: q_zeca
+    kind: npc
+    giver: pombo_zeca
+    xp: 25
+    name: { pt-BR: "A Fome do Zeca", en: "Zeca's Hunger" }
+    description:
+      pt-BR: "Zeca é um pombo de bom coração e estômago sem fundo. Um agrado pode transformá-lo em aliado."
+      en: "Zeca is a big-hearted pigeon with a bottomless stomach. A treat could make him an ally."
+    objectives:
+      - id: agradar
+        text: { pt-BR: "Dar um presente a Zeca", en: "Give Zeca a gift" }
+    outcomes:
+      pao: { pt-BR: "Zeca ganhou um banquete de pão e deu a você uma pena de amizade.", en: "Zeca got a bread feast and gave you a feather of friendship." }
+      brilho: { pt-BR: "Zeca ganhou algo brilhante e prometeu ajudar no cruzamento.", en: "Zeca got something shiny and promised to help at the crossing." }
+  - id: q_lata
+    kind: npc
+    giver: lata_ferrugem
+    xp: 30
+    name: { pt-BR: "O Pedágio do Beco", en: "The Alley Toll" }
+    description:
+      pt-BR: "Ferrugem, a lata do beco, cobra pedágio de quem quer passar. Há mais de um jeito de lidar com um rei de lata."
+      en: "Rusty, the alley tin, charges a toll to anyone who wants to pass. There's more than one way to deal with a tin king."
+    objectives:
+      - id: passar
+        text: { pt-BR: "Conseguir passar pelo beco", en: "Get past the alley" }
+    outcomes:
+      respeito: { pt-BR: "Você tratou Ferrugem com respeito, e ganhou um amigo — e um segredo.", en: "You treated Rusty with respect, and gained a friend — and a secret." }
+      pedagio: { pt-BR: "Você pagou o pedágio. Negócio feito, sem ressentimentos.", en: "You paid the toll. Business done, no hard feelings." }
+      coragem: { pt-BR: "Você encarou o rei do beco, e ele piscou primeiro.", en: "You stared down the king of the alley, and he blinked first." }
+      noir: { pt-BR: "Bastou Noir aparecer. Ferrugem não discute com gatos.", en: "Noir only had to show up. Rusty doesn't argue with cats." }
+
+events:
+  - id: carro_espirra
+    regions: [cidade]
+    weight: 3
+    conditions: [{ at: [calcada, cruzamento] }, { lacks_status: hidden }]
+    text:
+      pt-BR: "Um carro passa rente ao meio-fio e uma onda de água suja varre a calçada. Você se agarra a uma pedra e sobrevive, mas encharcada e mais fria."
+      en: "A car passes close to the curb and a wave of dirty water sweeps the sidewalk. You cling to a stone and survive, but soaked and colder."
+    effects: [{ stats: { temperature: -8 }, status_add: wet }]
+  - id: gato_de_rua
+    regions: [cidade]
+    weight: 2
+    conditions: [{ at: [beco, lixeira] }, { lacks_status: hidden }, { not_flag: "companion:noir" }]
+    text:
+      pt-BR: "Um gato malhado de olhos verdes surge no alto da lixeira e encara você como quem encara um brinquedo novo. Você recua devagar até ele perder o interesse — mas o susto custa energia."
+      en: "A tabby with green eyes appears atop the dumpster and stares at you like a new toy. You back away slowly until it loses interest — but the scare costs you energy."
+    effects: [{ stats: { energy: -8, courage: -1 } }]
+  - id: passante
+    regions: [cidade]
+    weight: 2
+    conditions: [{ at: [calcada, jardim] }]
+    text:
+      pt-BR: "Passos gigantes! Um humano de guarda-chuva passa a centímetros de você, sem nem olhar para baixo. Para ele, você é só uma caneca esquecida na chuva."
+      en: "Giant footsteps! A human with an umbrella passes inches from you without looking down. To them, you're just a mug forgotten in the rain."
+    effects: [{ stats: { courage: 1 } }]
+  - id: chuva_aperta
+    regions: [cidade]
+    weight: 2
+    text:
+      pt-BR: "A chuva aperta de repente, tamborilando na sua borda. Cada gota é um pequeno roubo de calor."
+      en: "The rain suddenly gets heavier, drumming on your rim. Every drop is a small theft of warmth."
+    effects: [{ stats: { temperature: -5 } }]

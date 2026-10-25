@@ -1,0 +1,272 @@
+@import "tailwindcss";
+@import "@fontsource-variable/fraunces";
+@import "@fontsource-variable/literata";
+@import "@fontsource/atkinson-hyperlegible/latin-400.css";
+@import "@fontsource/atkinson-hyperlegible/latin-700.css";
+@import "@fontsource/atkinson-hyperlegible/latin-ext-400.css";
+@import "@fontsource/atkinson-hyperlegible/latin-ext-700.css";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/*
+ * Design tokens — see docs/design/design-system.md.
+ * Light: an illustrated storybook (paper, ink, coffee, copper).
+ * Dark: a cinematic night café (night blue, porcelain light, warm copper).
+ * Every text/background pair below meets WCAG 2.2 AA (4.5:1) — checked in tests.
+ */
+:root {
+  --font-scale: 1;
+  --c-bg: #f6efe3;
+  --c-bg-deep: #ecdfca;
+  --c-surface: #fbf7f0;
+  --c-surface-2: #f1e7d7;
+  --c-ink: #2b1f17;
+  --c-muted: #65503f;
+  --c-rule: #d9c6a8;
+  --c-accent: #8a4b1c;
+  --c-accent-ink: #fff8ef;
+  --c-accent-soft: #f0d9bf;
+  --c-coffee: #6f4e37;
+  --c-copper: #b8733a;
+  --c-night: #1d2a3a;
+  --c-focus: #2f5d8a;
+  --c-good: #2f6b4c;
+  --c-warn: #8a5a00;
+  --c-bad: #a3352a;
+  --c-cold: #2f5d8a;
+  --c-hot: #b5432a;
+  --c-dialogue: #6a3a14;
+  --c-player: #3d5574;
+  --shadow-card: 0 1px 0 rgb(255 255 255 / 0.6) inset, 0 8px 24px -12px rgb(60 35 15 / 0.35);
+  --paper-texture: radial-gradient(circle at 20% 10%, rgb(255 255 255 / 0.55), transparent 55%),
+    radial-gradient(circle at 80% 90%, rgb(184 115 58 / 0.08), transparent 50%);
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --c-bg: #12161f;
+  --c-bg-deep: #0c0f16;
+  --c-surface: #1a2030;
+  --c-surface-2: #222a3d;
+  --c-ink: #efe6d8;
+  --c-muted: #b9ab96;
+  --c-rule: #34405a;
+  --c-accent: #e3a468;
+  --c-accent-ink: #1a1208;
+  --c-accent-soft: #3a2c22;
+  --c-coffee: #c9946a;
+  --c-copper: #e0a066;
+  --c-night: #0b1220;
+  --c-focus: #9cc3ef;
+  --c-good: #7fc8a0;
+  --c-warn: #f0c060;
+  --c-bad: #f08a7a;
+  --c-cold: #8fb8e8;
+  --c-hot: #f39a7f;
+  --c-dialogue: #f2c38f;
+  --c-player: #a9c4e6;
+  --shadow-card: 0 1px 0 rgb(255 255 255 / 0.04) inset, 0 12px 32px -16px rgb(0 0 0 / 0.8);
+  --paper-texture: radial-gradient(circle at 15% 0%, rgb(227 164 104 / 0.08), transparent 50%),
+    radial-gradient(circle at 90% 100%, rgb(110 150 210 / 0.07), transparent 55%);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--c-bg);
+  --color-bg-deep: var(--c-bg-deep);
+  --color-surface: var(--c-surface);
+  --color-surface-2: var(--c-surface-2);
+  --color-ink: var(--c-ink);
+  --color-muted: var(--c-muted);
+  --color-rule: var(--c-rule);
+  --color-accent: var(--c-accent);
+  --color-accent-ink: var(--c-accent-ink);
+  --color-accent-soft: var(--c-accent-soft);
+  --color-coffee: var(--c-coffee);
+  --color-copper: var(--c-copper);
+  --color-night: var(--c-night);
+  --color-focus: var(--c-focus);
+  --color-good: var(--c-good);
+  --color-warn: var(--c-warn);
+  --color-bad: var(--c-bad);
+  --color-cold: var(--c-cold);
+  --color-hot: var(--c-hot);
+  --color-dialogue: var(--c-dialogue);
+  --color-player: var(--c-player);
+  --font-display: "Fraunces Variable", "Georgia", serif;
+  --font-read: var(--reading-font, "Literata Variable", "Georgia", serif);
+  --font-ui: var(--ui-font, ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif);
+  --shadow-card: var(--shadow-card);
+}
+
+html {
+  font-size: calc(100% * var(--font-scale));
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+[data-reading-font="atkinson"] {
+  --reading-font: "Atkinson Hyperlegible", ui-sans-serif, system-ui, sans-serif;
+  --ui-font: "Atkinson Hyperlegible", ui-sans-serif, system-ui, sans-serif;
+}
+[data-reading-font="sans"] {
+  --reading-font: ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background-color: var(--c-bg);
+  background-image: var(--paper-texture);
+  background-attachment: fixed;
+  color: var(--c-ink);
+  font-family: var(--font-ui);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+:focus-visible {
+  outline: 3px solid var(--c-focus);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+::selection {
+  background: var(--c-accent-soft);
+  color: var(--c-ink);
+}
+
+.sr-only-focusable:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Reading column ------------------------------------------------------------ */
+.prose-narrative {
+  font-family: var(--font-read);
+  font-size: 1.125rem;
+  line-height: 1.75;
+  font-optical-sizing: auto;
+  hyphens: auto;
+  text-wrap: pretty;
+}
+.prose-narrative p + p {
+  margin-top: 0.85em;
+}
+.prose-narrative .dialogue {
+  color: var(--c-dialogue);
+}
+
+.drop-cap::first-letter {
+  float: left;
+  font-family: var(--font-display);
+  font-size: 3.4em;
+  line-height: 0.85;
+  padding: 0.08em 0.1em 0 0;
+  color: var(--c-accent);
+}
+
+.card {
+  background: var(--c-surface);
+  border: 1px solid var(--c-rule);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-card);
+}
+
+.scroll-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--c-rule) transparent;
+}
+
+/* Motion ---------------------------------------------------------------------- */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes steam {
+  0% {
+    transform: translateY(0) scaleX(1);
+    opacity: 0;
+  }
+  25% {
+    opacity: var(--steam-opacity, 0.7);
+  }
+  100% {
+    transform: translateY(-22px) scaleX(1.4);
+    opacity: 0;
+  }
+}
+@keyframes shiver {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-1px);
+  }
+  75% {
+    transform: translateX(1px);
+  }
+}
+@keyframes pulse-ring {
+  0% {
+    r: 6;
+    opacity: 0.9;
+  }
+  100% {
+    r: 16;
+    opacity: 0;
+  }
+}
+@keyframes caret {
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-rise {
+  animation: rise-in 360ms ease-out both;
+}
+.stream-caret::after {
+  content: "▍";
+  margin-left: 2px;
+  color: var(--c-accent);
+  animation: caret 1s steps(1) infinite;
+}
+
+[data-motion="reduced"] *,
+[data-motion="reduced"] *::before,
+[data-motion="reduced"] *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  :root:not([data-motion="full"]) *,
+  :root:not([data-motion="full"]) *::before,
+  :root:not([data-motion="full"]) *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@media (forced-colors: active) {
+  .card {
+    border: 1px solid CanvasText;
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "caneca-quest",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Caneca Quest — A Jornada de uma Caneca: RPG narrativo com IA",
+  "license": "MIT",
+  "workspaces": ["apps/web", "apps/desktop"],
+  "scripts": {
+    "dev:web": "npm run dev -w apps/web",
+    "build:web": "npm run build -w apps/web",
+    "test:web": "npm run test -w apps/web",
+    "lint:web": "npm run lint -w apps/web",
+    "e2e": "npm run e2e -w apps/web"
+  },
+  "engines": { "node": ">=20.19" }
+}
