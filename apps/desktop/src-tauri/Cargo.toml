@@ -1,0 +1,26 @@
+[package]
+name = "caneca-quest"
+version = "0.1.0"
+description = "Caneca Quest — A Jornada de uma Caneca"
+authors = ["Caneca Quest contributors"]
+license = "MIT"
+edition = "2021"
+rust-version = "1.77"
+
+[lib]
+name = "caneca_quest_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+getrandom = "0.3"
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+panic = "abort"
+strip = true

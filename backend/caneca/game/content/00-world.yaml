@@ -1,0 +1,277 @@
+# Caneca Quest — metadados do mundo, regiões, capítulos, habilidades, conquistas e finais.
+meta:
+  content_version: "1.0.0"
+  start_location: mesa_principal
+  start_clock: 1300 # 21:40
+  initial_quests: [q_despertar]
+  intro:
+    pt-BR: |-
+      Você acorda sobre uma mesa de madeira em uma cafeteria abandonada.
+
+      Seu corpo é feito de porcelana. Seu coração é café quente.
+
+      Você não sabe quem é, de onde veio ou como chegou até ali. A chuva bate contra as janelas, enquanto uma cidade gigantesca parece adormecer lá fora.
+
+      Um gato preto observa você através do vidro.
+
+      De repente, uma voz sussurra:
+      — Finalmente você acordou... Estávamos esperando por você.
+
+      Você tenta se movimentar e percebe algo impossível. Você está viva.
+
+      Mas continua sendo uma caneca de café.
+
+      O que deseja fazer?
+    en: |-
+      You wake up on a wooden table in an abandoned café.
+
+      Your body is made of porcelain. Your heart is hot coffee.
+
+      You don't know who you are, where you came from or how you got here. Rain drums against the windows while a gigantic city seems to drift to sleep outside.
+
+      A black cat watches you through the glass.
+
+      Suddenly, a voice whispers:
+      "At last you're awake... We've been waiting for you."
+
+      You try to move and realize something impossible. You are alive.
+
+      But you are still a coffee mug.
+
+      What do you want to do?
+
+regions:
+  - id: cafeteria
+    chapter: 1
+    palette: cafe
+    name: { pt-BR: "A Cafeteria Esquecida", en: "The Forgotten Café" }
+    description:
+      pt-BR: "O Café Aurora, fechado há meses. Pó sobre as mesas, chuva nas janelas e objetos que ainda se lembram de quem cuidava deles."
+      en: "Café Aurora, closed for months. Dust on the tables, rain on the windows, and objects that still remember who cared for them."
+  - id: cidade
+    chapter: 2
+    palette: city
+    name: { pt-BR: "A Cidade Gigantesca", en: "The Gigantic City" }
+    description:
+      pt-BR: "Calçadas como desertos de pedra, poças como oceanos e luzes que piscam a quilômetros de altura."
+      en: "Sidewalks like stone deserts, puddles like oceans and lights blinking miles overhead."
+  - id: floresta
+    chapter: 3
+    palette: forest
+    name: { pt-BR: "A Floresta dos Objetos Perdidos", en: "The Forest of Lost Objects" }
+    description:
+      pt-BR: "Onde vão parar as coisas que ninguém mais procura. Entre raízes e névoa, elas aprenderam a viver por conta própria."
+      en: "Where things nobody looks for anymore end up. Among roots and mist, they learned to live on their own."
+
+chapters:
+  - number: 1
+    region: cafeteria
+    title: { pt-BR: "Capítulo 1 — O Despertar", en: "Chapter 1 — The Awakening" }
+  - number: 2
+    region: cidade
+    title: { pt-BR: "Capítulo 2 — A Cidade Gigantesca", en: "Chapter 2 — The Gigantic City" }
+  - number: 3
+    region: floresta
+    title: { pt-BR: "Capítulo 3 — A Floresta dos Objetos Perdidos", en: "Chapter 3 — The Forest of Lost Objects" }
+
+abilities:
+  - id: porcelain_leap
+    kind: passive
+    keywords: [salto de porcelana, salto, porcelain leap]
+    name: { pt-BR: "Salto de porcelana", en: "Porcelain Leap" }
+    description:
+      pt-BR: "Você aprendeu a cair como um gato: dobrando o peso na alça. Saltos e descidas ficam muito mais seguros (+4 nesses testes)."
+      en: "You learned to fall like a cat: shifting your weight onto your handle. Jumps and descents are much safer (+4 to those checks)."
+  - id: advanced_balance
+    kind: passive
+    auto_at_level: 2
+    keywords: [equilibrio, equilíbrio avançado, balance]
+    name: { pt-BR: "Equilíbrio avançado", en: "Advanced Balance" }
+    description:
+      pt-BR: "Seu fundo encontrou o centro do mundo. +1 em todos os testes."
+      en: "Your base found the center of the world. +1 to every check."
+  - id: energizing_brew
+    kind: active
+    keywords: [cafe energizante, café energizante, energizing brew, energia do cafe]
+    cost_coffee: 10
+    cooldown: 3
+    name: { pt-BR: "Café energizante", en: "Energizing Brew" }
+    description:
+      pt-BR: "Você transforma 10% do seu café em puro ânimo: +35 de energia. Recarga de 3 turnos."
+      en: "You turn 10% of your coffee into pure pep: +35 energy. 3-turn cooldown."
+    effects: [{ stats: { energy: 35 } }]
+    text:
+      pt-BR: "Você sorve o próprio café por dentro — uma sensação estranha e maravilhosa. Uma onda de energia percorre a porcelana."
+      en: "You sip your own coffee from the inside — a strange, wonderful feeling. A wave of energy runs through your porcelain."
+  - id: thermal_resistance
+    kind: passive
+    keywords: [resistencia termica, resistência térmica, thermal resistance]
+    name: { pt-BR: "Resistência térmica", en: "Thermal Resistance" }
+    description:
+      pt-BR: "O Velho Moedor ensinou a guardar o calor no fundo grosso. Você esfria 40% mais devagar."
+      en: "The Old Grinder taught you to keep heat in your thick base. You cool 40% slower."
+  - id: object_speech
+    kind: passive
+    keywords: [comunicacao com objetos, comunicação com objetos, object speech]
+    name: { pt-BR: "Comunicação com objetos", en: "Object Speech" }
+    description:
+      pt-BR: "Você ouve até os objetos adormecidos — e eles às vezes respondem."
+      en: "You can hear even sleeping objects — and sometimes they answer."
+  - id: vibration_sense
+    kind: active
+    keywords: [percepcao de vibracoes, percepção de vibrações, vibracoes, vibrações, vibration sense, sentir vibracoes]
+    cost_energy: 8
+    cooldown: 2
+    name: { pt-BR: "Percepção de vibrações", en: "Vibration Sense" }
+    description:
+      pt-BR: "Encostando o fundo no chão, você sente passos, correntes de ar e passagens escondidas."
+      en: "Pressing your base to the ground, you feel footsteps, drafts and hidden passages."
+    text:
+      pt-BR: "Você encosta o fundo no chão e fecha os olhos que não tem. O mundo vibra em camadas: passos distantes, a chuva, o zumbido da cidade."
+      en: "You press your base to the floor and close the eyes you don't have. The world hums in layers: distant footsteps, the rain, the buzz of the city."
+  - id: camouflage
+    kind: passive
+    keywords: [camuflagem, camouflage, disfarce]
+    name: { pt-BR: "Camuflagem de louça", en: "Crockery Camouflage" }
+    description:
+      pt-BR: "Dona Doce ensinou a arte de ser só mais uma louça. +4 para se esconder."
+      en: "Dona Doce taught you the art of being just more crockery. +4 to hide."
+  - id: steam_control
+    kind: active
+    auto_at_level: 3
+    keywords: [vapor, manipulacao de vapor, manipulação de vapor, steam, steam control, nuvem de vapor]
+    min_temperature: 55
+    cost_energy: 10
+    cooldown: 2
+    name: { pt-BR: "Manipulação de vapor", en: "Steam Control" }
+    description:
+      pt-BR: "Com o café acima de 55 °C, você solta uma nuvem de vapor que assusta, esconde ou aquece. Custa calor."
+      en: "With coffee above 55 °C you release a cloud of steam that scares, hides or warms. It costs heat."
+    effects: [{ stats: { temperature: -8 }, status_add: hidden }]
+    text:
+      pt-BR: "Você concentra o calor e solta uma nuvem de vapor espessa. Por um instante, você some dentro dela."
+      en: "You gather your heat and release a thick cloud of steam. For a moment, you vanish inside it."
+  - id: crack_mending
+    kind: active
+    keywords: [regeneracao, regeneração, regenerar, consertar rachaduras, crack mending, mend, curar]
+    cost_energy: 15
+    cost_coffee: 5
+    cooldown: 5
+    name: { pt-BR: "Regeneração de rachaduras", en: "Crack Mending" }
+    description:
+      pt-BR: "O Bule Ancião ensinou a selar pequenas rachaduras com café e paciência: +12 de integridade."
+      en: "The Elder Teapot taught you to seal small cracks with coffee and patience: +12 integrity."
+    effects: [{ stats: { integrity: 12 } }]
+    text:
+      pt-BR: "Você deixa o café escorrer devagar para dentro das rachaduras. Ele endurece como esmalte, e a porcelana suspira aliviada."
+      en: "You let coffee seep slowly into your cracks. It hardens like glaze, and your porcelain sighs with relief."
+
+achievements:
+  - id: voice_found
+    name: { pt-BR: "A Voz no Rádio", en: "The Voice in the Radio" }
+    description: { pt-BR: "Descobriu quem sussurrou no seu despertar.", en: "Found out who whispered when you woke." }
+  - id: ilda_secret
+    name: { pt-BR: "Memórias de Ilda", en: "Ilda's Memories" }
+    description: { pt-BR: "Descobriu o que aconteceu com a dona do café.", en: "Learned what happened to the café's owner." }
+  - id: out_the_door
+    name: { pt-BR: "O Mundo Lá Fora", en: "The World Outside" }
+    description: { pt-BR: "Saiu da cafeteria pela primeira vez.", en: "Left the café for the first time." }
+  - id: cat_rider
+    name: { pt-BR: "Montaria Felina", en: "Feline Steed" }
+    description: { pt-BR: "Viajou nas costas de um gato.", en: "Traveled on a cat's back." }
+    secret: true
+  - id: sailor
+    name: { pt-BR: "Navegante de Poça", en: "Puddle Sailor" }
+    description: { pt-BR: "Atravessou o oceano da calçada.", en: "Crossed the sidewalk ocean." }
+  - id: forest_found
+    name: { pt-BR: "Achados e Perdidos", en: "Lost and Found" }
+    description: { pt-BR: "Chegou à Floresta dos Objetos Perdidos.", en: "Reached the Forest of Lost Objects." }
+  - id: peacemaker
+    name: { pt-BR: "Pacificadora", en: "Peacemaker" }
+    description: { pt-BR: "Reconciliou dois velhos amigos.", en: "Reconciled two old friends." }
+  - id: clock_restarted
+    name: { pt-BR: "Guardiã do Tempo", en: "Keeper of Time" }
+    description: { pt-BR: "Fez o Relógio da floresta voltar a andar.", en: "Made the forest's Clock tick again." }
+  - id: first_friend
+    name: { pt-BR: "Primeira Amizade", en: "First Friend" }
+    description: { pt-BR: "Alguém confia em você de verdade.", en: "Someone truly trusts you." }
+  - id: best_friends
+    name: { pt-BR: "Laço Inquebrável", en: "Unbreakable Bond" }
+    description: { pt-BR: "Uma amizade mais forte que porcelana.", en: "A friendship stronger than porcelain." }
+  - id: social_mug
+    name: { pt-BR: "Caneca Sociável", en: "Social Mug" }
+    description: { pt-BR: "Conheceu seis personagens.", en: "Met six characters." }
+  - id: explorer
+    name: { pt-BR: "Exploradora", en: "Explorer" }
+    description: { pt-BR: "Visitou doze lugares.", en: "Visited twelve places." }
+  - id: cartographer
+    name: { pt-BR: "Cartógrafa", en: "Cartographer" }
+    description: { pt-BR: "Visitou todos os lugares do mundo conhecido.", en: "Visited every place in the known world." }
+  - id: close_call
+    name: { pt-BR: "Por um Fio", en: "Hanging by a Thread" }
+    description: { pt-BR: "Sobreviveu com a porcelana em pedaços.", en: "Survived with your porcelain in pieces." }
+    secret: true
+  - id: seasoned
+    name: { pt-BR: "Caneca Experiente", en: "Seasoned Mug" }
+    description: { pt-BR: "Alcançou o nível 3.", en: "Reached level 3." }
+  - id: merchant
+    name: { pt-BR: "Boa de Troca", en: "Shrewd Trader" }
+    description: { pt-BR: "Negociou com o Rato Bigode sem perder a alça.", en: "Traded with Whiskers the Rat without losing your handle." }
+
+endings:
+  - id: homecoming
+    kind: victory
+    name: { pt-BR: "O Caminho de Casa", en: "The Way Home" }
+    text:
+      pt-BR: |-
+        O Relógio volta a andar, e a névoa se desfaz como açúcar em café quente. Um a um, os objetos perdidos se lembram de quem foram.
+
+        Noir guia a procissão pela cidade adormecida: colheres, bules, lanternas e uma caneca à frente. Ao amanhecer, uma jovem chamada Lia empurra a porta emperrada do Café Aurora — e encontra tudo no lugar, brilhando, como se a cafeteria tivesse esperado por ela.
+
+        Dias depois, uma senhora de cabelos brancos entra apoiada no braço da neta. Ela para diante da mesa perto da janela, segura você com as duas mãos e sorri.
+
+        — A primeira caneca — sussurra Ilda. — Eu sabia que você ia cuidar de tudo.
+
+        Você não é o herói que o mundo esperava. Mas é exatamente o que este lugar precisava.
+      en: |-
+        The Clock ticks again, and the mist dissolves like sugar in hot coffee. One by one, the lost objects remember who they were.
+
+        Noir leads the procession through the sleeping city: spoons, teapots, lanterns, and a mug at the front. At dawn, a young woman named Lia pushes open the stuck door of Café Aurora — and finds everything in place, gleaming, as if the café had been waiting for her.
+
+        Days later, a white-haired lady walks in leaning on her granddaughter's arm. She stops at the table by the window, holds you with both hands and smiles.
+
+        "The first mug," Ilda whispers. "I knew you'd take care of everything."
+
+        You are not the hero the world expected. But you are exactly what this place needed.
+  - id: warm_heart
+    kind: victory
+    name: { pt-BR: "Coração Quente", en: "Warm Heart" }
+    text:
+      pt-BR: |-
+        Você derrama o seu café, ainda quente, sobre a mola congelada. O vapor sobe como um suspiro, e o Relógio dá o primeiro tique em meses.
+
+        A floresta acorda. Os objetos se lembram de seus nomes, de suas casas, de quem os amou. Você está quase vazia — mas nunca se sentiu tão cheia.
+
+        Mestra Colher a nomeia Guardiã do Calor. Alguns objetos voltarão para casa; outros ficarão. E toda noite, quando a névoa ameaça voltar, é a sua porcelana morna que acende o caminho.
+      en: |-
+        You pour your coffee, still warm, over the frozen spring. Steam rises like a sigh, and the Clock gives its first tick in months.
+
+        The forest wakes. The objects remember their names, their homes, those who loved them. You're nearly empty — yet you've never felt so full.
+
+        Mistress Spoon names you Keeper of Warmth. Some objects will go home; others will stay. And every night, when the mist threatens to return, it's your warm porcelain that lights the way.
+  - id: cold_gear
+    kind: bittersweet
+    name: { pt-BR: "Engrenagem Fria", en: "Cold Gear" }
+    text:
+      pt-BR: |-
+        A engrenagem dourada se encaixa com um clique seco. O Relógio volta a andar — mas a mola continua fria, e cada tique soa como um passo sobre gelo.
+
+        Os objetos se lembram do que eram, mas não do que sentiam. A floresta segue cinzenta, organizada, silenciosa.
+
+        Você salvou o tempo. Talvez um dia alguém traga de volta o calor.
+      en: |-
+        The golden gear clicks into place. The Clock moves again — but the spring is still cold, and every tick sounds like a footstep on ice.
+
+        The objects remember what they were, but not what they felt. The forest stays grey, orderly, quiet.
+
+        You saved time itself. Perhaps one day someone will bring back the warmth.

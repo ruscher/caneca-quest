@@ -1,0 +1,41 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Caneca Quest",
+  "version": "0.1.0",
+  "identifier": "org.canecaquest.app",
+  "build": {
+    "frontendDist": "../../web/dist",
+    "devUrl": "http://localhost:5173",
+    "beforeDevCommand": "",
+    "beforeBuildCommand": ""
+  },
+  "app": {
+    "windows": [],
+    "withGlobalTauri": false,
+    "security": {
+      "csp": {
+        "default-src": "'self'",
+        "script-src": "'self'",
+        "style-src": "'self' 'unsafe-inline'",
+        "img-src": "'self' data: blob:",
+        "font-src": "'self' data:",
+        "media-src": "'self' blob:",
+        "connect-src": "'self' http://127.0.0.1:*",
+        "object-src": "'none'",
+        "base-uri": "'self'",
+        "frame-ancestors": "'none'"
+      },
+      "capabilities": ["main-minimal"]
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": ["deb", "rpm", "appimage", "msi", "nsis", "dmg", "app"],
+    "category": "RolePlayingGame",
+    "shortDescription": "RPG narrativo: você é uma caneca de café viva.",
+    "longDescription": "Caneca Quest é um RPG narrativo de texto com motor de regras determinístico e narração opcional por IA local (Ollama).",
+    "license": "MIT",
+    "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns", "icons/icon.ico", "icons/icon.png"],
+    "externalBin": ["binaries/caneca-server"]
+  }
+}

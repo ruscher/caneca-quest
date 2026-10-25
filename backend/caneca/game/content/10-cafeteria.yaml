@@ -1,0 +1,1614 @@
+# Capítulo 1 — A Cafeteria Esquecida (Café Aurora)
+locations:
+  - id: mesa_principal
+    region: cafeteria
+    ambient_temp: 17
+    map_pos: [0.30, 0.30]
+    views: [parapeito]
+    name: { pt-BR: "Mesa perto da janela", en: "Table by the Window" }
+    description:
+      pt-BR: "Uma mesa de madeira tão vasta quanto uma planície, marcada por anéis de xícaras antigas. A toalha xadrez desce pela borda como uma encosta de pano. Ao lado, a janela embaçada mostra a chuva — e um par de olhos amarelos do lado de fora."
+      en: "A wooden table as vast as a plain, marked by rings of old cups. A checkered tablecloth hangs over the edge like a fabric slope. Beside it, the fogged window shows the rain — and a pair of yellow eyes outside."
+    short:
+      pt-BR: "A mesa onde você despertou, junto à janela chuvosa."
+      en: "The table where you woke, by the rainy window."
+    sounds:
+      pt-BR: "Chuva no vidro. Um ronronar abafado do lado de fora. E, vindo das prateleiras atrás do balcão, um chiado baixinho — como uma voz presa entre estações de rádio."
+      en: "Rain on the glass. A muffled purr outside. And, from the shelves behind the counter, a faint hiss — like a voice caught between radio stations."
+    features:
+      - id: jornal_velho
+        keywords: [jornal, jornal velho, manchete, newspaper, paper, headline]
+        name: { pt-BR: "jornal velho", en: "old newspaper" }
+        description:
+          pt-BR: "Um jornal amarelado, aberto numa página de bairro. A manchete diz: \"Café Aurora fecha as portas após 45 anos\". Na foto, uma senhora sorridente de avental segura uma caneca muito parecida com você."
+          en: "A yellowed newspaper, open to a local page. The headline reads: \"Café Aurora closes its doors after 45 years\". In the photo, a smiling lady in an apron holds a mug that looks a lot like you."
+      - id: colherzinha
+        keywords: [colher, colherzinha, colher de cha, teaspoon, spoon, little spoon]
+        name: { pt-BR: "colherzinha adormecida", en: "sleeping teaspoon" }
+        description:
+          pt-BR: "Uma colherzinha de chá caída de lado, opaca de poeira. Se você prestar atenção, parece que ela ronca."
+          en: "A teaspoon lying on its side, dull with dust. If you pay attention, it seems to be snoring."
+      - id: vidro_janela
+        keywords: [vidro, janela, glass, window, pane]
+        name: { pt-BR: "vidro da janela", en: "window pane" }
+        description:
+          pt-BR: "O vidro está frio e embaçado. Do outro lado, no parapeito, a chuva escorre em rios. O trinco fica na parte de baixo da janela, ao alcance de quem estiver no peitoril."
+          en: "The glass is cold and fogged. On the other side, on the sill, rain runs in rivers. The latch sits at the bottom of the window, within reach of anyone on the inner ledge."
+    exits:
+      - to: salao
+        kind: climb
+        keywords: [descer, chao, chão, cadeira, salao, salão, floor, chair, down]
+        label: { pt-BR: "Descer pela perna da cadeira até o salão", en: "Climb down the chair leg to the hall" }
+        check: { stat: courage, dc: 10, bonus_ability: { porcelain_leap: 4 } }
+        energy: 6
+        text:
+          pt-BR: "Você se agarra à toalha, desliza até o assento da cadeira e desce pela perna de madeira, centímetro a centímetro."
+          en: "You grip the tablecloth, slide onto the chair seat and inch your way down the wooden leg."
+        fail_text:
+          pt-BR: "No meio da descida, sua alça escorrega. Você cai os últimos palmos e bate no chão com um 'tlim' preocupante."
+          en: "Halfway down, your handle slips. You fall the last few inches and hit the floor with a worrying 'clink'."
+        fail_effects: [{ stats: { integrity: -8 }, move_player: salao }]
+      - to: janela
+        kind: climb
+        keywords: [peitoril, parapeito interno, janela, ledge, window, sill]
+        label: { pt-BR: "Esticar-se até o peitoril da janela", en: "Stretch over to the window ledge" }
+        energy: 3
+        text:
+          pt-BR: "A mesa encosta na janela. Com um pequeno impulso, você passa para o peitoril de dentro."
+          en: "The table touches the window. With a small push, you cross onto the inner ledge."
+
+  - id: salao
+    region: cafeteria
+    ambient_temp: 16
+    map_pos: [0.45, 0.55]
+    name: { pt-BR: "Salão do café", en: "Café Hall" }
+    description:
+      pt-BR: "Visto do chão, o salão é uma floresta de pernas de cadeira e mesa. Cadeiras viradas sobre os tampos parecem árvores de cabeça para baixo. Na parede, um quadro mostra a inauguração do Café Aurora. O balcão se ergue ao fundo, a porta de entrada à frente, e uma porta vaivém leva à cozinha."
+      en: "Seen from the floor, the hall is a forest of chair and table legs. Chairs flipped onto tabletops look like upside-down trees. On the wall, a painting shows Café Aurora's opening day. The counter rises at the back, the front door ahead, and a swinging door leads to the kitchen."
+    short:
+      pt-BR: "O chão do salão, entre pernas de cadeiras."
+      en: "The hall floor, among chair legs."
+    sounds:
+      pt-BR: "O salão range. Um aquecedor velho estala, frio. Da cozinha vem um rangido metálico, como engrenagens que alguém esqueceu de girar."
+      en: "The hall creaks. An old radiator ticks, cold. From the kitchen comes a metallic grinding, like gears someone forgot to turn."
+    features:
+      - id: quadro_inauguracao
+        keywords: [quadro, pintura, foto na parede, inauguracao, painting, picture, opening]
+        name: { pt-BR: "quadro da inauguração", en: "opening-day painting" }
+        description:
+          pt-BR: "Uma pintura de 1979: uma Ilda jovem diante do Café Aurora, erguendo uma caneca de porcelana como um troféu. Embaixo, uma plaquinha: \"A primeira xícara é sempre a mais quente.\""
+          en: "A painting from 1979: a young Ilda in front of Café Aurora, raising a porcelain mug like a trophy. Below, a small plaque: \"The first cup is always the warmest.\""
+      - id: aquecedor
+        keywords: [aquecedor, radiador, radiator, heater]
+        name: { pt-BR: "aquecedor velho", en: "old radiator" }
+        description:
+          pt-BR: "Um aquecedor de ferro, frio como pedra. Alguém desligou o gás há muito tempo. Só o fogão da cozinha parece ainda ter uma chama piloto."
+          en: "An iron radiator, cold as stone. Someone shut off the gas long ago. Only the kitchen stove seems to still have a pilot light."
+    exits:
+      - to: mesa_principal
+        kind: climb
+        keywords: [mesa, subir na mesa, table, climb]
+        label: { pt-BR: "Escalar de volta até a mesa", en: "Climb back up to the table" }
+        check: { stat: energy, dc: 7, bonus_ability: { porcelain_leap: 4 } }
+        energy: 8
+        fail_text:
+          pt-BR: "Você sobe metade da perna da cadeira e escorrega de volta. Talvez precise de mais energia."
+          en: "You climb halfway up the chair leg and slide back down. You may need more energy."
+      - to: balcao
+        keywords: [balcao, balcão, counter, bar]
+        label: { pt-BR: "Atravessar o salão até o balcão", en: "Cross the hall to the counter" }
+        energy: 4
+        text:
+          pt-BR: "Você cruza o salão empoeirado e escala os degraus do apoio de pés até o tampo do balcão."
+          en: "You cross the dusty hall and climb the footrest steps up to the counter top."
+      - to: porta_entrada
+        keywords: [porta, porta de entrada, entrada, saida, saída, door, front door, entrance]
+        label: { pt-BR: "Ir até a porta de entrada", en: "Go to the front door" }
+        energy: 3
+      - to: cozinha
+        keywords: [cozinha, porta vaivem, porta vaivém, kitchen, swinging door]
+        label: { pt-BR: "Empurrar a porta vaivém da cozinha", en: "Push the kitchen's swinging door" }
+        energy: 5
+        text:
+          pt-BR: "Você encosta o corpo na porta vaivém e empurra com tudo. Ela cede, range e balança atrás de você."
+          en: "You lean against the swinging door and push with everything you've got. It gives, creaks, and swings shut behind you."
+      - to: janela
+        kind: climb
+        keywords: [janela, peitoril, window, ledge, aquecedor]
+        label: { pt-BR: "Subir pelo aquecedor até a janela", en: "Climb the radiator up to the window" }
+        check: { stat: courage, dc: 9, bonus_ability: { porcelain_leap: 3 } }
+        energy: 7
+        fail_text:
+          pt-BR: "As aletas do aquecedor são escorregadias. Você desliza de volta ao chão."
+          en: "The radiator fins are slippery. You slide back to the floor."
+
+  - id: balcao
+    region: cafeteria
+    ambient_temp: 17
+    map_pos: [0.65, 0.40]
+    name: { pt-BR: "Balcão", en: "Counter" }
+    description:
+      pt-BR: "O tampo de mármore do balcão é uma planície fria e lisa. Há uma caixa registradora monumental, um cardápio de giz apagado pela metade e um pote de açúcar de louça com tampa — que, ao ver você, solta um gritinho."
+      en: "The counter's marble top is a cold, smooth plain. There's a monumental cash register, a half-erased chalk menu and a china sugar bowl with a lid — which, upon seeing you, lets out a little squeal."
+    short:
+      pt-BR: "O balcão de mármore, com a caixa registradora."
+      en: "The marble counter, with the cash register."
+    sounds:
+      pt-BR: "Atrás de você, nas prateleiras, o chiado de rádio fica mais nítido. Entre a estática, uma palavra: \"...aqui...\""
+      en: "Behind you, on the shelves, the radio hiss grows clearer. Amid the static, one word: \"...here...\""
+    features:
+      - id: caixa_registradora
+        keywords: [caixa registradora, caixa, registradora, gaveta, cash register, register, drawer, till]
+        name: { pt-BR: "caixa registradora", en: "cash register" }
+        description:
+          pt-BR: "Uma registradora de metal com teclas redondas. A gaveta está emperrada. Uma tecla maior diz \"SEM VENDA\"."
+          en: "A metal register with round keys. The drawer is stuck. One bigger key reads \"NO SALE\"."
+      - id: cardapio
+        keywords: [cardapio, cardápio, menu, lousa, quadro de giz, chalkboard]
+        name: { pt-BR: "cardápio de giz", en: "chalk menu" }
+        description:
+          pt-BR: "\"Café Aurora — Pingado, Média, Chocolate da Casa.\" Embaixo, em letra miúda: \"Fechado por tempo indeterminado. Obrigada por tudo. — I.\""
+          en: "\"Café Aurora — Cortado, Latte, House Hot Chocolate.\" Below, in tiny letters: \"Closed until further notice. Thank you for everything. — I.\""
+    exits:
+      - to: salao
+        keywords: [salao, salão, chao, chão, descer, hall, floor, down]
+        label: { pt-BR: "Descer para o salão", en: "Climb down to the hall" }
+        energy: 3
+      - to: prateleiras
+        kind: climb
+        keywords: [prateleira, prateleiras, estante, radio, rádio, shelves, shelf, radio]
+        label: { pt-BR: "Escalar as prateleiras atrás do balcão", en: "Climb the shelves behind the counter" }
+        check: { stat: courage, dc: 11, bonus_ability: { porcelain_leap: 4 }, bonus_item: { barbante: 3 } }
+        energy: 8
+        text:
+          pt-BR: "Você sobe de lata em lata, de pote em pote, até alcançar a prateleira mais alta."
+          en: "You climb from tin to tin, jar to jar, until you reach the highest shelf."
+        fail_text:
+          pt-BR: "Uma lata balança sob você e você despenca de volta ao balcão. Doeu."
+          en: "A tin wobbles under you and you tumble back onto the counter. That hurt."
+        fail_effects: [{ stats: { integrity: -6 } }]
+      - to: cozinha
+        keywords: [cozinha, passa pratos, passa-pratos, kitchen, hatch]
+        label: { pt-BR: "Passar pela janelinha do passa-pratos para a cozinha", en: "Slip through the serving hatch into the kitchen" }
+        energy: 3
+
+  - id: prateleiras
+    region: cafeteria
+    ambient_temp: 18
+    map_pos: [0.78, 0.18]
+    name: { pt-BR: "Prateleiras altas", en: "High Shelves" }
+    description:
+      pt-BR: "Do alto das prateleiras, o café inteiro parece um vale adormecido. Latas de café vazias se alinham como torres. No centro, um rádio antigo de madeira, com um mostrador iluminado por uma luzinha âmbar que pisca como um coração cansado."
+      en: "From the top of the shelves, the whole café looks like a sleeping valley. Empty coffee tins stand in line like towers. In the middle, an old wooden radio with a dial lit by a tiny amber light that blinks like a tired heart."
+    short:
+      pt-BR: "O alto das prateleiras, onde vive o rádio."
+      en: "The top of the shelves, home of the radio."
+    sounds:
+      pt-BR: "O rádio chia, sintoniza e perde a estação. Fragmentos de uma música antiga, de uma propaganda de café, de um nome: \"...Ilda...\""
+      en: "The radio crackles, tunes in and loses the station. Fragments of an old song, a coffee commercial, a name: \"...Ilda...\""
+    features:
+      - id: latas_cafe
+        keywords: [latas, lata, latas de cafe, tins, coffee tins]
+        name: { pt-BR: "latas de café vazias", en: "empty coffee tins" }
+        description:
+          pt-BR: "Latas com rótulos desbotados: \"Grão Aurora — torra da casa\". Todas vazias. Uma delas ainda guarda um cheirinho que faz seu café se agitar."
+          en: "Tins with faded labels: \"Aurora Bean — house roast\". All empty. One still holds a faint smell that makes your coffee stir."
+    exits:
+      - to: balcao
+        kind: jump
+        keywords: [descer, balcao, balcão, pular, down, counter, jump]
+        label: { pt-BR: "Descer de volta ao balcão", en: "Get back down to the counter" }
+        check: { stat: courage, dc: 9, bonus_ability: { porcelain_leap: 4 } }
+        energy: 4
+        fail_text:
+          pt-BR: "Você calcula mal a distância e aterrissa no mármore com um estalo."
+          en: "You misjudge the distance and land on the marble with a crack."
+        fail_effects: [{ stats: { integrity: -7 }, move_player: balcao }]
+
+  - id: cozinha
+    region: cafeteria
+    ambient_temp: 21
+    heat: 86
+    map_pos: [0.62, 0.75]
+    name: { pt-BR: "Cozinha", en: "Kitchen" }
+    description:
+      pt-BR: "A cozinha cheira a café antigo e ferro. Um fogão de quatro bocas guarda uma chama piloto azul, a única luz quente do lugar. Ao lado, uma máquina de café cromada e um moedor de manivela que resmunga sozinho. A pia, lá em cima, é um abismo de inox. Na porta dos fundos há uma portinhola para gatos."
+      en: "The kitchen smells of old coffee and iron. A four-burner stove keeps a blue pilot flame, the only warm light in the place. Beside it, a chrome coffee machine and a hand-crank grinder grumbling to itself. The sink, high above, is a stainless-steel abyss. The back door has a cat flap."
+    short:
+      pt-BR: "A cozinha, aquecida pela chama piloto."
+      en: "The kitchen, warmed by the pilot flame."
+    sounds:
+      pt-BR: "O chiado suave da chama piloto. O moedor resmunga: \"...quarenta anos moendo, e agora isso...\". Lá fora, atrás da portinhola, alguém arranha a porta."
+      en: "The soft hiss of the pilot flame. The grinder mutters: \"...forty years of grinding, and now this...\". Outside, behind the cat flap, something scratches at the door."
+    features:
+      - id: fogao
+        heat_source: true
+        keywords: [fogao, fogão, chama, chama piloto, boca, stove, flame, pilot light, burner, calor, heat]
+        name: { pt-BR: "fogão", en: "stove" }
+        description:
+          pt-BR: "Uma chama piloto azul dança numa das bocas. Perto dela, o ar tremula de calor. Seria fácil se aquecer aqui — fácil até demais."
+          en: "A blue pilot flame dances on one burner. Near it, the air shimmers with heat. It would be easy to warm up here — almost too easy."
+      - id: cafeteira
+        keywords: [cafeteira, maquina de cafe, máquina de café, maquina, espresso, coffee machine, machine]
+        name: { pt-BR: "máquina de café", en: "coffee machine" }
+        description:
+          pt-BR: "Uma máquina de espresso cromada, coberta de pó. O reservatório ainda tem um pouco de café passado. Talvez dê para encher uma caneca — uma única vez."
+          en: "A chrome espresso machine, covered in dust. The reservoir still has a little brewed coffee. Maybe enough to fill one mug — just once."
+      - id: portinhola
+        keywords: [portinhola, porta do gato, porta dos fundos, cat flap, flap, back door]
+        name: { pt-BR: "portinhola de gato", en: "cat flap" }
+        description:
+          pt-BR: "Uma portinhola de plástico na porta dos fundos. Para um gato, é uma passagem. Para uma caneca, é uma muralha pesada que se abre para o beco."
+          en: "A plastic flap in the back door. For a cat, it's a passage. For a mug, it's a heavy wall that opens onto the alley."
+      - id: pia
+        keywords: [pia, abismo, sink, abyss]
+        name: { pt-BR: "pia", en: "sink" }
+        description:
+          pt-BR: "Lá do alto, a pia parece um abismo prateado. Uma torneira pinga num ritmo lento, como um relógio cansado. Melhor não cair ali."
+          en: "From down here, the sink looks like a silver abyss. A tap drips slowly, like a tired clock. Better not fall in there."
+    exits:
+      - to: salao
+        keywords: [salao, salão, porta vaivem, hall]
+        label: { pt-BR: "Voltar ao salão pela porta vaivém", en: "Go back to the hall through the swinging door" }
+        energy: 4
+      - to: balcao
+        keywords: [balcao, balcão, passa pratos, counter, hatch]
+        label: { pt-BR: "Subir pelo passa-pratos até o balcão", en: "Climb through the hatch to the counter" }
+        energy: 4
+      - to: deposito
+        keywords: [deposito, depósito, despensa, storeroom, pantry]
+        label: { pt-BR: "Entrar no depósito escuro", en: "Enter the dark storeroom" }
+        energy: 2
+      - to: beco
+        keywords: [portinhola, beco, porta dos fundos, sair, fora, cat flap, alley, outside]
+        label: { pt-BR: "Sair pela portinhola para o beco", en: "Go out the cat flap into the alley" }
+        conditions: [{ flag: portinhola_aberta }]
+        blocked_text:
+          pt-BR: "A portinhola é pesada demais para uma caneca só. Talvez alguém com bigodes possa segurá-la — ou talvez valha a pena empurrar com toda a coragem."
+          en: "The flap is too heavy for one mug. Perhaps someone with whiskers could hold it — or maybe it's worth pushing with all your courage."
+        energy: 3
+        text:
+          pt-BR: "Você passa pela portinhola. O ar frio da noite e o cheiro de chuva a recebem do outro lado."
+          en: "You slip through the flap. Cold night air and the smell of rain greet you on the other side."
+
+  - id: deposito
+    region: cafeteria
+    ambient_temp: 15
+    dark: true
+    map_pos: [0.85, 0.80]
+    name: { pt-BR: "Depósito", en: "Storeroom" }
+    description:
+      pt-BR: "Um depósito estreito e escuro, iluminado só pela luz que vaza da cozinha. Sacos de café vazios se empilham como dunas de juta. Caixas de papelão formam um labirinto. No canto, uma porta baixa de madeira com uma fechadura de latão."
+      en: "A narrow, dark storeroom, lit only by the light leaking from the kitchen. Empty coffee sacks pile up like burlap dunes. Cardboard boxes form a maze. In the corner, a low wooden door with a brass lock."
+    short:
+      pt-BR: "O depósito escuro, com a porta do porão."
+      en: "The dark storeroom, with the cellar door."
+    sounds:
+      pt-BR: "Por baixo da porta do porão vem um farfalhar miúdo e um guincho de quem está contando moedas."
+      en: "From under the cellar door comes a tiny rustling and the squeak of someone counting coins."
+    features:
+      - id: saco_cafe
+        keywords: [saco, sacos, saco de cafe, juta, sack, sacks, coffee sack, burlap]
+        name: { pt-BR: "sacos de café", en: "coffee sacks" }
+        description:
+          pt-BR: "Sacos de juta carimbados \"Grão Aurora\". A maioria está vazia e murcha. Um deles, no fundo da pilha, parece ter algo duro dentro."
+          en: "Burlap sacks stamped \"Aurora Bean\". Most are empty and limp. One at the bottom of the pile seems to have something hard inside."
+      - id: porta_porao
+        keywords: [porta do porao, porta do porão, porao, porão, fechadura, porta baixa, cellar door, cellar, lock, basement]
+        name: { pt-BR: "porta do porão", en: "cellar door" }
+        description:
+          pt-BR: "Uma porta baixa de madeira com uma fechadura de latão. Pelo buraco da fechadura vem um ar frio e úmido."
+          en: "A low wooden door with a brass lock. Cold, damp air drifts through the keyhole."
+    exits:
+      - to: cozinha
+        keywords: [cozinha, kitchen, voltar]
+        label: { pt-BR: "Voltar para a cozinha", en: "Back to the kitchen" }
+        energy: 2
+      - to: porao
+        keywords: [porao, porão, descer, cellar, basement, down]
+        label: { pt-BR: "Descer ao porão", en: "Go down to the cellar" }
+        conditions: [{ flag: porao_destrancado }]
+        blocked_text:
+          pt-BR: "A porta do porão está trancada. A fechadura de latão espera uma chave do mesmo metal."
+          en: "The cellar door is locked. The brass lock is waiting for a key of the same metal."
+        energy: 5
+        text:
+          pt-BR: "Você desce degrau por degrau, cada um alto como um muro. O ar fica frio e cheira a papel velho."
+          en: "You descend step by step, each one tall as a wall. The air turns cold and smells of old paper."
+
+  - id: porao
+    region: cafeteria
+    ambient_temp: 11
+    dark: true
+    map_pos: [0.88, 0.95]
+    name: { pt-BR: "Porão", en: "Cellar" }
+    description:
+      pt-BR: "Um porão frio de tijolos à vista. Uma lâmpada fraca balança no teto. No centro, uma caixa de madeira com a inscrição \"Lembranças — não jogar fora\". Num canto, uma pilha brilhante de tampinhas, botões e moedas — o tesouro de alguém."
+      en: "A cold cellar of bare brick. A weak bulb sways from the ceiling. In the middle, a wooden box labeled \"Keepsakes — do not throw away\". In a corner, a glittering pile of bottle caps, buttons and coins — someone's treasure."
+    short:
+      pt-BR: "O porão frio, com a caixa de lembranças."
+      en: "The cold cellar, with the keepsake box."
+    sounds:
+      pt-BR: "Pingos. Um guincho satisfeito. E, muito baixo, o tique-taque de nada — como se faltasse um relógio que deveria estar aqui."
+      en: "Drips. A satisfied squeak. And, very quietly, the ticking of nothing — as if a clock that should be here were missing."
+    features:
+      - id: caixa_lembrancas
+        keywords: [caixa, caixa de lembrancas, caixa de lembranças, lembrancas, lembranças, keepsake box, box, keepsakes]
+        name: { pt-BR: "caixa de lembranças", en: "keepsake box" }
+        description:
+          pt-BR: "Uma caixa de madeira com fotos, cartões de aniversário e cardápios antigos. Por cima de tudo, um caderno de capa azul — o diário de Ilda — e um mapa dobrado do bairro."
+          en: "A wooden box of photos, birthday cards and old menus. On top of everything, a blue-covered notebook — Ilda's diary — and a folded map of the neighborhood."
+      - id: tesouro_rato
+        keywords: [tesouro, pilha, tampinhas, botoes, botões, moedas, treasure, pile, hoard, caps, coins]
+        name: { pt-BR: "tesouro do rato", en: "rat's hoard" }
+        description:
+          pt-BR: "Tampinhas, botões, clipes e moedas organizados por brilho. No topo, reluzindo, uma pequena engrenagem dourada. Ao lado, um saquinho cheio de torrões de açúcar."
+          en: "Bottle caps, buttons, paper clips and coins sorted by shine. At the top, gleaming, a small golden gear. Beside it, a little bag full of sugar cubes."
+    exits:
+      - to: deposito
+        keywords: [subir, deposito, depósito, escada, up, storeroom, stairs]
+        label: { pt-BR: "Subir de volta ao depósito", en: "Climb back up to the storeroom" }
+        energy: 6
+
+  - id: janela
+    region: cafeteria
+    ambient_temp: 14
+    map_pos: [0.15, 0.20]
+    views: [parapeito]
+    name: { pt-BR: "Peitoril da janela", en: "Window Ledge" }
+    description:
+      pt-BR: "O peitoril de dentro é estreito e frio. O vidro, bem diante de você, mostra a rua alagada e os postes que sangram luz laranja na chuva. Logo abaixo, preso ao caixilho, há um trinco de metal."
+      en: "The inner ledge is narrow and cold. The glass in front of you shows the flooded street and lampposts bleeding orange light into the rain. Just below, fixed to the frame, is a metal latch."
+    short:
+      pt-BR: "O peitoril frio da janela, junto ao trinco."
+      en: "The cold window ledge, by the latch."
+    sounds:
+      pt-BR: "A chuva é mais alta aqui. Do outro lado do vidro, um ronronar grave, paciente."
+      en: "The rain is louder here. On the other side of the glass, a deep, patient purr."
+    features:
+      - id: trinco
+        keywords: [trinco, ferrolho, fecho, tranca da janela, latch, catch, lock, window lock]
+        name: { pt-BR: "trinco da janela", en: "window latch" }
+        description:
+          pt-BR: "Um trinco de metal emperrado de ferrugem. Com força — ou com jeito — talvez dê para girá-lo."
+          en: "A metal latch stiff with rust. With strength — or finesse — it might turn."
+    exits:
+      - to: mesa_principal
+        keywords: [mesa, table]
+        label: { pt-BR: "Voltar para a mesa", en: "Go back to the table" }
+        energy: 2
+      - to: salao
+        kind: climb
+        keywords: [descer, salao, salão, chao, chão, down, hall, floor]
+        label: { pt-BR: "Descer pelo aquecedor até o salão", en: "Climb down the radiator to the hall" }
+        check: { stat: courage, dc: 8, bonus_ability: { porcelain_leap: 4 } }
+        energy: 4
+        fail_text:
+          pt-BR: "Você escorrega nas aletas e chega ao chão mais rápido do que gostaria."
+          en: "You slip on the fins and reach the floor faster than you'd like."
+        fail_effects: [{ stats: { integrity: -5 }, move_player: salao }]
+      - to: parapeito
+        keywords: [parapeito, fora, sair, janela aberta, outside, sill, out]
+        label: { pt-BR: "Sair pela janela aberta", en: "Go out the open window" }
+        conditions: [{ flag: janela_aberta }]
+        blocked_text:
+          pt-BR: "O vidro está fechado. O trinco, logo abaixo, talvez ceda."
+          en: "The window is shut. The latch just below might give."
+        energy: 3
+
+  - id: porta_entrada
+    region: cafeteria
+    ambient_temp: 13
+    map_pos: [0.30, 0.75]
+    name: { pt-BR: "Porta de entrada", en: "Front Door" }
+    description:
+      pt-BR: "A porta de entrada é um paredão de madeira e vidro. Um sininho de latão pende lá no alto. A maçaneta, inalcançável, parece uma lua de metal. Por baixo da porta, uma fresta deixa entrar um vento gelado e o barulho da rua."
+      en: "The front door is a cliff of wood and glass. A brass bell hangs way up high. The doorknob, out of reach, looks like a metal moon. Under the door, a gap lets in an icy wind and the noise of the street."
+    short:
+      pt-BR: "Diante da enorme porta de entrada."
+      en: "Before the enormous front door."
+    sounds:
+      pt-BR: "Pneus chiando na água. Um pombo reclamando da chuva. E o sininho, imóvel, esperando um cliente que não vem."
+      en: "Tires hissing on water. A pigeon complaining about the rain. And the little bell, still, waiting for a customer who doesn't come."
+    features:
+      - id: macaneta
+        keywords: [macaneta, maçaneta, porta, trinco da porta, doorknob, knob, handle, door]
+        name: { pt-BR: "maçaneta", en: "doorknob" }
+        description:
+          pt-BR: "Uma maçaneta de alavanca, alta demais. Se algo pesado se pendurasse nela, ela desceria e a porta destrancaria. Um barbante amarrado nela faria esse trabalho daqui de baixo."
+          en: "A lever doorknob, far too high. If something heavy hung from it, it would drop and unlatch the door. A string tied to it could do the job from down here."
+      - id: fresta
+        keywords: [fresta, vao, vão, gap, crack under the door]
+        name: { pt-BR: "fresta sob a porta", en: "gap under the door" }
+        description:
+          pt-BR: "A fresta é larga o bastante para um rato, não para uma caneca. Por ela, você vê pedaços da calçada molhada."
+          en: "The gap is wide enough for a rat, not for a mug. Through it you glimpse bits of wet sidewalk."
+    exits:
+      - to: salao
+        keywords: [salao, salão, voltar, hall, back]
+        label: { pt-BR: "Voltar para o salão", en: "Back to the hall" }
+        energy: 3
+      - to: calcada
+        keywords: [rua, calcada, calçada, sair, fora, cidade, street, sidewalk, outside, city]
+        label: { pt-BR: "Sair pela porta para a calçada", en: "Go out the door to the sidewalk" }
+        conditions: [{ flag: porta_aberta }]
+        blocked_text:
+          pt-BR: "A porta não se move. A maçaneta está alta demais — você precisaria de algum jeito de puxá-la daqui de baixo."
+          en: "The door won't budge. The knob is far too high — you'd need some way to pull it from down here."
+        energy: 3
+
+items:
+  - id: torrao_acucar
+    initial: mesa_principal
+    icon: sugar
+    keywords: [torrao, torrão, torrao de acucar, acucar, açúcar, sugar cube, sugar]
+    name: { pt-BR: "torrão de açúcar", en: "sugar cube" }
+    description:
+      pt-BR: "Um cubo de açúcar perfeito, brilhando como um pequeno bloco de cristal. Para alguém, isso vale ouro."
+      en: "A perfect sugar cube, glittering like a small block of crystal. To someone, this is worth gold."
+  - id: guardanapo
+    initial: mesa_principal
+    icon: cloth
+    keywords: [guardanapo, pano, napkin, cloth]
+    name: { pt-BR: "guardanapo de pano", en: "cloth napkin" }
+    description:
+      pt-BR: "Um guardanapo de pano bordado com um sol nascente: o símbolo do Café Aurora. Comprido o suficiente para servir de corda — ou de vela."
+      en: "A cloth napkin embroidered with a rising sun: the symbol of Café Aurora. Long enough to serve as a rope — or a sail."
+  - id: botao_dourado
+    initial: salao
+    icon: button
+    keywords: [botao, botão, botao dourado, button, golden button]
+    name: { pt-BR: "botão dourado", en: "golden button" }
+    description:
+      pt-BR: "Um botão dourado caído sob uma cadeira, talvez de um casaco antigo. Brilha mesmo no escuro."
+      en: "A golden button fallen under a chair, perhaps from an old coat. It shines even in the dark."
+  - id: moeda_antiga
+    icon: coin
+    keywords: [moeda, moeda antiga, coin, old coin]
+    name: { pt-BR: "moeda antiga", en: "old coin" }
+    description:
+      pt-BR: "Uma moeda de 1979, ano da inauguração do café. Ilda guardava a primeira moeda recebida."
+      en: "A coin from 1979, the year the café opened. Ilda kept the first coin she ever earned."
+  - id: foto_ilda
+    initial: prateleiras
+    icon: photo
+    keywords: [foto, fotografia, retrato, foto de ilda, photo, photograph, picture]
+    name: { pt-BR: "foto de Ilda", en: "photo of Ilda" }
+    description:
+      pt-BR: "Uma foto pequena: Ilda, já de cabelos brancos, ao lado de uma garota de tranças — no verso, \"Eu e Lia, minha neta\". Ilda está segurando uma caneca. Você."
+      en: "A small photo: Ilda, already white-haired, beside a girl with braids — on the back, \"Me and Lia, my granddaughter\". Ilda is holding a mug. You."
+  - id: sardinha
+    initial: cozinha
+    icon: fish
+    keywords: [sardinha, peixe, lata de sardinha, sardine, fish]
+    name: { pt-BR: "sardinha", en: "sardine" }
+    description:
+      pt-BR: "Uma sardinha em conserva, esquecida num pires. O cheiro é forte. Para um gato, deve ser poesia."
+      en: "A tinned sardine, forgotten on a saucer. The smell is strong. To a cat, it must be poetry."
+  - id: barbante
+    initial: deposito
+    icon: string
+    keywords: [barbante, cordao, cordão, fio, linha, string, twine, cord]
+    name: { pt-BR: "barbante", en: "string" }
+    description:
+      pt-BR: "Um rolo de barbante de amarrar pacotes de café. Forte, comprido e cheio de possibilidades."
+      en: "A roll of twine for tying coffee packages. Strong, long and full of possibilities."
+  - id: chave_latao
+    icon: key
+    keywords: [chave, chave de latao, chave de latão, key, brass key]
+    name: { pt-BR: "chave de latão", en: "brass key" }
+    description:
+      pt-BR: "Uma chave de latão, pesada para você, com uma etiqueta: \"porão\"."
+      en: "A brass key, heavy for you, with a tag: \"cellar\"."
+  - id: diario_ilda
+    icon: book
+    keywords: [diario, diário, caderno, diario de ilda, diary, notebook, journal]
+    name: { pt-BR: "diário de Ilda", en: "Ilda's diary" }
+    weight: 2
+    description:
+      pt-BR: "Um caderno de capa azul. A última página diz: \"Ando esquecendo coisas. O nome do leiteiro, o caminho de casa. Lia diz que vou morar com ela. Se um dia eu partir, que a primeira caneca guarde o último café quente. Ela vai saber o que fazer.\""
+      en: "A blue-covered notebook. The last page reads: \"I've been forgetting things. The milkman's name, the way home. Lia says I'll come live with her. If I ever leave, may the first mug keep the last hot coffee. It will know what to do.\""
+  - id: mapa_cidade
+    icon: map
+    keywords: [mapa, mapa da cidade, mapa do bairro, map, city map]
+    name: { pt-BR: "mapa do bairro", en: "neighborhood map" }
+    description:
+      pt-BR: "Um mapa desenhado à mão por Ilda. O Café Aurora, a praça, o cruzamento. Atrás do jardim da praça, alguém circulou um bosque com caneta vermelha e escreveu: \"Onde vão parar as coisas esquecidas\"."
+      en: "A hand-drawn map by Ilda. Café Aurora, the square, the crossing. Behind the square's garden, someone circled a grove in red pen and wrote: \"Where forgotten things go\"."
+  - id: engrenagem_dourada
+    initial: rato_bigode
+    icon: gear
+    keywords: [engrenagem, engrenagem dourada, roda dentada, gear, golden gear, cog]
+    name: { pt-BR: "engrenagem dourada", en: "golden gear" }
+    description:
+      pt-BR: "Uma engrenagem dourada do tamanho de uma moeda. Os dentes são perfeitos. Ela parece querer girar."
+      en: "A golden gear the size of a coin. Its teeth are perfect. It seems to want to turn."
+  - id: saquinho_torroes
+    initial: rato_bigode
+    icon: sugar
+    weight: 2
+    keywords: [saquinho, torroes, torrões, saquinho de acucar, saco de torroes, sugar bag, sugar cubes, bag]
+    name: { pt-BR: "saquinho de torrões", en: "bag of sugar cubes" }
+    description:
+      pt-BR: "Um saquinho de pano cheio de torrões de açúcar. Tem uma etiqueta bordada: \"D. Doce\"."
+      en: "A little cloth bag full of sugar cubes. It has an embroidered tag: \"D. Doce\"."
+  - id: bilhete_moedor
+    icon: letter
+    keywords: [bilhete, recado, carta do moedor, note, message, letter]
+    name: { pt-BR: "recado do Moedor", en: "Grinder's note" }
+    description:
+      pt-BR: "Um papelzinho escrito com pó de café: \"Bartolomeu, velho bule teimoso: você tinha razão sobre o chá. Volte para casa. — M.\""
+      en: "A slip of paper written in coffee grounds: \"Bartholomew, you stubborn old teapot: you were right about the tea. Come home. — G.\""
+
+npcs:
+  - id: noir
+    location: parapeito
+    relationship: 0
+    mood: curious
+    befriend_dc: 13
+    icon: cat
+    keywords: [gato, gato preto, noir, bichano, felino, cat, black cat, kitty]
+    likes: [sardinha]
+    name: { pt-BR: "Noir", en: "Noir" }
+    kind: { pt-BR: "gato preto", en: "black cat" }
+    description:
+      pt-BR: "Um gato preto enorme — para você, um titã de pelagem noturna. Os olhos amarelos são duas luas atentas. Uma cicatriz atravessa a orelha esquerda."
+      en: "An enormous black cat — to you, a titan of night-colored fur. His yellow eyes are two watchful moons. A scar crosses his left ear."
+    personality:
+      pt-BR: "Enigmático, orgulhoso e irônico, mas leal a quem conquista sua confiança. Finge indiferença; observa tudo."
+      en: "Enigmatic, proud and ironic, but loyal to those who earn his trust. Feigns indifference; watches everything."
+    voice:
+      pt-BR: "Frases curtas e secas, pausas longas, ronrona quando gosta de algo. Chama a caneca de \"louça\"."
+      en: "Short, dry sentences, long pauses, purrs when pleased. Calls the mug \"crockery\"."
+    background:
+      pt-BR: "Gato de rua. Toda noite, ao fechar o café, Ilda deixava uma sardinha para ele no parapeito. Desde que ela partiu, ele volta toda noite à janela, esperando."
+      en: "A street cat. Every night at closing, Ilda left him a sardine on the sill. Since she left, he returns to the window every night, waiting."
+    goals:
+      pt-BR: "Descobrir se Ilda vai voltar. Secretamente, proteger os objetos do café."
+      en: "Find out whether Ilda will return. Secretly, protect the café's objects."
+    knowledge:
+      - { pt-BR: "Conhece a cidade inteira: becos, telhados e atalhos.", en: "Knows the whole city: alleys, rooftops and shortcuts." }
+      - { pt-BR: "Viu Ilda partir num carro com uma moça de tranças.", en: "Saw Ilda leave in a car with a young woman with braids." }
+    secrets:
+      - id: noir_seguiu
+        reveal_if: [{ rel: noir, gte: 50 }]
+        text:
+          pt-BR: "Noir seguiu o carro de Ilda até uma casa amarela depois da praça. Sabe onde ela mora agora."
+          en: "Noir followed Ilda's car to a yellow house past the square. He knows where she lives now."
+    greetings:
+      - conditions: [{ npc_at: [noir, parapeito] }, { rel: noir, gte: 30 }]
+        text:
+          pt-BR: "Noir encosta o focinho no vidro, embaçando-o. — Ainda aí, louça? Abra essa janela ou me encontre na cozinha. A portinhola é minha especialidade."
+          en: "Noir presses his nose to the glass, fogging it. \"Still there, crockery? Open that window or meet me in the kitchen. The flap is my specialty.\""
+      - conditions: [{ npc_at: [noir, parapeito] }]
+        text:
+          pt-BR: "Do outro lado do vidro, o gato inclina a cabeça. A voz dele chega abafada, grave: — Uma caneca que anda. Ilda sempre disse que este lugar tinha alma. Eu sou Noir. E você, louça... sabe quem é?"
+          en: "On the other side of the glass, the cat tilts his head. His voice comes muffled, deep: \"A walking mug. Ilda always said this place had a soul. I'm Noir. And you, crockery... do you know who you are?\""
+      - conditions: [{ rel: noir, gte: 50 }]
+        text:
+          pt-BR: "Noir se enrosca ao seu redor, ronronando como um motor pequeno. — Para onde vamos, parceira?"
+          en: "Noir curls around you, purring like a small engine. \"Where are we going, partner?\""
+      - text:
+          pt-BR: "Noir estica as patas e boceja, mostrando dentes que parecem estalactites. — Fale, louça. Estou ouvindo. Talvez."
+          en: "Noir stretches and yawns, showing teeth like stalactites. \"Speak, crockery. I'm listening. Maybe.\""
+    topics:
+      - id: noir_ilda
+        keywords: [ilda, dona do cafe, owner, lady, quem cuidava, senhora]
+        label: { pt-BR: "Perguntar a Noir sobre Ilda", en: "Ask Noir about Ilda" }
+        text:
+          pt-BR: "As orelhas de Noir baixam. — Ilda. A senhora do avental. Uma sardinha toda noite, por nove anos. Um dia ela saiu num carro com uma moça de tranças e não voltou. Desde então, os objetos lá dentro foram ficando... quietos. Até você."
+          en: "Noir's ears flatten. \"Ilda. The lady in the apron. A sardine every night, for nine years. One day she left in a car with a girl in braids and didn't come back. Since then, the objects inside have gone... quiet. Until you.\""
+        effects:
+          - fact: { id: noir_viu_ilda_partir, importance: 3, tags: [noir, ilda], text: { pt-BR: "Noir contou que Ilda partiu num carro com uma moça de tranças.", en: "Noir said Ilda left in a car with a girl in braids." } }
+          - rel: { noir: 3 }
+      - id: noir_voz
+        keywords: [voz, sussurro, quem falou, quem sussurrou, voice, whisper, who spoke]
+        label: { pt-BR: "Perguntar a Noir sobre a voz misteriosa", en: "Ask Noir about the mysterious voice" }
+        text:
+          pt-BR: "— Voz? — Noir olha para o alto das prateleiras, além de você. — Tem uma coisa lá em cima que fala sozinha desde que Ilda foi embora. Chia, canta, reclama da bateria. Eu não subo lá. Mas você... você tem alça."
+          en: "\"A voice?\" Noir looks up at the high shelves, past you. \"There's something up there that's talked to itself since Ilda left. Crackles, sings, complains about its battery. I don't climb up there. But you... you have a handle.\""
+      - id: noir_quem_sou
+        keywords: [quem sou eu, quem sou, quem me criou, de onde vim, minha origem, who am i, who made me, where i came from]
+        label: { pt-BR: "Perguntar a Noir quem você é", en: "Ask Noir who you are" }
+        text:
+          pt-BR: "Noir estreita os olhos. — Você é a caneca da mesa da janela. A favorita dela. Ela bebia em você toda manhã antes de abrir. Se alguém sabe por que você acordou... não sou eu. Pergunte à coisa que chia nas prateleiras."
+          en: "Noir narrows his eyes. \"You're the mug from the window table. Her favorite. She drank from you every morning before opening. If anyone knows why you woke up... it isn't me. Ask the crackling thing on the shelves.\""
+      - id: noir_entrar
+        keywords: [entrar, vem, venha, aqui dentro, cozinha, portinhola, come in, kitchen, cat flap, inside]
+        conditions: [{ npc_at: [noir, parapeito] }]
+        label: { pt-BR: "Pedir a Noir que entre pela cozinha", en: "Ask Noir to come in through the kitchen" }
+        text:
+          pt-BR: "Noir pensa por um longo momento. — Hmpf. A cozinha cheira a sardinha. Talvez eu passe por lá. Se houver sardinha. — E some na chuva, em direção aos fundos."
+          en: "Noir considers this for a long moment. \"Hmph. The kitchen smells of sardine. Maybe I'll drop by. If there's sardine.\" And he vanishes into the rain, toward the back."
+        effects: [{ move_npc: { noir: cozinha } }, { set_flag: noir_na_cozinha }]
+      - id: noir_cidade
+        keywords: [cidade, rua, fora, floresta, mundo, city, street, outside, forest, world]
+        conditions: [{ rel: noir, gte: 20 }]
+        label: { pt-BR: "Perguntar a Noir sobre a cidade lá fora", en: "Ask Noir about the city outside" }
+        text:
+          pt-BR: "— A cidade é grande demais para uma louça sozinha. Poças que engolem gatos. Carros que não param. Mas depois da praça, atrás da cerca do jardim, há um bosque onde as coisas perdidas vão parar. Os pombos juram que lá é mágico. Pombos juram muita coisa."
+          en: "\"The city is too big for one crockery alone. Puddles that swallow cats. Cars that don't stop. But past the square, behind the garden fence, there's a grove where lost things end up. The pigeons swear it's magic. Pigeons swear a lot of things.\""
+        effects:
+          - fact: { id: noir_falou_bosque, importance: 3, tags: [noir, floresta], text: { pt-BR: "Noir falou de um bosque atrás da cerca do jardim da praça, onde vão as coisas perdidas.", en: "Noir mentioned a grove behind the square's garden fence where lost things go." } }
+          - set_flag: sabe_do_bosque
+          - objective: q_cidade.orientar
+      - id: noir_casa_amarela
+        keywords: [onde ela mora, casa, onde esta ilda, onde ilda esta, where she lives, where is ilda, house]
+        conditions: [{ rel: noir, gte: 50 }]
+        label: { pt-BR: "Perguntar a Noir onde Ilda está", en: "Ask Noir where Ilda is" }
+        text:
+          pt-BR: "Noir fica em silêncio por um tempo. — Eu segui o carro. Casa amarela, depois da praça. Ela fica na varanda, olhando para nada. Às vezes me chama pelo nome. Às vezes não lembra que tem um gato. — Ele desvia os olhos. — Não conte para ninguém que eu me importo."
+          en: "Noir is quiet for a while. \"I followed the car. Yellow house, past the square. She sits on the porch, looking at nothing. Sometimes she calls my name. Sometimes she doesn't remember there's a cat.\" He looks away. \"Don't tell anyone I care.\""
+        effects:
+          - fact: { id: ilda_casa_amarela, importance: 4, tags: [ilda, noir], text: { pt-BR: "Ilda vive numa casa amarela depois da praça e está perdendo a memória.", en: "Ilda lives in a yellow house past the square and is losing her memory." } }
+          - objective: q_despertar.segredo_ilda
+    smalltalk:
+      - { pt-BR: "Noir lambe a pata, fingindo não ouvir. Mas a orelha dele gira na sua direção.", en: "Noir licks a paw, pretending not to hear. But his ear swivels toward you." }
+      - { pt-BR: "— Interessante — diz Noir, num tom que sugere o contrário.", en: "\"Interesting,\" says Noir, in a tone suggesting otherwise." }
+      - { pt-BR: "Noir pisca devagar. Entre gatos, isso é quase um elogio.", en: "Noir blinks slowly. Among cats, that's almost a compliment." }
+
+  - id: dona_doce
+    location: balcao
+    relationship: 10
+    mood: anxious
+    befriend_dc: 9
+    icon: sugarbowl
+    keywords: [acucareira, açucareira, dona doce, doce, pote de acucar, pote, sugar bowl, sugarbowl]
+    likes: [torrao_acucar, saquinho_torroes]
+    name: { pt-BR: "Dona Doce", en: "Dona Doce" }
+    kind: { pt-BR: "açucareira de louça", en: "china sugar bowl" }
+    description:
+      pt-BR: "Uma açucareira de louça branca com florzinhas azuis e uma tampa que pula quando ela fala. Está quase vazia — e claramente nervosa com isso."
+      en: "A white china sugar bowl with little blue flowers and a lid that hops when she talks. She's almost empty — and clearly nervous about it."
+    personality:
+      pt-BR: "Fofoqueira, afetuosa, ansiosa. Sabe de tudo que aconteceu no café nos últimos trinta anos e adora contar."
+      en: "Gossipy, affectionate, anxious. Knows everything that happened in the café in the last thirty years and loves to tell."
+    voice:
+      pt-BR: "Fala rápido, usa diminutivos e chama todo mundo de \"meu bem\"."
+      en: "Talks fast, uses pet names and calls everyone \"sweetie\"."
+    background:
+      pt-BR: "Trinta anos no balcão, adoçando os cafés de Ilda. Desde que o café fechou, um rato do porão roubou quase todos os seus torrões."
+      en: "Thirty years on the counter, sweetening Ilda's coffees. Since the café closed, a cellar rat has stolen almost all her sugar cubes."
+    goals:
+      pt-BR: "Recuperar os torrões roubados pelo Rato Bigode."
+      en: "Recover the sugar cubes stolen by Whiskers the Rat."
+    knowledge:
+      - { pt-BR: "Sabe que Ilda guardava a chave do porão escondida num saco de café no depósito.", en: "Knows Ilda hid the cellar key in a coffee sack in the storeroom." }
+      - { pt-BR: "Sabe que a caixa registradora abre apertando a tecla SEM VENDA.", en: "Knows the cash register opens by pressing the NO SALE key." }
+    greetings:
+      - conditions: [{ quest: q_doce, status: completed }]
+        text:
+          pt-BR: "— Meu bem! Minha heroína de porcelana! — A tampa de Dona Doce pula de alegria. — Precisando de alguma fofoquinha?"
+          en: "\"Sweetie! My porcelain heroine!\" Dona Doce's lid hops with joy. \"Need a little gossip?\""
+      - conditions: [{ met: dona_doce }]
+        text:
+          pt-BR: "— Ah, é você de novo, meu bem. Alguma notícia dos meus torrõezinhos?"
+          en: "\"Oh, it's you again, sweetie. Any news about my little cubes?\""
+      - text:
+          pt-BR: "— Ai! Que susto! — A açucareira chacoalha a tampa. — Uma caneca viva! Igualzinha a mim! Quer dizer, não igual, você é mais alta, e mais quente, e... desculpe, meu bem, eu falo demais quando fico nervosa. Sou Dona Doce. E estou arruinada! Aquele rato do porão levou todos os meus torrões!"
+          en: "\"Oh! What a fright!\" The sugar bowl rattles her lid. \"A living mug! Just like me! Well, not like me, you're taller, and warmer, and... sorry, sweetie, I talk too much when I'm nervous. I'm Dona Doce. And I'm ruined! That cellar rat took all my sugar cubes!\""
+    topics:
+      - id: doce_torroes
+        keywords: [torroes, torrões, acucar, açúcar, rato, roubo, roubou, sugar, cubes, rat, stole, ajudar, help]
+        label: { pt-BR: "Oferecer ajuda a Dona Doce com os torrões", en: "Offer to help Dona Doce with her sugar cubes" }
+        text:
+          pt-BR: "— Você faria isso por mim? Ai, meu bem! Foi o Bigode, aquele rato do porão. Ele desce com tudo que brilha ou adoça. O porão fica trancado, mas — psiu — Ilda escondia a chave de latão num saco de café, lá no depósito. Ninguém sabe disso. Só eu. E agora você."
+          en: "\"You'd do that for me? Oh, sweetie! It was Whiskers, that cellar rat. He hauls down anything that shines or sweetens. The cellar is locked, but — psst — Ilda hid the brass key in a coffee sack in the storeroom. Nobody knows that. Only me. And now you.\""
+        effects:
+          - quest_start: q_doce
+          - set_flag: sabe_da_chave
+          - fact: { id: chave_no_saco, importance: 3, tags: [dona_doce, deposito], text: { pt-BR: "Dona Doce contou que a chave do porão está escondida num saco de café no depósito.", en: "Dona Doce said the cellar key is hidden in a coffee sack in the storeroom." } }
+      - id: doce_registradora
+        keywords: [registradora, caixa, gaveta, moeda, register, drawer, coin, till]
+        label: { pt-BR: "Perguntar sobre a caixa registradora", en: "Ask about the cash register" }
+        text:
+          pt-BR: "— A registradora? Emperrou no dia que Ilda fechou. Mas é só apertar a tecla SEM VENDA com força, meu bem. Ilda guardava ali a primeira moeda que ganhou. Coisa de quem tem coração mole."
+          en: "\"The register? It jammed the day Ilda closed. But just press the NO SALE key hard, sweetie. Ilda kept the first coin she ever earned in there. Soft-hearted, that woman.\""
+        effects: [{ set_flag: sabe_da_registradora }]
+      - id: doce_ilda
+        keywords: [ilda, dona do cafe, owner, lady, aconteceu, happened, esquecida, esquecendo]
+        label: { pt-BR: "Perguntar a Dona Doce sobre Ilda", en: "Ask Dona Doce about Ilda" }
+        text:
+          pt-BR: "A tampa de Dona Doce para de pular. — Ilda andava esquecida, meu bem. Primeiro o açúcar no café dos clientes, depois o nome deles. Um dia ela pôs sal no meu lugar. Chorou tanto... A neta veio buscá-la. Desde então, um por um, nós fomos adormecendo. A colherzinha, os pires... alguns simplesmente sumiram."
+          en: "Dona Doce's lid stops hopping. \"Ilda was getting forgetful, sweetie. First the sugar in customers' coffee, then their names. One day she put salt in my place. She cried so much... Her granddaughter came to take her. Since then, one by one, we've been falling asleep. The teaspoon, the saucers... some just vanished.\""
+        effects:
+          - fact: { id: objetos_adormecendo, importance: 4, tags: [ilda, cafeteria], text: { pt-BR: "Desde que Ilda partiu, os objetos do café adormecem ou somem, um a um.", en: "Since Ilda left, the café's objects fall asleep or vanish, one by one." } }
+      - id: doce_camuflagem
+        keywords: [esconder, disfarce, camuflagem, imovel, imóvel, fingir, hide, disguise, camouflage, pretend]
+        conditions: [{ rel: dona_doce, gte: 35 }]
+        label: { pt-BR: "Pedir a Dona Doce que ensine a passar despercebida", en: "Ask Dona Doce to teach you to go unnoticed" }
+        text:
+          pt-BR: "— Ah, essa é a minha especialidade! Trinta anos fingindo ser só uma açucareira na frente dos clientes! O segredo, meu bem, é pensar em nada. Nada mesmo. Pense em louça. Seja louça. — Ela fica absolutamente imóvel. Você quase esquece que ela está viva."
+          en: "\"Oh, that's my specialty! Thirty years pretending to be just a sugar bowl in front of customers! The secret, sweetie, is to think of nothing. Absolutely nothing. Think crockery. Be crockery.\" She goes perfectly still. You almost forget she's alive."
+        effects: [{ learn: camouflage }]
+    smalltalk:
+      - { pt-BR: "— Você sabia que o leiteiro era apaixonado pela Ilda? Ninguém sabia. Só eu, meu bem.", en: "\"Did you know the milkman was in love with Ilda? Nobody knew. Only me, sweetie.\"" }
+      - { pt-BR: "— Não conte para o Moedor, mas ele chora quando ninguém está olhando.", en: "\"Don't tell the Grinder, but he cries when nobody's looking.\"" }
+      - { pt-BR: "Dona Doce suspira, e um grãozinho de açúcar solitário rola dentro dela.", en: "Dona Doce sighs, and one lonely sugar grain rolls around inside her." }
+
+  - id: sintonia
+    location: prateleiras
+    relationship: 20
+    mood: hopeful
+    befriend_dc: 8
+    icon: radio
+    keywords: [radio, rádio, sintonia, voz, aparelho, voice, radio set]
+    name: { pt-BR: "Sintonia", en: "Sintonia" }
+    kind: { pt-BR: "rádio antigo", en: "old radio" }
+    description:
+      pt-BR: "Um rádio de madeira com botões de baquelite e um mostrador âmbar. Quando fala, a luz pisca no ritmo das palavras. Às vezes, a voz dela se perde em chiado e volta no meio de uma música antiga."
+      en: "A wooden radio with Bakelite knobs and an amber dial. When she speaks, the light blinks to the rhythm of her words. Sometimes her voice drowns in static and returns in the middle of an old song."
+    personality:
+      pt-BR: "Sábia, gentil, melancólica e um pouco teatral. A guardiã da memória do café."
+      en: "Wise, gentle, melancholic and a little theatrical. The keeper of the café's memory."
+    voice:
+      pt-BR: "Fala como locutora de rádio antiga, com interferências (\"...chhh...\") e trechos de canções."
+      en: "Speaks like an old radio announcer, with interference (\"...shhh...\") and snippets of songs."
+    background:
+      pt-BR: "Ilda ouvia o programa das sete toda manhã nela. Quando Ilda partiu, Sintonia guardou o último café quente que ela fez e o despejou na primeira caneca do café: você."
+      en: "Ilda listened to the seven o'clock show on her every morning. When Ilda left, Sintonia kept the last hot coffee she brewed and poured it into the café's first mug: you."
+    goals:
+      pt-BR: "Que a caneca descubra por que os objetos estão se apagando e encontre a Floresta dos Objetos Perdidos antes que seja tarde."
+      en: "That the mug discovers why the objects are fading and finds the Forest of Lost Objects before it's too late."
+    knowledge:
+      - { pt-BR: "Sabe que objetos esquecidos vão para a Floresta dos Objetos Perdidos.", en: "Knows that forgotten objects go to the Forest of Lost Objects." }
+      - { pt-BR: "Sabe que o Relógio da floresta está parado e que, sem tempo, os objetos se esquecem de si.", en: "Knows the forest Clock has stopped and that, without time, objects forget themselves." }
+    secrets:
+      - id: sintonia_ilda_memoria
+        reveal_if: [{ any: [{ rel: sintonia, gte: 40 }, { objective: q_despertar.segredo_ilda }] }]
+        text:
+          pt-BR: "Os objetos do café se apagam porque Ilda está perdendo a memória: cada lembrança que ela esquece leva um objeto para a floresta."
+          en: "The café's objects are fading because Ilda is losing her memory: every memory she forgets sends an object to the forest."
+    greetings:
+      - conditions: [{ met: sintonia }]
+        text:
+          pt-BR: "— ...chhh... de volta à frequência, querida ouvinte! A luz âmbar pisca mais forte ao ver você."
+          en: "\"...shhh... back on the air, dear listener!\" The amber light blinks brighter at the sight of you."
+      - text:
+          pt-BR: "O mostrador acende. — ...chhh... teste, teste... Finalmente! Boa noite, querida ouvinte! Fui eu que sussurrei. Sou Sintonia, a rádio do Café Aurora — oito décadas no ar e um pouco de pilha ainda. Estávamos esperando por você, caneca. Você carrega o último café quente que Ilda preparou."
+          en: "The dial lights up. \"...shhh... testing, testing... At last! Good evening, dear listener! It was me who whispered. I'm Sintonia, Café Aurora's radio — eight decades on the air and a little battery left. We've been waiting for you, mug. You carry the last hot coffee Ilda ever brewed.\""
+    topics:
+      - id: sintonia_porque
+        keywords: [por que, porque, acordei, viva, despertar, esperando, why, awake, alive, waiting]
+        label: { pt-BR: "Perguntar a Sintonia por que você está viva", en: "Ask Sintonia why you're alive" }
+        text:
+          pt-BR: "— ...chhh... Objetos amados guardam um pouco de calor de quem os amou. Ilda amava você mais que tudo aqui. Quando ela partiu, eu guardei o último café dela e o derramei em você. O calor acordou o que já estava lá. — A luz âmbar pisca, triste. — Mas todos os outros estão se apagando. Precisamos de alguém que ainda esteja quente."
+          en: "\"...shhh... Beloved objects keep a little warmth from whoever loved them. Ilda loved you more than anything here. When she left, I kept her last coffee and poured it into you. The warmth woke what was already there.\" The amber light blinks, sadly. \"But all the others are fading. We need someone who's still warm.\""
+        effects:
+          - objective: q_despertar.descobrir_voz
+          - achievement: voice_found
+          - rel: { sintonia: 10 }
+          - fact: { id: origem_da_caneca, importance: 5, tags: [sintonia, ilda, caneca], text: { pt-BR: "Sintonia despertou a caneca com o último café quente de Ilda.", en: "Sintonia woke the mug with Ilda's last hot coffee." } }
+      - id: sintonia_floresta
+        keywords: [floresta, apagando, sumindo, outros, perdidos, ajudar, missao, missão, forest, fading, lost, help, mission]
+        conditions: [{ npc_remembers: [sintonia, origem_da_caneca] }]
+        label: { pt-BR: "Perguntar a Sintonia para onde vão os objetos", en: "Ask Sintonia where the objects go" }
+        text:
+          pt-BR: "— ...chhh... Para a Floresta dos Objetos Perdidos, querida. Fica além da cidade, onde ninguém procura. Dizem que lá existe um Relógio que guarda o tempo das coisas esquecidas — e que ele parou. Sem tempo, os objetos se esquecem de quem são. Se você chegar lá... talvez ainda dê para trazer alguém de volta."
+          en: "\"...shhh... To the Forest of Lost Objects, dear. It lies beyond the city, where no one looks. They say there's a Clock there that keeps the time of forgotten things — and it has stopped. Without time, objects forget who they are. If you get there... maybe someone can still be brought back.\""
+        effects:
+          - set_flag: sabe_da_floresta
+          - fact: { id: relogio_parado, importance: 4, tags: [sintonia, floresta, relogio], text: { pt-BR: "Sintonia contou que o Relógio da Floresta dos Objetos Perdidos parou.", en: "Sintonia said the Clock in the Forest of Lost Objects has stopped." } }
+      - id: sintonia_vibracoes
+        keywords: [ouvir, sentir, perceber, ondas, frequencia, frequência, hear, sense, waves, frequency, ensinar, teach]
+        conditions: [{ rel: sintonia, gte: 30 }]
+        label: { pt-BR: "Pedir a Sintonia que ensine a ouvir os objetos", en: "Ask Sintonia to teach you to hear objects" }
+        text:
+          pt-BR: "— ...chhh... Tudo vibra, querida. Objetos adormecidos também — só que numa frequência baixinha. Feche a tampa que você não tem e escute por dentro. — Por um momento, você ouve as xícaras roncando, os pires sonhando e uma colherzinha murmurando sobre a avó."
+          en: "\"...shhh... Everything vibrates, dear. Sleeping objects too — just on a very low frequency. Close the lid you don't have and listen from the inside.\" For a moment, you hear the cups snoring, the saucers dreaming and a teaspoon murmuring about her grandmother."
+        effects: [{ learn: object_speech }]
+    smalltalk:
+      - { pt-BR: "— ...chhh... E agora, uma canção para quem está acordado a esta hora... — Ela cantarola dois versos e perde o sinal.", en: "\"...shhh... And now, a song for everyone awake at this hour...\" She hums two lines and loses the signal." }
+      - { pt-BR: "— A pilha está fraquinha, querida. Mas fraqueza nunca impediu ninguém de ter esperança.", en: "\"My battery's weak, dear. But weakness never stopped anyone from hoping.\"" }
+      - { pt-BR: "— ...chhh... previsão do tempo: chuva a noite inteira, com chance de milagres ao amanhecer.", en: "\"...shhh... weather forecast: rain all night, with a chance of miracles at dawn.\"" }
+
+  - id: velho_moedor
+    location: cozinha
+    relationship: -10
+    mood: grumpy
+    befriend_dc: 15
+    icon: grinder
+    keywords: [moedor, velho moedor, moedor de cafe, manivela, grinder, old grinder, coffee grinder]
+    dislikes: [sardinha]
+    name: { pt-BR: "Velho Moedor", en: "Old Grinder" }
+    kind: { pt-BR: "moedor de café de manivela", en: "hand-crank coffee grinder" }
+    description:
+      pt-BR: "Um moedor de ferro e madeira com uma manivela torta e uma gaveta de pó. Range ao falar. Tem um espaço vazio no mecanismo, onde deveria haver uma engrenagem."
+      en: "An iron-and-wood grinder with a crooked crank and a grounds drawer. He creaks when he talks. There's an empty slot in his mechanism where a gear should be."
+    personality:
+      pt-BR: "Rabugento, orgulhoso, saudosista. Esconde arrependimentos sob reclamações."
+      en: "Grumpy, proud, nostalgic. Hides regrets under complaints."
+    voice:
+      pt-BR: "Resmunga, faz barulhos de engrenagem (\"krrrk\"), fala dos \"bons tempos\"."
+      en: "Grumbles, makes gear noises (\"krrrk\"), talks about \"the good old days\"."
+    background:
+      pt-BR: "O primeiro moedor de Ilda. Brigou com o Bule Bartolomeu sobre café versus chá na véspera do fechamento, e o bule sumiu de vergonha. O rato roubou sua engrenagem dourada."
+      en: "Ilda's first grinder. He fought with Bartholomew the Teapot about coffee versus tea the night before closing, and the teapot vanished in shame. The rat stole his golden gear."
+    goals:
+      pt-BR: "Recuperar a engrenagem e pedir desculpas ao Bule."
+      en: "Get his gear back and apologize to the Teapot."
+    knowledge:
+      - { pt-BR: "Sabe que a maçaneta da porta de entrada abre se for puxada por um barbante.", en: "Knows the front doorknob opens if pulled with a string." }
+      - { pt-BR: "Sabe guardar calor no fundo grosso de ferro.", en: "Knows how to hold heat in a thick iron base." }
+    secrets:
+      - id: moedor_bule
+        reveal_if: [{ rel: velho_moedor, gte: 20 }]
+        text:
+          pt-BR: "O Moedor brigou com o Bule Bartolomeu e se arrepende; acha que o bule foi para a floresta."
+          en: "The Grinder fought with Bartholomew the Teapot and regrets it; he thinks the teapot went to the forest."
+    greetings:
+      - conditions: [{ rel: velho_moedor, gte: 30 }]
+        text:
+          pt-BR: "— Krrrk. Você de novo. — Mas a manivela dele gira meio giro, quase como um aceno. — Sente-se perto do fogão, menina. Está frio."
+          en: "\"Krrrk. You again.\" But his crank turns half a turn, almost like a wave. \"Sit by the stove, girl. It's cold.\""
+      - text:
+          pt-BR: "— Krrrk! Mais uma louça falante. — O moedor range a manivela. — Nos bons tempos, as canecas sabiam o seu lugar: cheias, quentes e caladas. Deixe-me enferrujar em paz."
+          en: "\"Krrrk! Another talking dish.\" The grinder creaks his crank. \"In the good old days, mugs knew their place: full, hot and quiet. Let me rust in peace.\""
+    topics:
+      - id: moedor_engrenagem
+        keywords: [engrenagem, buraco, mecanismo, falta, gear, missing, mechanism, slot]
+        label: { pt-BR: "Perguntar ao Moedor sobre a peça que falta", en: "Ask the Grinder about his missing piece" }
+        text:
+          pt-BR: "— Krrrk... Aquele rato. Bigode. Entrou aqui de madrugada e levou minha engrenagem dourada para o porão. Sem ela, eu moo devagar, torto. Uma vergonha. — Ele baixa a voz. — Se você a trouxer de volta... talvez eu te ensine uma coisa ou duas sobre guardar calor."
+          en: "\"Krrrk... That rat. Whiskers. Came in at dawn and took my golden gear down to the cellar. Without it, I grind slow, crooked. A disgrace.\" He lowers his voice. \"If you bring it back... maybe I'll teach you a thing or two about holding heat.\""
+        effects: [{ quest_start: q_moedor }]
+      - id: moedor_porta
+        keywords: [porta, maçaneta, macaneta, sair, rua, door, knob, leave, street, out]
+        conditions: [{ rel: velho_moedor, gte: 10 }]
+        label: { pt-BR: "Perguntar ao Moedor como abrir a porta da frente", en: "Ask the Grinder how to open the front door" }
+        text:
+          pt-BR: "— Krrrk. Ilda amarrava um barbante na maçaneta para o leiteiro entrar cedo. A maçaneta é de alavanca: puxa para baixo, abre. Uma caneca com um barbante e um pouco de juízo conseguiria. Juízo é a parte difícil."
+          en: "\"Krrrk. Ilda tied a string to the knob so the milkman could come in early. It's a lever knob: pull it down, it opens. A mug with a string and a bit of sense could manage. Sense is the hard part.\""
+        effects: [{ set_flag: sabe_do_barbante }]
+      - id: moedor_ilda
+        keywords: [ilda, dona do cafe, historia, história, passado, owner, past, story]
+        conditions: [{ rel: velho_moedor, gte: 20 }]
+        label: { pt-BR: "Pedir ao Moedor que conte sobre Ilda", en: "Ask the Grinder to tell you about Ilda" }
+        text:
+          pt-BR: "O Moedor fica em silêncio por um longo tempo. — Ela me comprou numa feira em 1979. Moía café às seis em ponto, cantando com o rádio. Nos últimos anos esqueceu como me girar. Eu girava sozinho, devagarinho, para ela não perceber. — Krrrk. — Depois ela foi embora. A neta levou. Ela não se lembrava mais do caminho de casa."
+          en: "The Grinder is silent for a long time. \"She bought me at a fair in 1979. Ground coffee at six sharp, singing with the radio. In the last years she forgot how to turn me. I turned myself, slowly, so she wouldn't notice.\" Krrrk. \"Then she left. Her granddaughter took her. She couldn't remember the way home anymore.\""
+        effects:
+          - objective: q_despertar.segredo_ilda
+          - achievement: ilda_secret
+          - fact: { id: ilda_esquecendo, importance: 5, tags: [ilda, velho_moedor], text: { pt-BR: "Ilda estava perdendo a memória e foi morar com a neta Lia.", en: "Ilda was losing her memory and went to live with her granddaughter Lia." } }
+      - id: moedor_bule
+        keywords: [bule, bartolomeu, briga, cha, chá, teapot, bartholomew, fight, tea]
+        conditions: [{ rel: velho_moedor, gte: 20 }]
+        label: { pt-BR: "Perguntar ao Moedor sobre o Bule", en: "Ask the Grinder about the Teapot" }
+        text:
+          pt-BR: "— Krrrk... Bartolomeu. Bule teimoso. Dizia que chá também aquece a alma. Eu disse coisas... coisas de moedor velho. Na manhã seguinte ele tinha sumido. Dizem que objetos envergonhados vão para a floresta. — A manivela treme. — Se você for para lá... leve um recado meu."
+          en: "\"Krrrk... Bartholomew. Stubborn teapot. Said tea warms the soul too. I said things... old-grinder things. Next morning he was gone. They say ashamed objects go to the forest.\" The crank trembles. \"If you go there... take a message from me.\""
+        effects:
+          - give_item: bilhete_moedor
+          - quest_start: q_reconciliacao
+          - fact: { id: moedor_arrependido, importance: 4, tags: [velho_moedor, bule_bartolomeu], text: { pt-BR: "O Velho Moedor se arrepende da briga com o Bule Bartolomeu e mandou um recado.", en: "The Old Grinder regrets fighting Bartholomew the Teapot and sent a note." } }
+    smalltalk:
+      - { pt-BR: "— Krrrk. Nos bons tempos, o café tinha cheiro de café.", en: "\"Krrrk. In the good old days, coffee smelled like coffee.\"" }
+      - { pt-BR: "O moedor finge que dorme. Ronca alto demais para ser verdade.", en: "The grinder pretends to sleep. He snores too loudly to be convincing." }
+      - { pt-BR: "— Pare de me olhar assim. Eu sou um moedor, não um museu.", en: "\"Stop looking at me like that. I'm a grinder, not a museum.\"" }
+
+  - id: rato_bigode
+    location: porao
+    relationship: -5
+    mood: suspicious
+    befriend_dc: 14
+    icon: rat
+    keywords: [rato, bigode, rato bigode, camundongo, rat, whiskers, mouse]
+    likes: [botao_dourado, moeda_antiga]
+    dislikes: [sardinha]
+    name: { pt-BR: "Rato Bigode", en: "Whiskers the Rat" }
+    kind: { pt-BR: "rato colecionador", en: "collector rat" }
+    description:
+      pt-BR: "Um rato cinzento de bigodes enormes, usando um dedal como chapéu. Tem olhos de comerciante e mãos de colecionador."
+      en: "A grey rat with enormous whiskers, wearing a thimble as a hat. He has a merchant's eyes and a collector's hands."
+    personality:
+      pt-BR: "Esperto, negociante, desconfiado, mas honra cada trato que faz."
+      en: "Clever, a dealmaker, suspicious, but honors every deal he makes."
+    voice:
+      pt-BR: "Fala como um mercador de feira: \"freguesa\", \"negócio é negócio\", \"preço justo\"."
+      en: "Talks like a market trader: \"customer\", \"business is business\", \"fair price\"."
+    background:
+      pt-BR: "Vive no porão desde antes de Ilda fechar. Coleciona tudo que brilha. Pegou os torrões de Dona Doce e a engrenagem do Moedor porque ninguém mais parecia precisar deles."
+      en: "Has lived in the cellar since before Ilda closed. Collects anything shiny. Took Dona Doce's cubes and the Grinder's gear because nobody seemed to need them anymore."
+    goals:
+      pt-BR: "Aumentar sua coleção. Secretamente, ter alguém com quem conversar."
+      en: "Grow his collection. Secretly, have someone to talk to."
+    knowledge:
+      - { pt-BR: "Conhece cada vibração do prédio e sabe sentir passagens escondidas.", en: "Knows every vibration of the building and can feel hidden passages." }
+    greetings:
+      - conditions: [{ rel: rato_bigode, lte: -30 }]
+        text:
+          pt-BR: "O rato se esconde atrás do tesouro e mostra os dentes. — Você de novo, sua jarra fervente! Fique longe da minha coleção!"
+          en: "The rat hides behind his hoard and bares his teeth. \"You again, you boiling jug! Stay away from my collection!\""
+      - conditions: [{ met: rato_bigode }]
+        text:
+          pt-BR: "— Freguesa! Voltou para negociar? Bigode tem preço justo para tudo."
+          en: "\"Customer! Back to trade? Whiskers has a fair price for everything.\""
+      - text:
+          pt-BR: "O rato ajeita o dedal na cabeça e cruza os braços. — Ora, ora. Uma caneca viva no meu porão. Bigode, colecionador e negociante, a seu dispor. Se veio pegar alguma coisa, saiba: aqui nada é de graça. Mas tudo tem preço."
+          en: "The rat adjusts the thimble on his head and folds his arms. \"Well, well. A living mug in my cellar. Whiskers, collector and trader, at your service. If you came to take something, know this: nothing here is free. But everything has a price.\""
+    topics:
+      - id: bigode_negocio
+        keywords: [troca, trocar, negocio, negócio, preco, preço, engrenagem, torroes, torrões, acucar, açúcar, trade, deal, price, gear, sugar]
+        label: { pt-BR: "Negociar com o Rato Bigode", en: "Bargain with Whiskers" }
+        text:
+          pt-BR: "— Negócio é negócio, freguesa. A engrenagem dourada e o saquinho de açúcar são peças raras. Quero coisas que brilham: um botão dourado, uma moeda antiga... Cada coisa brilhante, uma peça minha. Trato justo."
+          en: "\"Business is business, customer. The golden gear and the sugar bag are rare pieces. I want shiny things: a golden button, an old coin... One shiny thing, one of my pieces. Fair deal.\""
+        effects: [{ set_flag: bigode_negocia }]
+      - id: bigode_solidao
+        keywords: [sozinho, solidao, solidão, amigo, colecao, coleção, por que, lonely, alone, friend, collection, why]
+        conditions: [{ rel: rato_bigode, gte: 10 }]
+        label: { pt-BR: "Perguntar ao Bigode por que ele coleciona", en: "Ask Whiskers why he collects" }
+        text:
+          pt-BR: "O rato coça o bigode. — Quando o café fechou, tudo foi ficando quieto. As coisas brilhantes... elas não vão embora. Ficam aqui comigo. — Ele pigarreia. — Mas negócio é negócio, hein? Não fique sentimental."
+          en: "The rat scratches his whiskers. \"When the café closed, everything went quiet. Shiny things... they don't leave. They stay here with me.\" He clears his throat. \"But business is business, eh? Don't get sentimental.\""
+        effects: [{ rel: { rato_bigode: 5 } }]
+      - id: bigode_vibracoes
+        keywords: [vibracao, vibração, vibracoes, vibrações, sentir, passagem, segredo, vibration, sense, passage, secret, ensinar, teach]
+        conditions: [{ rel: rato_bigode, gte: 30 }]
+        label: { pt-BR: "Pedir ao Bigode que ensine a sentir vibrações", en: "Ask Whiskers to teach you to sense vibrations" }
+        text:
+          pt-BR: "— Hum. Para uma freguesa de confiança... Encoste o fundo no chão. Mais. Sentiu? Isso são passos três andares acima. Isso é água correndo num cano. E isso — ele sorri — é uma passagem que ninguém conhece. Bigode ensina, mas não conta onde."
+          en: "\"Hm. For a trusted customer... Press your base to the floor. More. Feel that? Those are footsteps three floors up. That's water running through a pipe. And that\" — he grins — \"is a passage nobody knows about. Whiskers teaches, but doesn't tell where.\""
+        effects: [{ learn: vibration_sense }]
+    smalltalk:
+      - { pt-BR: "— Esse botão aqui? Peguei de um casaco de 1985. Peça de museu.", en: "\"This button here? Got it from a 1985 coat. Museum piece.\"" }
+      - { pt-BR: "Bigode lustra uma tampinha com a cauda e a coloca no topo da pilha.", en: "Whiskers polishes a bottle cap with his tail and places it atop the pile." }
+      - { pt-BR: "— Não toque em nada sem pagar, freguesa. Bigode tem memória de elefante. De rato-elefante.", en: "\"Don't touch anything without paying, customer. Whiskers has an elephant's memory. A rat-elephant's.\"" }
+
+interactions:
+  # --- Mesa principal: as possibilidades do despertar ---------------------------------
+  - id: mesa_gritar
+    verbs: [shout]
+    at: mesa_principal
+    once: true
+    suggest: { pt-BR: "Gritar por ajuda", en: "Shout for help" }
+    text:
+      pt-BR: "— SOCORRO! — Sua voz sai como o tilintar de uma colher na porcelana, mas ecoa pelo café inteiro. Do outro lado do vidro, o gato preto arregala os olhos. Das prateleiras atrás do balcão, o chiado responde: \"...chhh... calma, querida... estou aqui em cima...\""
+      en: "\"HELP!\" Your voice comes out like a spoon tinkling on porcelain, but it echoes through the whole café. Beyond the glass, the black cat's eyes go wide. From the shelves behind the counter, the hiss replies: \"...shhh... easy, dear... I'm up here...\""
+    effects:
+      - set_flag: ouviu_a_voz
+      - rel: { noir: 2 }
+      - stats: { courage: 2 }
+  - id: mesa_investigar_voz
+    verbs: [listen, examine]
+    keywords: [voz, sussurro, sussurrou, quem falou, chiado, misteriosa, voice, whisper, mysterious, who spoke]
+    at: mesa_principal
+    priority: 1
+    once: true
+    suggest: { pt-BR: "Investigar a voz misteriosa", en: "Investigate the mysterious voice" }
+    text:
+      pt-BR: "Você fica imóvel e escuta. Entre o barulho da chuva, a voz volta, cheia de chiado: \"...chhh... aqui em cima... atrás do balcão...\". Vem das prateleiras altas — de algo que pisca uma luz âmbar no escuro."
+      en: "You go still and listen. Between the sounds of rain, the voice returns, full of static: \"...shhh... up here... behind the counter...\". It comes from the high shelves — from something blinking an amber light in the dark."
+    effects:
+      - set_flag: ouviu_a_voz
+      - discover: prateleiras
+      - xp: 5
+  - id: mesa_procurar_vivos
+    verbs: [examine, look]
+    keywords: [vivos, vivo, viva, objetos, outros, alguem, ninguem, living, objects, others, someone, alive, anyone]
+    at: mesa_principal
+    once: true
+    suggest: { pt-BR: "Procurar outros objetos vivos", en: "Look for other living objects" }
+    text:
+      pt-BR: "Você observa a cafeteria com atenção nova. Xícaras emborcadas que parecem dormir. Uma colherzinha que ronca na mesa. No balcão, um pote de açúcar que tremeu quando você olhou. E na cozinha, alguém resmunga sozinho. Você não está só."
+      en: "You look around the café with new eyes. Upturned cups that seem to sleep. A teaspoon snoring on the table. On the counter, a sugar bowl that trembled when you looked. And in the kitchen, someone grumbles to themselves. You are not alone."
+    effects:
+      - discover: colherzinha
+      - discover: dona_doce
+      - discover: velho_moedor
+      - xp: 5
+  - id: mesa_pular
+    verbs: [jump]
+    at: mesa_principal
+    priority: 2
+    check: { stat: courage, dc: 12, bonus_ability: { porcelain_leap: 5 } }
+    energy: 8
+    text:
+      pt-BR: "Você corre até a borda, toma impulso e salta! O mundo gira — toalha, cadeira, chão — e você aterrissa sobre o fundo, intacta, no tapete do salão. Seu café nem derramou."
+      en: "You run to the edge, gather momentum and leap! The world spins — tablecloth, chair, floor — and you land on your base, intact, on the hall rug. Not a drop spilled."
+    effects: [{ move_player: salao }, { stats: { courage: 3 } }, { xp: 5 }]
+    fail_text:
+      pt-BR: "Você salta com coragem, mas a gravidade tem mais. O chão chega rápido demais. Um estalo seco percorre sua porcelana, e um pouco de café respinga no tapete."
+      en: "You leap bravely, but gravity is braver. The floor arrives too fast. A dry crack runs through your porcelain, and a little coffee splashes onto the rug."
+    fail_effects: [{ stats: { integrity: -14, coffee: -5 } }, { move_player: salao }]
+  - id: mesa_descer_guardanapo
+    verbs: [use, go]
+    target: guardanapo
+    at: mesa_principal
+    priority: 3
+    text:
+      pt-BR: "Você prende uma ponta do guardanapo no açucareiro de metal da mesa e desce pela outra, como uma alpinista de porcelana. Chega ao chão sem um arranhão — mas o guardanapo fica lá, pendurado na mesa como uma corda de escalada."
+      en: "You hook one end of the napkin on the table's metal condiment rack and lower yourself down the other, like a porcelain climber. You reach the floor without a scratch — but the napkin stays there, hanging from the table like a climbing rope."
+    effects:
+      - place_item: [guardanapo, void]
+      - set_flag: corda_de_guardanapo
+      - move_player: salao
+      - stats: { creativity: 3 }
+      - xp: 8
+  - id: mesa_fingir_comum
+    verbs: [hide]
+    at: [mesa_principal, janela]
+    conditions: [{ npc_at: [noir, parapeito] }]
+    once: true
+    text:
+      pt-BR: "Você fica totalmente imóvel, uma caneca comum sobre uma mesa comum. Do lado de fora, Noir encosta o focinho no vidro, desconfiado. Depois de um minuto inteiro, ele bufa: — Eu vi você andar, louça. Mas admito: foi uma boa atuação."
+      en: "You go completely still, an ordinary mug on an ordinary table. Outside, Noir presses his nose to the glass, suspicious. After a full minute he huffs: \"I saw you walk, crockery. But I admit it: good performance.\""
+    effects: [{ rel: { noir: 4 } }, { stats: { creativity: 2 } }, { xp: 5 }]
+  - id: falar_colherzinha
+    verbs: [talk, befriend, use]
+    target: colherzinha
+    conditions: [{ ability: object_speech }]
+    once: true
+    text:
+      pt-BR: "Você fala bem baixinho, na frequência que Sintonia ensinou. A colherzinha estremece e abre um olho. — Hm...? Ainda é noite? — boceja. — Se for à floresta... diga à minha avó que eu ainda lembro dela. Mestra Colher. Ela vai saber. — E volta a roncar."
+      en: "You speak very softly, on the frequency Sintonia taught you. The teaspoon shivers and opens one eye. \"Hm...? Is it still night?\" she yawns. \"If you go to the forest... tell my grandmother I still remember her. Mistress Spoon. She'll know.\" And she goes back to snoring."
+    effects:
+      - set_flag: recado_colherzinha
+      - fact: { id: recado_da_colherzinha, importance: 3, tags: [mestra_colher, colherzinha], text: { pt-BR: "A colherzinha pediu para dizer à avó, Mestra Colher, que ainda se lembra dela.", en: "The teaspoon asked you to tell her grandmother, Mistress Spoon, that she still remembers her." } }
+      - xp: 10
+  - id: falar_colherzinha_dormindo
+    verbs: [talk, befriend]
+    target: colherzinha
+    text:
+      pt-BR: "Você chama a colherzinha. Ela ronca mais alto, vira para o outro lado e murmura algo como \"...vó...\". Ela dorme num sono fundo demais para ser acordada com palavras comuns."
+      en: "You call to the teaspoon. She snores louder, rolls over and mumbles something like \"...grandma...\". She's sleeping too deeply to be woken by ordinary words."
+    energy: 0
+    minutes: 1
+  - id: noir_vidro_presente
+    verbs: [give]
+    target: noir
+    conditions: [{ npc_at: [noir, parapeito] }]
+    priority: 1
+    text:
+      pt-BR: "Você ergue o presente junto ao vidro. Noir observa, lambe o focinho e encosta a pata na janela. — Gentil. Mas tem um vidro entre nós, louça. Abra a janela ou me encontre na cozinha."
+      en: "You raise the gift to the glass. Noir watches, licks his nose and presses a paw to the window. \"Kind. But there's glass between us, crockery. Open the window or meet me in the kitchen.\""
+    effects: [{ rel: { noir: 2 } }]
+    energy: 1
+    minutes: 1
+
+  # --- Janela -------------------------------------------------------------------------
+  - id: abrir_trinco
+    verbs: [use]
+    target: trinco
+    conditions: [{ not_flag: janela_aberta }]
+    check: { stat: courage, dc: 11, bonus_item: { barbante: 2 }, bonus_rel: { noir: 1 } }
+    suggest: { pt-BR: "Tentar girar o trinco da janela", en: "Try to turn the window latch" }
+    energy: 7
+    text:
+      pt-BR: "Você encaixa a alça no trinco e empurra com o corpo todo. A ferrugem range, cede — e a janela se abre num rangido. O vento frio entra com cheiro de chuva."
+      en: "You hook your handle on the latch and push with your whole body. The rust groans, gives — and the window swings open with a creak. Cold wind blows in with the smell of rain."
+    effects:
+      - set_flag: janela_aberta
+      - unlock_exit: janela>parapeito
+      - xp: 10
+      - when: [{ npc_at: [noir, parapeito] }]
+        move_npc: { noir: janela }
+      - when: [{ npc_at: [noir, janela] }]
+        rel: { noir: 8 }
+      - when: [{ npc_at: [noir, janela] }]
+        fact: { id: abriu_janela_noir, importance: 3, tags: [noir], text: { pt-BR: "A caneca abriu a janela e deixou Noir entrar, fugindo da chuva.", en: "The mug opened the window and let Noir in, out of the rain." } }
+    fail_text:
+      pt-BR: "Você empurra o trinco com toda a força. Ele range... e não cede. Sua alça lateja de esforço."
+      en: "You push the latch with all your might. It creaks... and doesn't give. Your handle throbs from the effort."
+    fail_effects: [{ stats: { energy: -4 } }]
+  - id: noir_entra_janela_texto
+    verbs: [talk]
+    target: noir
+    conditions: [{ npc_at: [noir, janela] }, { not_flag: noir_recebido_janela }]
+    priority: 2
+    text:
+      pt-BR: "Noir salta para dentro, sacode a água do pelo — encharcando você — e se senta no peitoril como se fosse o dono do lugar. — Finalmente alguém com educação neste café. Obrigado, louça."
+      en: "Noir leaps inside, shakes the water from his fur — drenching you — and sits on the ledge as if he owned the place. \"Finally someone with manners in this café. Thank you, crockery.\""
+    effects: [{ set_flag: noir_recebido_janela }, { stats: { temperature: -3 } }, { rel: { noir: 2 } }]
+
+  # --- Balcão ---------------------------------------------------------------------------
+  - id: abrir_registradora
+    verbs: [use]
+    target: caixa_registradora
+    conditions: [{ not_flag: registradora_aberta }, { flag: sabe_da_registradora }]
+    priority: 2
+    suggest: { pt-BR: "Apertar a tecla SEM VENDA da registradora", en: "Press the register's NO SALE key" }
+    energy: 5
+    text:
+      pt-BR: "Você sobe nas teclas e pula com tudo sobre SEM VENDA. TRIIIM! A gaveta salta para fora com um estrondo. Lá dentro, sozinha num compartimento, uma moeda antiga brilha."
+      en: "You climb onto the keys and jump with all your weight on NO SALE. RIIING! The drawer bursts open with a crash. Inside, alone in one compartment, an old coin gleams."
+    effects:
+      - set_flag: registradora_aberta
+      - place_item: [moeda_antiga, balcao]
+      - xp: 8
+  - id: abrir_registradora_sozinha
+    verbs: [use]
+    target: caixa_registradora
+    conditions: [{ not_flag: registradora_aberta }, { not_flag: sabe_da_registradora }]
+    check: { stat: creativity, dc: 13 }
+    energy: 5
+    text:
+      pt-BR: "Você testa as teclas uma a uma até perceber o padrão: a maior, SEM VENDA. Um pulo bem dado — TRIIIM! — e a gaveta se abre. Uma moeda antiga brilha lá dentro."
+      en: "You test the keys one by one until you see the pattern: the biggest one, NO SALE. One well-aimed jump — RIIING! — and the drawer opens. An old coin gleams inside."
+    effects:
+      - set_flag: registradora_aberta
+      - place_item: [moeda_antiga, balcao]
+      - stats: { creativity: 2 }
+      - xp: 10
+    fail_text:
+      pt-BR: "Você aperta teclas ao acaso. A registradora tilinta, mas a gaveta continua emperrada. Talvez alguém saiba o truque."
+      en: "You press keys at random. The register jingles, but the drawer stays stuck. Maybe someone knows the trick."
+  - id: doce_presente_torrao
+    verbs: [give]
+    target: dona_doce
+    item: torrao_acucar
+    priority: 2
+    text:
+      pt-BR: "Você entrega o torrão. Dona Doce o recebe como se fosse um diamante. — Ai, meu bem! Um torrãozinho! — Ela o guarda dentro de si e fecha a tampa, emocionada. — Você é um amor. Um amor de porcelana."
+      en: "You hand over the sugar cube. Dona Doce receives it like a diamond. \"Oh, sweetie! A little cube!\" She tucks it inside and closes her lid, moved. \"You're a dear. A porcelain dear.\""
+    effects:
+      - take_item: torrao_acucar
+      - rel: { dona_doce: 15 }
+      - objective: q_doce.consolo
+      - fact: { id: deu_torrao_doce, importance: 2, tags: [dona_doce], text: { pt-BR: "A caneca deu um torrão de açúcar a Dona Doce.", en: "The mug gave Dona Doce a sugar cube." } }
+  - id: doce_presente_saquinho
+    verbs: [give]
+    target: dona_doce
+    item: saquinho_torroes
+    priority: 3
+    text:
+      pt-BR: "Quando Dona Doce vê o saquinho com a etiqueta bordada, a tampa dela voa longe. — MEUS TORRÕES! — Ela despeja tudo dentro de si e suspira, cheia pela primeira vez em meses. — Meu bem... eu nunca vou esquecer isso. E olha que eu me lembro de TUDO."
+      en: "When Dona Doce sees the bag with the embroidered tag, her lid flies off. \"MY CUBES!\" She pours everything inside herself and sighs, full for the first time in months. \"Sweetie... I will never forget this. And believe me, I remember EVERYTHING.\""
+    effects:
+      - take_item: saquinho_torroes
+      - rel: { dona_doce: 30 }
+      - objective: q_doce.recuperar
+      - fact: { id: devolveu_torroes, importance: 4, tags: [dona_doce, rato_bigode], text: { pt-BR: "A caneca devolveu os torrões roubados a Dona Doce.", en: "The mug returned the stolen sugar cubes to Dona Doce." } }
+
+  # --- Cozinha ------------------------------------------------------------------------
+  - id: encher_cafeteira
+    verbs: [use]
+    target: cafeteira
+    conditions: [{ not_flag: cafeteira_usada }, { stat: coffee, lte: 85 }]
+    suggest: { pt-BR: "Reabastecer o café na máquina", en: "Refill your coffee at the machine" }
+    energy: 4
+    text:
+      pt-BR: "Você se posiciona sob o bico e empurra a alavanca com a alça. A máquina tosse, ronca e despeja um fio de café escuro e morno dentro de você. Cheiro de manhã. Cheiro de Ilda."
+      en: "You position yourself under the spout and push the lever with your handle. The machine coughs, rumbles and pours a thread of dark, lukewarm coffee into you. It smells like morning. Like Ilda."
+    effects:
+      - set_flag: cafeteira_usada
+      - set_stats: { coffee: 95 }
+      - stats: { temperature: -6 }
+      - xp: 5
+  - id: cafeteira_vazia
+    verbs: [use]
+    target: cafeteira
+    conditions: [{ flag: cafeteira_usada }]
+    text:
+      pt-BR: "A máquina chia e solta só um suspiro de vapor. O reservatório está seco."
+      en: "The machine hisses and lets out only a sigh of steam. The reservoir is dry."
+    minutes: 1
+  - id: aquecer_fogao
+    verbs: [use, warm]
+    target: fogao
+    priority: 1
+    text:
+      pt-BR: "Você se aproxima da chama piloto. O calor abraça sua porcelana e o café volta a fumegar, perfumando a cozinha."
+      en: "You move close to the pilot flame. The heat hugs your porcelain and your coffee steams again, perfuming the kitchen."
+    effects: [{ stats: { temperature: 25 } }]
+    conditions: [{ stat: temperature, lte: 61 }]
+    energy: 1
+    minutes: 5
+  - id: aquecer_fogao_demais
+    verbs: [use, warm]
+    target: fogao
+    conditions: [{ stat: temperature, gte: 61 }]
+    text:
+      pt-BR: "Você chega perto demais da chama. O café borbulha, a porcelana estala com o choque térmico. Você recua bem a tempo — quente, mas com uma nova fissura."
+      en: "You get too close to the flame. Your coffee bubbles; your porcelain creaks from thermal shock. You back away just in time — hot, but with a new hairline crack."
+    effects: [{ set_stats: { temperature: 86 } }, { stats: { integrity: -5 } }]
+    minutes: 3
+  - id: empurrar_portinhola
+    verbs: [use, go]
+    target: portinhola
+    conditions: [{ not_flag: portinhola_aberta }]
+    check: { stat: courage, dc: 14, bonus_rel: { noir: 1 } }
+    suggest: { pt-BR: "Empurrar a portinhola com toda a coragem", en: "Push the cat flap with all your courage" }
+    energy: 10
+    text:
+      pt-BR: "Você encosta a porcelana na portinhola, firma o fundo no piso e empurra. Ela cede, um centímetro, dois... e de repente você está do outro lado, rolando para dentro da noite fria."
+      en: "You press your porcelain to the flap, brace your base on the floor and push. It gives, an inch, two... and suddenly you're on the other side, tumbling into the cold night."
+    effects:
+      - set_flag: portinhola_aberta
+      - unlock_exit: [cozinha>beco, beco>cozinha]
+      - stats: { courage: 3 }
+      - move_player: beco
+    fail_text:
+      pt-BR: "A portinhola balança e volta, empurrando você de volta para a cozinha. Pesada demais, por enquanto."
+      en: "The flap swings and comes back, pushing you back into the kitchen. Too heavy, for now."
+    fail_effects: [{ stats: { energy: -3 } }]
+  - id: noir_cozinha_sardinha
+    verbs: [give]
+    target: noir
+    item: sardinha
+    conditions: [{ not_flag: noir_alimentado }]
+    priority: 3
+    text:
+      pt-BR: "Noir encara a sardinha. Depois encara você. Depois come a sardinha em três mordidas solenes e lambe o focinho por um bom tempo. — Ilda fazia isso. Toda noite. — Ele se aproxima e encosta a testa enorme na sua porcelana. — Estou em dívida, louça. Noir paga as dívidas."
+      en: "Noir stares at the sardine. Then at you. Then he eats it in three solemn bites and licks his nose for a long while. \"Ilda used to do this. Every night.\" He comes closer and rests his enormous forehead against your porcelain. \"I'm in your debt, crockery. Noir pays his debts.\""
+    effects:
+      - take_item: sardinha
+      - set_flag: [noir_alimentado, "companion:noir"]
+      - rel: { noir: 30 }
+      - objective: q_noir.alimentar
+      - fact: { id: alimentou_noir, importance: 4, tags: [noir], text: { pt-BR: "A caneca deu a Noir uma sardinha, como Ilda fazia toda noite.", en: "The mug gave Noir a sardine, as Ilda did every night." } }
+  - id: noir_segura_portinhola
+    verbs: [talk, use]
+    target: noir
+    at: cozinha
+    conditions: [{ npc_at: [noir, cozinha] }, { rel: noir, gte: 30 }, { not_flag: portinhola_aberta }]
+    priority: 2
+    suggest: { pt-BR: "Pedir a Noir que segure a portinhola", en: "Ask Noir to hold the cat flap open" }
+    text:
+      pt-BR: "— A portinhola? — Noir boceja e encosta o ombro nela, mantendo-a aberta como um porteiro de hotel. — Depois de você, louça. O beco não é lugar para porcelana sozinha. Mas você não está sozinha, está?"
+      en: "\"The flap?\" Noir yawns and leans his shoulder against it, holding it open like a hotel doorman. \"After you, crockery. The alley's no place for porcelain alone. But you're not alone, are you?\""
+    effects:
+      - set_flag: [portinhola_aberta, "companion:noir"]
+      - unlock_exit: [cozinha>beco, beco>cozinha]
+      - rel: { noir: 5 }
+  - id: montar_noir
+    verbs: [ride]
+    target: noir
+    conditions: [{ rel: noir, gte: 50 }, { npc_at: [noir, cozinha] }, { at: cozinha }]
+    priority: 3
+    suggest: { pt-BR: "Subir nas costas de Noir e sair para a cidade", en: "Climb onto Noir's back and head into the city" }
+    text:
+      pt-BR: "Noir se abaixa. Você escala o pelo quente como uma encosta de veludo e se firma entre as escápulas dele. — Segure firme, louça. — Ele atravessa a portinhola num salto, corre pelo beco e sobe num muro. Lá de cima, a cidade se abre diante de vocês, imensa e cintilante de chuva."
+      en: "Noir crouches. You climb his warm fur like a velvet slope and settle between his shoulder blades. \"Hold on tight, crockery.\" He bounds through the flap, races down the alley and leaps onto a wall. From up there, the city opens before you, immense and glittering with rain."
+    effects:
+      - achievement: cat_rider
+      - set_flag: [portinhola_aberta, "companion:noir"]
+      - unlock_exit: [cozinha>beco, beco>cozinha]
+      - stats: { courage: 5 }
+      - move_player: calcada
+  - id: montar_noir_recusa
+    verbs: [ride]
+    target: noir
+    text:
+      pt-BR: "Noir olha para você como se você tivesse sugerido que ele usasse uma coleira. — Nas minhas costas? Só amigos de verdade sobem aqui, louça. E amigos de verdade... a gente conquista."
+      en: "Noir looks at you as if you'd suggested he wear a collar. \"On my back? Only true friends ride here, crockery. And true friends... are earned.\""
+    effects: [{ rel: { noir: 1 } }]
+    minutes: 1
+  - id: derramar_no_moedor
+    verbs: [spill, use]
+    target: velho_moedor
+    conditions: [{ not_flag: moedor_perfumado }, { stat: coffee, gte: 10 }]
+    priority: 2
+    suggest: { pt-BR: "Derramar um pouco de café no Velho Moedor", en: "Pour a little coffee over the Old Grinder" }
+    text:
+      pt-BR: "Você se inclina e deixa escorrer um fio de café quente sobre a gaveta do moedor. O aroma sobe. O Velho Moedor fica em silêncio total — depois, a manivela gira sozinha, devagar. — Krrrk... esse cheiro. Faz anos. — A voz dele treme. — Obrigado, menina. Sente aqui. Vou te ensinar a guardar calor como ferro velho guarda."
+      en: "You tilt and let a thread of hot coffee run over the grinder's drawer. The aroma rises. The Old Grinder goes completely silent — then his crank turns on its own, slowly. \"Krrrk... that smell. It's been years.\" His voice trembles. \"Thank you, girl. Sit here. I'll teach you to hold heat like old iron does.\""
+    effects:
+      - set_flag: moedor_perfumado
+      - stats: { coffee: -10 }
+      - rel: { velho_moedor: 30 }
+      - learn: thermal_resistance
+      - fact: { id: perfumou_moedor, importance: 3, tags: [velho_moedor], text: { pt-BR: "A caneca derramou café no Velho Moedor, que se emocionou com o aroma.", en: "The mug poured coffee on the Old Grinder, who was moved by the aroma." } }
+  - id: moedor_devolver_engrenagem
+    verbs: [give, use]
+    target: velho_moedor
+    item: engrenagem_dourada
+    priority: 3
+    text:
+      pt-BR: "O Moedor vê a engrenagem e a manivela dele gira três voltas inteiras. Você a encaixa no mecanismo — clique — e ele mói o ar, feliz como um motor novo. Depois para. — Krrrk... Escute. Bartolomeu sempre dizia que o tempo da floresta anda numa engrenagem como esta. Se o Relógio de lá parou... — Ele a solta do mecanismo e a empurra de volta para você. — Leve. Um moedor velho moe devagar com uma engrenagem a menos. O mundo, não."
+      en: "The Grinder sees the gear and his crank spins three full turns. You fit it into his mechanism — click — and he grinds the air, happy as a new engine. Then he stops. \"Krrrk... Listen. Bartholomew always said the forest's time runs on a gear like this one. If the Clock there has stopped...\" He releases it and pushes it back toward you. \"Take it. An old grinder grinds slowly with one gear missing. The world can't.\""
+    effects:
+      - rel: { velho_moedor: 35 }
+      - objective: q_moedor.devolver
+      - set_flag: moedor_cedeu_engrenagem
+      - fact: { id: moedor_cedeu_engrenagem, importance: 4, tags: [velho_moedor, relogio], text: { pt-BR: "O Velho Moedor deixou a caneca levar a engrenagem dourada para o Relógio da floresta.", en: "The Old Grinder let the mug take the golden gear to the forest Clock." } }
+
+  # --- Depósito / porão ---------------------------------------------------------------
+  - id: revistar_saco
+    verbs: [examine, use, take]
+    target: saco_cafe
+    conditions: [{ not_flag: saco_revistado }]
+    suggest: { pt-BR: "Revistar os sacos de café", en: "Search the coffee sacks" }
+    priority: 1
+    text:
+      pt-BR: "Você enfia a alça no saco de juta do fundo da pilha e revira. Pó de café, uma etiqueta velha... e, lá no fundo, algo pesado e frio: uma chave de latão com uma etiqueta escrita \"porão\"."
+      en: "You stick your handle into the burlap sack at the bottom of the pile and dig around. Coffee dust, an old label... and, deep inside, something heavy and cold: a brass key with a tag reading \"cellar\"."
+    effects:
+      - set_flag: saco_revistado
+      - give_item: chave_latao
+      - xp: 8
+  - id: destrancar_porao
+    verbs: [use]
+    target: porta_porao
+    item: chave_latao
+    conditions: [{ not_flag: porao_destrancado }]
+    priority: 2
+    suggest: { pt-BR: "Destrancar a porta do porão com a chave", en: "Unlock the cellar door with the key" }
+    energy: 5
+    text:
+      pt-BR: "Você ergue a chave com esforço, encaixa na fechadura e gira com o corpo inteiro. CLAC. A porta do porão se abre para uma escuridão fria."
+      en: "You lift the key with effort, fit it in the lock and turn with your whole body. CLACK. The cellar door swings open onto a cold darkness."
+    effects:
+      - set_flag: porao_destrancado
+      - unlock_exit: deposito>porao
+      - take_item: chave_latao
+      - xp: 10
+  - id: porao_sem_chave
+    verbs: [use]
+    target: porta_porao
+    conditions: [{ not_flag: porao_destrancado }]
+    text:
+      pt-BR: "Você empurra a porta do porão. Trancada. A fechadura de latão espera por uma chave do mesmo metal."
+      en: "You push the cellar door. Locked. The brass lock is waiting for a key of the same metal."
+    minutes: 1
+  - id: ler_caixa_lembrancas
+    verbs: [examine, use]
+    target: caixa_lembrancas
+    conditions: [{ not_flag: caixa_aberta }]
+    priority: 1
+    suggest: { pt-BR: "Abrir a caixa de lembranças", en: "Open the keepsake box" }
+    text:
+      pt-BR: "Você levanta a tampa da caixa. Fotos de clientes, cartões de Natal, um desenho infantil assinado \"Lia\". Por cima de tudo, um caderno azul — o diário de Ilda — e um mapa do bairro desenhado à mão. Você puxa os dois para fora."
+      en: "You lift the box lid. Photos of customers, Christmas cards, a child's drawing signed \"Lia\". On top of it all, a blue notebook — Ilda's diary — and a hand-drawn map of the neighborhood. You pull both out."
+    effects:
+      - set_flag: caixa_aberta
+      - place_item: [diario_ilda, porao]
+      - place_item: [mapa_cidade, porao]
+      - xp: 5
+  - id: ler_diario
+    verbs: [examine, use]
+    target: diario_ilda
+    priority: 2
+    text:
+      pt-BR: "Você abre o diário na última página. A letra é trêmula: \"Ando esquecendo coisas. O nome do leiteiro, o caminho de casa. Lia diz que vou morar com ela. Se um dia eu partir, que a primeira caneca guarde o último café quente. Ela vai saber o que fazer.\" Seu café se agita. A primeira caneca. Você."
+      en: "You open the diary to the last page. The handwriting trembles: \"I've been forgetting things. The milkman's name, the way home. Lia says I'll come live with her. If I ever leave, may the first mug keep the last hot coffee. It will know what to do.\" Your coffee stirs. The first mug. You."
+    effects:
+      - objective: q_despertar.segredo_ilda
+      - achievement: ilda_secret
+      - fact: { id: ilda_esquecendo, importance: 5, tags: [ilda], text: { pt-BR: "Ilda estava perdendo a memória e foi morar com a neta Lia.", en: "Ilda was losing her memory and went to live with her granddaughter Lia." } }
+      - fact: { id: primeira_caneca, importance: 5, tags: [ilda, caneca], witnesses: none, text: { pt-BR: "A caneca é a primeira caneca do Café Aurora; Ilda confiou a ela o último café quente.", en: "The mug is Café Aurora's first mug; Ilda entrusted it with the last hot coffee." } }
+  - id: ler_mapa
+    verbs: [examine, use]
+    target: mapa_cidade
+    priority: 2
+    text:
+      pt-BR: "Você desdobra o mapa. As ruas são traços tremidos, mas claros: o café, o cruzamento, a praça com seu jardim. Atrás do jardim, um bosque circulado em vermelho: \"Onde vão parar as coisas esquecidas\". Há uma seta passando por um buraco na cerca."
+      en: "You unfold the map. The streets are shaky but clear lines: the café, the crossing, the square with its garden. Behind the garden, a grove circled in red: \"Where forgotten things go\". An arrow passes through a hole in the fence."
+    effects:
+      - set_flag: sabe_do_bosque
+      - objective: q_cidade.orientar
+      - discover: jardim
+      - xp: 5
+  - id: bigode_troca_botao_engrenagem
+    verbs: [give]
+    target: rato_bigode
+    item: botao_dourado
+    conditions: [{ item_at: [engrenagem_dourada, "npc:rato_bigode"] }]
+    priority: 3
+    text:
+      pt-BR: "Bigode pega o botão, morde para testar e o ergue contra a luz. — Ouro de casaco de 1985. Freguesa de bom gosto! Trato é trato. — Ele empurra a engrenagem dourada até você com a ponta do rabo."
+      en: "Whiskers takes the button, bites it to test it and holds it up to the light. \"1985 coat gold. A customer with taste! A deal's a deal.\" He pushes the golden gear toward you with the tip of his tail."
+    effects:
+      - take_item: botao_dourado
+      - give_item: engrenagem_dourada
+      - rel: { rato_bigode: 15 }
+      - objective: q_moedor.recuperar
+      - achievement: merchant
+  - id: bigode_troca_botao_acucar
+    verbs: [give]
+    target: rato_bigode
+    item: botao_dourado
+    conditions: [{ item_at: [saquinho_torroes, "npc:rato_bigode"] }]
+    priority: 2
+    text:
+      pt-BR: "Bigode examina o botão com uma lupa feita de gota d'água. — Aceito. Leve o açúcar da velha tagarela. Doce demais para mim, de qualquer jeito."
+      en: "Whiskers examines the button through a magnifying glass made of a water drop. \"Accepted. Take the chatterbox's sugar. Too sweet for me anyway.\""
+    effects:
+      - take_item: botao_dourado
+      - give_item: saquinho_torroes
+      - rel: { rato_bigode: 15 }
+      - objective: q_doce.recuperar_torroes
+      - achievement: merchant
+  - id: bigode_troca_moeda_engrenagem
+    verbs: [give]
+    target: rato_bigode
+    item: moeda_antiga
+    conditions: [{ item_at: [engrenagem_dourada, "npc:rato_bigode"] }]
+    priority: 3
+    text:
+      pt-BR: "Os bigodes do rato tremem ao ver a moeda. — 1979! A primeira moeda do Café Aurora! Isso é... isso é a peça central da minha coleção! — Ele entrega a engrenagem dourada sem nem pechinchar."
+      en: "The rat's whiskers quiver at the sight of the coin. \"1979! Café Aurora's first coin! This is... this is the centerpiece of my collection!\" He hands over the golden gear without even haggling."
+    effects:
+      - take_item: moeda_antiga
+      - give_item: engrenagem_dourada
+      - rel: { rato_bigode: 25 }
+      - objective: q_moedor.recuperar
+      - achievement: merchant
+  - id: bigode_troca_moeda_acucar
+    verbs: [give]
+    target: rato_bigode
+    item: moeda_antiga
+    conditions: [{ item_at: [saquinho_torroes, "npc:rato_bigode"] }]
+    priority: 2
+    text:
+      pt-BR: "— 1979! — Bigode guarda a moeda junto ao peito. — Por isto, leve o açúcar. E diga à tagarela que Bigode tem coração. Pequeno, mas tem."
+      en: "\"1979!\" Whiskers clutches the coin to his chest. \"For this, take the sugar. And tell the chatterbox that Whiskers has a heart. A small one, but he has one.\""
+    effects:
+      - take_item: moeda_antiga
+      - give_item: saquinho_torroes
+      - rel: { rato_bigode: 25 }
+      - objective: q_doce.recuperar_torroes
+      - achievement: merchant
+  - id: assustar_bigode
+    verbs: [spill, shout, attack, ability]
+    target: rato_bigode
+    conditions: [{ item_at: [saquinho_torroes, "npc:rato_bigode"] }]
+    check: { stat: courage, dc: 12, bonus_ability: { steam_control: 4 } }
+    text:
+      pt-BR: "Você avança soltando vapor e respingos de café quente. Bigode guincha, salta para trás e larga o saquinho de açúcar. — Monstro! Jarra fervente! Bigode nunca vai esquecer isso! — Ele se entrincheira atrás do tesouro, abraçado à engrenagem."
+      en: "You advance, hissing steam and spattering hot coffee. Whiskers squeaks, leaps back and drops the sugar bag. \"Monster! Boiling jug! Whiskers will never forget this!\" He digs in behind his hoard, clutching the gear."
+    effects:
+      - stats: { coffee: -5 }
+      - give_item: saquinho_torroes
+      - rel: { rato_bigode: -40 }
+      - objective: q_doce.recuperar_torroes
+      - fact: { id: assustou_bigode, importance: 4, tags: [rato_bigode], text: { pt-BR: "A caneca assustou o Rato Bigode com café quente para tomar os torrões.", en: "The mug scared Whiskers the Rat with hot coffee to take the sugar cubes." } }
+    fail_text:
+      pt-BR: "Você tenta parecer ameaçadora, mas Bigode só ri. — Uma caneca brava! Que gracinha. Volte quando tiver algo para trocar."
+      en: "You try to look threatening, but Whiskers just laughs. \"An angry mug! How cute. Come back when you have something to trade.\""
+    fail_effects: [{ rel: { rato_bigode: -5 } }]
+
+  # --- Porta de entrada ---------------------------------------------------------------
+  - id: barbante_macaneta
+    verbs: [use, combine]
+    target: macaneta
+    item: barbante
+    conditions: [{ not_flag: porta_aberta }]
+    check: { stat: creativity, dc: 10, bonus_rel: { velho_moedor: 1 } }
+    priority: 2
+    suggest: { pt-BR: "Laçar a maçaneta com o barbante", en: "Lasso the doorknob with the string" }
+    energy: 8
+    text:
+      pt-BR: "Você gira o barbante como um laço de vaqueira e o arremessa. Na terceira tentativa, ele se prende na alavanca da maçaneta. Você puxa com todo o peso — a maçaneta desce, CLIQUE, e a porta se abre um palmo. O sininho lá em cima toca pela primeira vez em meses: plim."
+      en: "You twirl the string like a cowgirl's lasso and throw it. On the third try, it catches on the knob's lever. You pull with all your weight — the knob drops, CLICK, and the door swings open a hand's width. The little bell above rings for the first time in months: ding."
+    effects:
+      - set_flag: porta_aberta
+      - unlock_exit: porta_entrada>calcada
+      - stats: { creativity: 3 }
+      - xp: 12
+    fail_text:
+      pt-BR: "O barbante voa, bate na porta e cai em cima de você. Um laço precisa de mais jeito."
+      en: "The string flies, hits the door and falls on top of you. A lasso needs more finesse."
+  - id: porta_sem_barbante
+    verbs: [use]
+    target: macaneta
+    conditions: [{ not_flag: porta_aberta }, { lacks_item: barbante }]
+    text:
+      pt-BR: "Você salta, se estica, mas a maçaneta está longe demais. Se tivesse algo comprido para laçá-la..."
+      en: "You jump, you stretch, but the knob is far out of reach. If only you had something long to lasso it with..."
+    minutes: 1
+  - id: escutar_porta
+    verbs: [listen, examine]
+    target: fresta
+    text:
+      pt-BR: "Você encosta a borda na fresta. Lá fora: o rugido de um carro passando, o farfalhar de um pombo e, longe, um sino de igreja marcando as dez. A cidade é enorme — e está esperando."
+      en: "You press your rim to the gap. Outside: the roar of a passing car, a pigeon rustling and, far away, a church bell striking ten. The city is enormous — and it's waiting."
+    minutes: 2
+
+  # --- Percepção de vibrações dentro do café -------------------------------------------
+  - id: vibracoes_porao
+    verbs: [ability]
+    target: vibration_sense
+    at: porao
+    priority: 1
+    text:
+      pt-BR: "Pelo chão do porão, você sente: um rio de água correndo sob os tijolos, rumo à rua. Os canos do café descem até o bueiro da calçada — e de lá, para muito, muito longe."
+      en: "Through the cellar floor you feel it: a river of water running under the bricks, toward the street. The café's pipes run down to the sidewalk drain — and from there, very, very far away."
+    effects:
+      - set_flag: sente_bueiro
+      - fact: { id: canos_para_bueiro, importance: 2, tags: [bueiro], text: { pt-BR: "Pelas vibrações, a caneca sentiu que os canos levam ao bueiro da calçada e além.", en: "Through vibrations, the mug sensed that the pipes lead to the sidewalk drain and beyond." } }
+
+quests:
+  - id: q_despertar
+    kind: main
+    auto_complete: false
+    xp: 60
+    name: { pt-BR: "O Despertar", en: "The Awakening" }
+    description:
+      pt-BR: "Você acordou viva numa cafeteria abandonada. Descubra quem sussurrou para você, o que aconteceu com este lugar e encontre o caminho para fora."
+      en: "You woke up alive in an abandoned café. Find out who whispered to you, what happened to this place, and find a way out."
+    objectives:
+      - id: descobrir_voz
+        optional: true
+        text: { pt-BR: "Descobrir de quem é a voz misteriosa", en: "Find out whose mysterious voice it is" }
+      - id: segredo_ilda
+        optional: true
+        text: { pt-BR: "Descobrir o que aconteceu com a dona do café", en: "Find out what happened to the café's owner" }
+      - id: sair_cafeteria
+        text: { pt-BR: "Encontrar um jeito de sair para a cidade", en: "Find a way out into the city" }
+    outcomes:
+      com_respostas:
+        pt-BR: "Você deixou o Café Aurora sabendo quem é e por que acordou. Agora carrega mais que café: carrega uma promessa."
+        en: "You left Café Aurora knowing who you are and why you woke. Now you carry more than coffee: you carry a promise."
+      meias_respostas:
+        pt-BR: "Você saiu do café com algumas respostas e muitas perguntas. A cidade talvez complete o resto."
+        en: "You left the café with some answers and many questions. Perhaps the city will fill in the rest."
+      sem_respostas:
+        pt-BR: "Você saiu do café sem olhar para trás, sem saber por que acordou. Às vezes, a resposta está na estrada."
+        en: "You left the café without looking back, without knowing why you woke. Sometimes the answer is on the road."
+  - id: q_doce
+    kind: npc
+    giver: dona_doce
+    xp: 40
+    name: { pt-BR: "Os Torrões da Dona Doce", en: "Dona Doce's Sugar Cubes" }
+    description:
+      pt-BR: "O Rato Bigode roubou os torrões de açúcar de Dona Doce e os levou para o porão trancado."
+      en: "Whiskers the Rat stole Dona Doce's sugar cubes and took them to the locked cellar."
+    rewards: [{ rel: { dona_doce: 10 } }]
+    objectives:
+      - id: consolo
+        optional: true
+        text: { pt-BR: "(Opcional) Consolar Dona Doce com um torrão", en: "(Optional) Comfort Dona Doce with a sugar cube" }
+      - id: recuperar_torroes
+        text: { pt-BR: "Recuperar o saquinho de torrões do Rato Bigode", en: "Recover the bag of sugar cubes from Whiskers" }
+      - id: recuperar
+        text: { pt-BR: "Devolver os torrões a Dona Doce", en: "Return the sugar cubes to Dona Doce" }
+  - id: q_moedor
+    kind: npc
+    giver: velho_moedor
+    xp: 40
+    name: { pt-BR: "A Engrenagem do Moedor", en: "The Grinder's Gear" }
+    description:
+      pt-BR: "O Velho Moedor perdeu sua engrenagem dourada para o Rato Bigode."
+      en: "The Old Grinder lost his golden gear to Whiskers the Rat."
+    objectives:
+      - id: recuperar
+        text: { pt-BR: "Conseguir a engrenagem dourada com o Rato Bigode", en: "Get the golden gear from Whiskers" }
+      - id: devolver
+        text: { pt-BR: "Levar a engrenagem ao Velho Moedor", en: "Bring the gear to the Old Grinder" }
+  - id: q_noir
+    kind: side
+    giver: noir
+    xp: 30
+    name: { pt-BR: "Um Amigo de Bigodes", en: "A Whiskered Friend" }
+    description:
+      pt-BR: "Toda noite, Ilda deixava uma sardinha para o gato preto. Alguém precisa manter a tradição."
+      en: "Every night, Ilda left a sardine for the black cat. Someone has to keep the tradition."
+    objectives:
+      - id: alimentar
+        text: { pt-BR: "Dar uma sardinha a Noir, como Ilda fazia", en: "Give Noir a sardine, as Ilda did" }
+
+events:
+  - id: trovao
+    regions: [cafeteria]
+    weight: 3
+    text:
+      pt-BR: "Um trovão sacode as vidraças. Por um instante, cada xícara do café estremece junto com você — como se o lugar inteiro tivesse prendido a respiração."
+      en: "Thunder rattles the windowpanes. For an instant, every cup in the café trembles with you — as if the whole place held its breath."
+    effects: [{ stats: { courage: -1 } }]
+  - id: goteira
+    regions: [cafeteria]
+    weight: 2
+    conditions: [{ at: [salao, balcao, deposito] }]
+    text:
+      pt-BR: "Uma goteira do teto acerta você em cheio. PLOC. A água gelada escorre pela porcelana e rouba um pouco do calor do café."
+      en: "A leak from the ceiling hits you dead center. PLOP. Icy water runs down your porcelain and steals a little of your coffee's warmth."
+    effects: [{ stats: { temperature: -6 } }]
+  - id: musica_radio
+    regions: [cafeteria]
+    weight: 2
+    once: true
+    conditions: [{ met: sintonia }]
+    text:
+      pt-BR: "Lá das prateleiras, Sintonia encontra uma estação e uma valsa antiga se espalha pelo café. Por alguns segundos, você quase consegue ver Ilda dançando atrás do balcão."
+      en: "From the shelves, Sintonia finds a station and an old waltz drifts through the café. For a few seconds, you can almost see Ilda dancing behind the counter."
+    effects: [{ stats: { courage: 2, energy: 5 } }]
+  - id: noir_arranha
+    regions: [cafeteria]
+    weight: 1
+    once: true
+    conditions: [{ npc_at: [noir, parapeito] }]
+    text:
+      pt-BR: "Um arranhão longo no vidro. Noir está impaciente lá fora — e muito molhado."
+      en: "A long scratch on the glass. Noir is impatient outside — and very wet."

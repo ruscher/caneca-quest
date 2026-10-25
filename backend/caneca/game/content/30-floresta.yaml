@@ -1,0 +1,1074 @@
+# Capítulo 3 — A Floresta dos Objetos Perdidos
+locations:
+  - id: orla
+    region: floresta
+    ambient_temp: 12
+    map_pos: [0.15, 0.80]
+    name: { pt-BR: "Orla da floresta", en: "Forest Edge" }
+    description:
+      pt-BR: "Raízes do tamanho de pontes se enroscam sobre um tapete de musgo prateado. A névoa paira entre os troncos, e nela flutuam coisas que alguém um dia perdeu: um guarda-chuva aberto pendurado num galho, um chaveiro que balança sozinho, um pé de meia que acena. Entre duas raízes, uma luzinha trêmula se apaga assim que você olha para ela."
+      en: "Roots the size of bridges twist over a carpet of silver moss. Mist hangs between the trunks, and in it drift things someone once lost: an open umbrella hanging from a branch, a keychain swaying on its own, a single sock that waves. Between two roots, a trembling little light goes out the moment you look at it."
+    short:
+      pt-BR: "A orla da floresta, entre raízes e névoa."
+      en: "The forest edge, among roots and mist."
+    sounds:
+      pt-BR: "Folhas sussurrando nomes que ninguém mais usa. E, entre as raízes, uma respiração miúda e assustada — com um leve chiado de pavio."
+      en: "Leaves whispering names nobody uses anymore. And, among the roots, a tiny frightened breathing — with the faint hiss of a wick."
+    on_enter:
+      - objective: q_cidade.encontrar_floresta
+      - chapter: 3
+      - achievement: forest_found
+      - quest_start: q_relogio
+    features:
+      - id: objetos_flutuantes
+        keywords: [guarda chuva, guarda-chuva, chaveiro, meia, objetos, coisas perdidas, umbrella, keychain, sock, objects, lost things]
+        name: { pt-BR: "objetos à deriva", en: "drifting objects" }
+        description:
+          pt-BR: "Objetos perdidos flutuam devagar na névoa, como se tivessem esquecido o próprio peso. Quando você se aproxima, eles se viram, educados, mas sem reconhecer nada. Alguns já estão quase transparentes."
+          en: "Lost objects drift slowly in the mist, as if they'd forgotten their own weight. When you approach, they turn politely, but recognize nothing. Some are almost transparent already."
+      - id: raizes
+        keywords: [raiz, raizes, raízes, toca, buraco, roots, root, burrow]
+        name: { pt-BR: "raízes enroscadas", en: "tangled roots" }
+        description:
+          pt-BR: "Entre as raízes há uma toca escura. Lá dentro, algo de vidro tilinta de medo cada vez que uma folha cai."
+          en: "Among the roots there's a dark hollow. Inside, something made of glass tinkles in fear every time a leaf falls."
+    exits:
+      - to: jardim
+        keywords: [jardim, cerca, voltar, cidade, praca, praça, garden, hedge, back, city, square]
+        label: { pt-BR: "Voltar pelo buraco da cerca até o jardim", en: "Go back through the hedge hole to the garden" }
+        energy: 6
+        minutes: 6
+        text:
+          pt-BR: "Você refaz o caminho entre as raízes e passa pelo buraco da cerca. O barulho da cidade volta de uma vez, como se alguém tivesse aumentado o volume do mundo."
+          en: "You retrace your way through the roots and the hedge hole. The city's noise returns all at once, as if someone had turned up the world's volume."
+      - to: clareira
+        keywords: [clareira, vila, aldeia, trilha, adiante, entrar, clearing, village, path, ahead, deeper]
+        label: { pt-BR: "Seguir a trilha de botões até a clareira", en: "Follow the trail of buttons to the clearing" }
+        energy: 4
+        text:
+          pt-BR: "Uma trilha de botões perdidos brilha no musgo, como migalhas de pão de alguém muito organizado. Você a segue até a luz."
+          en: "A trail of lost buttons glints in the moss, like breadcrumbs left by someone very tidy. You follow it toward the light."
+
+  - id: clareira
+    region: floresta
+    ambient_temp: 13
+    map_pos: [0.45, 0.55]
+    name: { pt-BR: "Clareira dos Achados", en: "Clearing of the Found" }
+    description:
+      pt-BR: "Uma clareira redonda onde os objetos perdidos construíram uma vila: casas de caixas de fósforo, pontes de régua, um poço feito de dedal. No centro, sobre um carretel de linha, uma colher de prata antiga observa tudo com olhos de quem já mexeu muitos chás. Ao norte, a névoa se fecha numa parede espessa — e atrás dela, uma torre torta de onde não sai som algum."
+      en: "A round clearing where lost objects have built a village: matchbox houses, ruler bridges, a well made from a thimble. In the middle, atop a spool of thread, an old silver spoon watches everything with the eyes of someone who has stirred a great many teas. To the north, the mist closes into a thick wall — and behind it, a crooked tower from which no sound comes."
+    short:
+      pt-BR: "A vila dos objetos perdidos, na clareira."
+      en: "The village of lost objects, in the clearing."
+    sounds:
+      pt-BR: "Murmúrios de objetos tentando lembrar o próprio nome. Um cachimbo de vapor ao longe. E, do norte, um silêncio pesado onde deveria haver um tique-taque."
+      en: "Murmurs of objects trying to remember their own names. A steam pipe in the distance. And, from the north, a heavy silence where there should be a tick-tock."
+    features:
+      - id: parede_nevoa
+        keywords: [parede de nevoa, parede de névoa, parede, neblina, wall of mist, wall]
+        name: { pt-BR: "parede de névoa", en: "wall of mist" }
+        description:
+          pt-BR: "A névoa ao norte é densa como algodão molhado. Quem entra sem luz anda em círculos até esquecer para onde ia. Só uma chama corajosa abriria um caminho até a torre."
+          en: "The mist to the north is thick as wet cotton. Anyone who enters without light walks in circles until they forget where they were going. Only a brave flame could open a path to the tower."
+      - id: casas_fosforo
+        keywords: [casas, casinhas, vila, caixas de fosforo, caixas de fósforo, houses, village, matchboxes]
+        name: { pt-BR: "casas de caixa de fósforo", en: "matchbox houses" }
+        description:
+          pt-BR: "Casinhas de caixas de fósforo empilhadas, com janelas recortadas e cortinas de etiqueta. Muitas estão vazias: seus moradores esmaeceram na névoa."
+          en: "Stacked matchbox cottages with cut-out windows and label curtains. Many are empty: their residents faded into the mist."
+    exits:
+      - to: orla
+        keywords: [orla, voltar, saida, saída, edge, back, out]
+        label: { pt-BR: "Voltar para a orla da floresta", en: "Go back to the forest edge" }
+        energy: 4
+      - to: casa_bule
+        keywords: [casa do bule, bule, chaminé, chamine, vapor, teapot, house, chimney, steam]
+        label: { pt-BR: "Ir até a casa fumegante do bule", en: "Go to the teapot's steaming house" }
+        energy: 3
+      - to: biblioteca
+        keywords: [biblioteca, tronco, livro, livros, library, trunk, book, books]
+        label: { pt-BR: "Entrar na biblioteca do tronco oco", en: "Enter the hollow-trunk library" }
+        energy: 3
+      - to: lago_garrafas
+        keywords: [lago, garrafas, agua, água, margem, lake, bottles, water, shore]
+        label: { pt-BR: "Descer até o lago das garrafas", en: "Go down to the lake of bottles" }
+        energy: 4
+      - to: torre_relogio
+        keywords: [torre, torre do relogio, torre do relógio, norte, nevoa, névoa, tower, clock tower, north, mist, fog]
+        label: { pt-BR: "Atravessar a névoa até a torre do Relógio", en: "Cross the mist to the Clock tower" }
+        conditions: [{ flag: lume_ilumina }]
+        blocked_text:
+          pt-BR: "Você dá três passos na névoa e, sem saber como, está de volta à clareira. Sem luz, o caminho para a torre se enrola sobre si mesmo. Alguém com uma chama precisaria guiar você."
+          en: "You take three steps into the mist and, somehow, you're back in the clearing. Without light, the path to the tower coils back on itself. Someone with a flame would have to guide you."
+        energy: 6
+        minutes: 6
+        text:
+          pt-BR: "Lume flutua à sua frente, tremendo, mas acesa. A névoa recua diante da luzinha dela como uma cortina puxada devagar, e um caminho de pedrinhas aparece até a torre."
+          en: "Lume floats ahead of you, trembling but lit. The mist draws back before her little light like a slowly pulled curtain, and a pebble path appears all the way to the tower."
+
+  - id: casa_bule
+    region: floresta
+    ambient_temp: 24
+    heat: 80
+    map_pos: [0.20, 0.30]
+    name: { pt-BR: "Casa do Bule", en: "Teapot's House" }
+    description:
+      pt-BR: "Uma casa feita de uma lata de biscoitos antiga, com uma chaminé que solta vapor perfumado de erva-cidreira. Lá dentro faz calor de verdade. Sobre um fogareiro de brasas, um bule de ágata azul, amassado e orgulhoso, ferve baixinho, cercado de xícaras desirmanadas."
+      en: "A house made from an old biscuit tin, with a chimney puffing lemon-balm-scented steam. Inside it's truly warm. Over a little brazier of embers, a blue enamel teapot, dented and proud, simmers quietly, surrounded by mismatched cups."
+    short:
+      pt-BR: "A casa quentinha do Bule Bartolomeu."
+      en: "Bartholomew the Teapot's cozy house."
+    sounds:
+      pt-BR: "O borbulhar paciente de água quente. Brasas estalando. E um suspiro longo de bule que já discutiu demais na vida."
+      en: "The patient bubbling of hot water. Embers crackling. And the long sigh of a teapot who has argued too much in his life."
+    features:
+      - id: fogareiro
+        heat_source: true
+        keywords: [fogareiro, brasas, brasa, fogo, calor, braseiro, brazier, embers, fire, heat]
+        name: { pt-BR: "fogareiro de brasas", en: "ember brazier" }
+        description:
+          pt-BR: "Um fogareiro feito de tampa de panela, cheio de brasas alaranjadas. O calor é generoso — o único lugar da floresta onde ninguém sente frio."
+          en: "A brazier made from a pot lid, full of orange embers. The heat is generous — the only place in the forest where no one feels cold."
+      - id: xicaras_desirmanadas
+        keywords: [xicaras, xícaras, xicara, xícara, cups, cup, mismatched cups]
+        name: { pt-BR: "xícaras desirmanadas", en: "mismatched cups" }
+        description:
+          pt-BR: "Xícaras de jogos diferentes, cada uma com uma etiqueta: \"chá de quem chegou com frio\", \"chá de quem está triste\", \"chá de quem não sabe o que sente\". Uma delas, de porcelana do Café Aurora, está guardada à parte, nunca usada."
+          en: "Cups from different sets, each labeled: \"tea for whoever arrives cold\", \"tea for whoever is sad\", \"tea for whoever doesn't know what they feel\". One, Café Aurora porcelain, is kept apart, never used."
+    exits:
+      - to: clareira
+        keywords: [clareira, voltar, vila, clearing, back, village]
+        label: { pt-BR: "Voltar para a clareira", en: "Go back to the clearing" }
+        energy: 3
+
+  - id: biblioteca
+    region: floresta
+    ambient_temp: 14
+    dark: true
+    map_pos: [0.70, 0.30]
+    name: { pt-BR: "Biblioteca do Tronco Oco", en: "Hollow-Trunk Library" }
+    description:
+      pt-BR: "O interior de uma árvore enorme e oca, forrado de estantes até perder de vista. Ali estão todos os livros esquecidos em ônibus, salas de espera e bancos de praça. No centro, aberto sobre um toco, um livro sem título vira as próprias páginas — e para quando sente você chegar."
+      en: "The inside of an enormous hollow tree, lined with shelves up out of sight. Here are all the books forgotten on buses, in waiting rooms and on park benches. In the middle, open on a stump, a book with no title turns its own pages — and stops when it senses you."
+    short:
+      pt-BR: "A biblioteca dentro do tronco oco."
+      en: "The library inside the hollow trunk."
+    sounds:
+      pt-BR: "Páginas virando sozinhas. Um marcador de livro roncando. E uma voz de papel que lê, baixinho, frases que ninguém escreveu ainda."
+      en: "Pages turning on their own. A bookmark snoring. And a papery voice softly reading sentences no one has written yet."
+    features:
+      - id: estantes
+        keywords: [estantes, estante, livros perdidos, prateleiras, shelves, shelf, lost books]
+        name: { pt-BR: "estantes infinitas", en: "endless shelves" }
+        description:
+          pt-BR: "Romances com o marcador parado no capítulo três. Guias de viagem para cidades que mudaram de nome. Um caderno de receitas com a letra de Ilda: \"Bolo de fubá — para dias de chuva\"."
+          en: "Novels with the bookmark stuck in chapter three. Travel guides to cities that changed their names. A recipe notebook in Ilda's handwriting: \"Cornmeal cake — for rainy days\"."
+      - id: mesa_leitura
+        keywords: [mesa de leitura, mesa, toco, escrivaninha, reading desk, desk, stump]
+        name: { pt-BR: "mesa de leitura", en: "reading desk" }
+        description:
+          pt-BR: "Um toco usado como escrivaninha, coberto de cera derretida. Num canto, sobrou um toco de vela com o pavio ainda bom."
+          en: "A stump used as a desk, covered in melted wax. In one corner sits a candle stub whose wick is still good."
+    exits:
+      - to: clareira
+        keywords: [clareira, voltar, sair, clearing, back, out]
+        label: { pt-BR: "Sair para a clareira", en: "Go out to the clearing" }
+        energy: 3
+
+  - id: lago_garrafas
+    region: floresta
+    ambient_temp: 10
+    map_pos: [0.75, 0.80]
+    name: { pt-BR: "Lago das Garrafas", en: "Lake of Bottles" }
+    description:
+      pt-BR: "Um lago de água escura e parada, coberto de garrafas que boiam como barcos ancorados. Cada uma guarda um papel enrolado: mensagens que nunca chegaram. Na margem de cascalho, uma garrafa verde de rolha torta está deitada de lado, olhando o horizonte como quem planeja uma fuga."
+      en: "A lake of dark, still water, covered in bottles floating like anchored boats. Each holds a rolled-up note: messages that never arrived. On the gravel shore, a green bottle with a crooked cork lies on her side, gazing at the horizon like someone planning an escape."
+    short:
+      pt-BR: "A margem do lago coberto de garrafas."
+      en: "The shore of the bottle-covered lake."
+    sounds:
+      pt-BR: "Vidro batendo em vidro, suave como sinos de vento. E uma voz rouca cantando uma canção de marinheiro desafinada."
+      en: "Glass knocking on glass, soft as wind chimes. And a hoarse voice singing an off-key sea shanty."
+    features:
+      - id: garrafas_mensagens
+        keywords: [garrafas, mensagens, bilhetes, papeis, papéis, bottles, messages, notes]
+        name: { pt-BR: "garrafas com mensagens", en: "bottles with messages" }
+        description:
+          pt-BR: "Você lê o rótulo de algumas: \"Para quem achar\", \"Desculpa\", \"Volto logo\". Nenhuma foi aberta. Todas esperam alguém que se lembre delas."
+          en: "You read the labels on a few: \"To whoever finds this\", \"I'm sorry\", \"Back soon\". None have been opened. All are waiting for someone to remember them."
+    exits:
+      - to: clareira
+        keywords: [clareira, voltar, subir, clearing, back, up]
+        label: { pt-BR: "Subir de volta à clareira", en: "Climb back up to the clearing" }
+        energy: 4
+
+  - id: torre_relogio
+    region: floresta
+    ambient_temp: 6
+    map_pos: [0.50, 0.10]
+    name: { pt-BR: "Torre do Relógio", en: "Clock Tower" }
+    description:
+      pt-BR: "A torre é um tronco morto onde alguém encaixou um relógio de bolso gigantesco, com a tampa aberta como uma porta. Lá dentro, engrenagens do tamanho de rodas de carroça estão paradas, cobertas de geada. Os ponteiros marcam uma hora qualquer, para sempre. No centro do mecanismo, uma mola enrolada brilha de gelo — e há um encaixe vazio, redondo, do tamanho de uma moeda."
+      en: "The tower is a dead trunk into which someone fitted a gigantic pocket watch, its lid open like a door. Inside, gears the size of cartwheels stand still, covered in frost. The hands point to some hour, forever. At the heart of the mechanism, a coiled spring glitters with ice — and there's an empty round socket, the size of a coin."
+    short:
+      pt-BR: "Diante do Relógio parado, coberto de geada."
+      en: "Before the stopped Clock, covered in frost."
+    sounds:
+      pt-BR: "Nada. Um silêncio tão completo que você ouve o próprio café esfriar. Depois, muito baixinho: \"...tique...\" — e mais nada."
+      en: "Nothing. A silence so complete you can hear your own coffee cooling. Then, very softly: \"...tick...\" — and nothing more."
+    on_enter:
+      - objective: q_relogio.chegar_torre
+      - when: [{ any: [{ has_item: engrenagem_dourada }, { has_item: engrenagem_maresia }] }]
+        objective: q_relogio.trazer_engrenagem
+    features:
+      - id: engrenagens_gigantes
+        keywords: [engrenagens gigantes, rodas, geada, gelo, gears, wheels, frost, ice]
+        name: { pt-BR: "engrenagens congeladas", en: "frozen gears" }
+        description:
+          pt-BR: "Engrenagens enormes, presas pela geada. Uma delas tem um encaixe vazio no centro, do tamanho exato de uma engrenagem pequena. Sem ela, nada gira. E mesmo com ela, a mola congelada precisaria de calor para soltar."
+          en: "Huge gears, locked by frost. One has an empty socket in its center, exactly the size of a small gear. Without it, nothing turns. And even with it, the frozen spring would need warmth to let go."
+    exits:
+      - to: clareira
+        keywords: [clareira, voltar, descer, clearing, back, down]
+        label: { pt-BR: "Voltar pela névoa até a clareira", en: "Go back through the mist to the clearing" }
+        energy: 5
+        minutes: 5
+
+items:
+  - id: folha_prata
+    initial: orla
+    icon: leaf
+    keywords: [folha, folha de prata, folha prateada, leaf, silver leaf]
+    name: { pt-BR: "folha de prata", en: "silver leaf" }
+    description:
+      pt-BR: "Uma folha caída de uma árvore da orla, fina e prateada como papel-alumínio. Quando você a segura, lembra com nitidez de uma manhã que nem viveu: cheiro de pão, rádio ligado, alguém cantando."
+      en: "A leaf fallen from a tree at the edge, thin and silver as foil. When you hold it, you vividly remember a morning you never lived: the smell of bread, a radio playing, someone singing."
+  - id: toco_vela
+    initial: biblioteca
+    icon: candle
+    keywords: [vela, toco de vela, pavio, candle, candle stub, wick]
+    name: { pt-BR: "toco de vela", en: "candle stub" }
+    description:
+      pt-BR: "Um toco de vela de cera amarelada, com o pavio intacto. Pequeno, mas para uma lanterna medrosa, é um pedaço de coragem."
+      en: "A stub of yellowed wax with an intact wick. Small, but to a frightened lantern, it's a piece of courage."
+  - id: chave_corda
+    icon: key
+    keywords: [chave de corda, chave de dar corda, corda, winding key, clock key, key]
+    name: { pt-BR: "chave de corda", en: "winding key" }
+    description:
+      pt-BR: "Uma chave de corda de latão, em forma de borboleta. Serve para dar corda em relógios — e talvez em memórias."
+      en: "A butterfly-shaped brass winding key. It winds clocks — and perhaps memories."
+  - id: engrenagem_maresia
+    initial: garrafa_marina
+    icon: gear
+    keywords: [engrenagem de reserva, engrenagem esverdeada, engrenagem da garrafa, engrenagem maresia, spare gear, green gear, sea gear]
+    name: { pt-BR: "engrenagem de maresia", en: "sea-worn gear" }
+    description:
+      pt-BR: "Uma engrenagem de bronze esverdeada pela maresia, com um dente lascado. Não é tão perfeita quanto uma engrenagem nova, mas ainda quer girar."
+      en: "A bronze gear turned green by sea air, with one chipped tooth. Not as perfect as a new gear, but it still wants to turn."
+
+npcs:
+  - id: lume
+    location: orla
+    relationship: 0
+    mood: scared
+    befriend_dc: 10
+    icon: lantern
+    keywords: [lume, lanterna, lanterninha, luz, luzinha, lantern, light]
+    likes: [toco_vela, folha_prata]
+    name: { pt-BR: "Lume", en: "Lume" }
+    kind: { pt-BR: "lanterna medrosa", en: "frightened lantern" }
+    description:
+      pt-BR: "Uma lanterna de acampamento de lata e vidro, do tamanho de um dedal para os humanos — enorme para você. A chama lá dentro é miúda e treme a cada barulho. A alça está amassada de tanto se esconder entre raízes."
+      en: "A tin-and-glass camping lantern, thimble-sized to humans — huge to you. The flame inside is tiny and flickers at every sound. Her handle is bent from hiding among roots so much."
+    personality:
+      pt-BR: "Medrosa, gentil, muito educada e cheia de culpa. Tem coragem escondida que ela mesma não conhece."
+      en: "Fearful, gentle, very polite and full of guilt. Has hidden courage she herself doesn't know about."
+    voice:
+      pt-BR: "Fala baixinho, pede desculpas o tempo todo e gagueja quando tem medo (\"d-desculpa\")."
+      en: "Speaks softly, apologizes constantly and stammers when afraid (\"s-sorry\")."
+    background:
+      pt-BR: "Esquecida por uma criança num acampamento. Era a luz que guiava os objetos pela névoa até a torre, mas quando o Relógio parou e a névoa engrossou, ela se perdeu, sentiu medo e se escondeu. Desde então, ninguém chega à torre."
+      en: "Forgotten by a child at a campsite. She was the light that guided objects through the mist to the tower, but when the Clock stopped and the mist thickened, she got lost, grew afraid and hid. Since then, no one reaches the tower."
+    goals:
+      pt-BR: "Parar de ter medo. Secretamente, voltar a ser útil."
+      en: "Stop being afraid. Secretly, be useful again."
+    knowledge:
+      - { pt-BR: "Conhece o único caminho pela névoa até a Torre do Relógio.", en: "Knows the only path through the mist to the Clock Tower." }
+    greetings:
+      - conditions: [{ flag: lume_ilumina }]
+        text:
+          pt-BR: "Lume brilha um pouquinho mais forte ao ver você. — E-estou aqui. Estou acesa. Para onde vamos?"
+          en: "Lume shines a little brighter at the sight of you. \"I-I'm here. I'm lit. Where are we going?\""
+      - conditions: [{ met: lume }]
+        text:
+          pt-BR: "A luzinha espia de dentro da toca. — Ah... é você. D-desculpa. Ainda estou com medo."
+          en: "The little light peeks out of the hollow. \"Oh... it's you. S-sorry. I'm still scared.\""
+      - text:
+          pt-BR: "A luz entre as raízes volta a acender, bem fraquinha. — D-desculpa! Não queria assustar. Quer dizer, eu é que levei o susto. Você é... quente? Ninguém aqui é quente. Eu sou Lume. Eu era a luz da floresta. Agora sou só... uma lanterna escondida."
+          en: "The light among the roots flickers back on, very faintly. \"S-sorry! I didn't mean to scare you. I mean, I'm the one who got scared. Are you... warm? Nobody here is warm. I'm Lume. I used to be the forest's light. Now I'm just... a hiding lantern.\""
+    topics:
+      - id: lume_nevoa
+        keywords: [nevoa, névoa, torre, caminho, relogio, relógio, guiar, mist, fog, tower, path, clock, guide]
+        label: { pt-BR: "Perguntar a Lume sobre o caminho pela névoa", en: "Ask Lume about the path through the mist" }
+        text:
+          pt-BR: "A chama de Lume encolhe. — Eu levava todo mundo até a torre. Toda noite. Mas aí o Relógio parou, a névoa ficou grossa, e eu... eu me perdi. Ouvi barulhos. Fiquei com tanto medo que me apaguei. — Ela funga. — Se eu tentar de novo e me perder com você junto? Não. Não consigo."
+          en: "Lume's flame shrinks. \"I used to lead everyone to the tower. Every night. But then the Clock stopped, the mist got thick, and I... I got lost. I heard noises. I got so scared I went out.\" She sniffles. \"What if I try again and get lost with you? No. I can't.\""
+        effects:
+          - quest_start: q_lume
+          - fact: { id: lume_medo, importance: 3, tags: [lume, torre_relogio], text: { pt-BR: "Lume era a luz que guiava os objetos até a torre, mas se apagou de medo.", en: "Lume was the light that guided objects to the tower, but went out in fear." } }
+      - id: lume_coragem
+        keywords: [coragem, medo, juntas, comigo, confiar, vamos, voce consegue, você consegue, courage, fear, together, with me, trust, you can]
+        conditions: [{ any: [{ rel: lume, gte: 30 }, { stat: courage, gte: 60 }, { flag: colher_pediu_lume }] }, { not_flag: lume_ilumina }]
+        label: { pt-BR: "Encorajar Lume a guiar você pela névoa", en: "Encourage Lume to guide you through the mist" }
+        text:
+          pt-BR: "Você fica bem perto dela, deixando seu calor chegar ao vidro. — Juntas — você diz. A chama de Lume tremula... e cresce. Primeiro um pouco, depois mais, até iluminar as raízes inteiras. — Juntas — ela repete, com a voz firme pela primeira vez. — Eu sei o caminho. Eu sempre soube."
+          en: "You stay very close to her, letting your warmth reach her glass. \"Together,\" you say. Lume's flame flickers... and grows. A little at first, then more, until it lights up all the roots. \"Together,\" she repeats, her voice steady for the first time. \"I know the way. I always did.\""
+        effects:
+          - set_flag: [lume_ilumina, "companion:lume"]
+          - rel: { lume: 20 }
+          - objective: q_relogio.convencer_lume
+          - quest_complete: { id: q_lume, outcome: coragem }
+          - fact: { id: lume_reacendeu, importance: 4, tags: [lume], text: { pt-BR: "Com o incentivo da caneca, Lume reacendeu e aceitou guiá-la pela névoa.", en: "Encouraged by the mug, Lume relit and agreed to guide her through the mist." } }
+      - id: lume_crianca
+        keywords: [crianca, criança, acampamento, dona, dono, quem te perdeu, child, campsite, owner, who lost you]
+        label: { pt-BR: "Perguntar a Lume quem a perdeu", en: "Ask Lume who lost her" }
+        text:
+          pt-BR: "— Um menino chamado Davi. Ele tinha medo do escuro, e eu ficava acesa a noite inteira para ele. — A chama sorri. — Engraçado, né? Eu era a coragem de alguém. Aí ele cresceu e esqueceu de mim na barraca."
+          en: "\"A boy named Davi. He was afraid of the dark, and I stayed lit all night for him.\" The flame smiles. \"Funny, isn't it? I was someone's courage. Then he grew up and forgot me in the tent.\""
+        effects: [{ rel: { lume: 8 } }]
+    smalltalk:
+      - { pt-BR: "— D-desculpa, você disse alguma coisa? Eu estava ouvindo uma folha cair.", en: "\"S-sorry, did you say something? I was listening to a leaf fall.\"" }
+      - { pt-BR: "Lume pisca três vezes, como quem conta até três para não ter medo.", en: "Lume blinks three times, like someone counting to three to keep from being afraid." }
+      - { pt-BR: "— Você é tão quentinha. Ficar perto de você é como ficar perto do sol. Um sol pequeno. Com alça.", en: "\"You're so warm. Being near you is like being near the sun. A small sun. With a handle.\"" }
+
+  - id: mestra_colher
+    location: clareira
+    relationship: 10
+    mood: wise
+    befriend_dc: 11
+    icon: spoon
+    keywords: [colher, mestra colher, mestra, colher de prata, spoon, mistress spoon, silver spoon, mistress]
+    name: { pt-BR: "Mestra Colher", en: "Mistress Spoon" }
+    kind: { pt-BR: "colher de prata antiga", en: "old silver spoon" }
+    description:
+      pt-BR: "Uma colher de prata escurecida pelo tempo, com um brasão de família quase apagado no cabo. Fica de pé sobre um carretel de linha, apoiada como numa bengala, e fala devagar, mexendo o ar como se mexesse um chá."
+      en: "A silver spoon darkened by time, a family crest nearly worn off its handle. She stands atop a spool of thread, leaning as on a cane, and speaks slowly, stirring the air as if stirring tea."
+    personality:
+      pt-BR: "Sábia, serena, firme e afetuosa. Líder da vila. Esconde uma saudade enorme da família que deixou."
+      en: "Wise, serene, firm and affectionate. Leader of the village. Hides an enormous longing for the family she left behind."
+    voice:
+      pt-BR: "Fala pausado, em frases que parecem provérbios, e chama todos de \"criança\"."
+      en: "Speaks slowly, in sentences that sound like proverbs, and calls everyone \"child\"."
+    background:
+      pt-BR: "Fez parte de um faqueiro de casamento por oitenta anos. Quando a família se mudou, ela caiu atrás de uma gaveta e foi esquecida. Na floresta, organizou a vila dos achados e cuida para que ninguém esmaeça sozinho. Sua neta, uma colherzinha de chá, ficou no Café Aurora."
+      en: "She was part of a wedding silverware set for eighty years. When the family moved, she slipped behind a drawer and was forgotten. In the forest, she organized the village of the found and makes sure no one fades alone. Her granddaughter, a little teaspoon, stayed at Café Aurora."
+    goals:
+      pt-BR: "Fazer o Relógio voltar a andar antes que a vila inteira esqueça quem é."
+      en: "Get the Clock running again before the whole village forgets who it is."
+    knowledge:
+      - { pt-BR: "Sabe que o Relógio parou porque a engrenagem central se perdeu e a mola congelou.", en: "Knows the Clock stopped because its central gear was lost and its spring froze." }
+      - { pt-BR: "Sabe que objetos só esmaecem quando ninguém mais se lembra deles.", en: "Knows objects only fade when no one remembers them anymore." }
+    secrets:
+      - id: colher_neta
+        reveal_if: [{ flag: recado_colherzinha }]
+        text:
+          pt-BR: "Mestra Colher é avó da colherzinha que dorme na mesa do Café Aurora e sofre por não saber se a neta ainda se lembra dela."
+          en: "Mistress Spoon is the grandmother of the teaspoon sleeping on Café Aurora's table and suffers not knowing if her granddaughter still remembers her."
+    greetings:
+      - conditions: [{ quest: q_relogio, status: completed }]
+        text:
+          pt-BR: "Mestra Colher inclina o cabo numa reverência. — O tempo anda de novo, criança. E anda porque você andou primeiro."
+          en: "Mistress Spoon tilts her handle in a bow. \"Time moves again, child. And it moves because you moved first.\""
+      - conditions: [{ met: mestra_colher }]
+        text:
+          pt-BR: "— De volta, criança. A névoa não espera, mas eu espero. Diga."
+          en: "\"Back again, child. The mist doesn't wait, but I do. Speak.\""
+      - text:
+          pt-BR: "A colher de prata se vira devagar. Os objetos da vila se calam. — Uma caneca... quente. — Ela mexe o ar, pensativa. — Faz muito tempo que algo quente atravessa a cerca. Seja bem-vinda à Clareira dos Achados, criança. Eu sou a Mestra Colher. Aqui ficam os que foram esquecidos. E, ultimamente, nem nós conseguimos lembrar de nós mesmos."
+          en: "The silver spoon turns slowly. The village objects fall silent. \"A mug... a warm one.\" She stirs the air, thoughtful. \"It's been a long time since anything warm came through the hedge. Welcome to the Clearing of the Found, child. I am Mistress Spoon. Here live the forgotten. And lately, not even we can remember ourselves.\""
+    topics:
+      - id: colher_relogio
+        keywords: [relogio, relógio, tempo, torre, parado, esquecer, esmaecer, clock, time, tower, stopped, forget, fade]
+        label: { pt-BR: "Perguntar à Mestra Colher sobre o Relógio", en: "Ask Mistress Spoon about the Clock" }
+        text:
+          pt-BR: "— O Relógio da torre guarda o tempo das coisas esquecidas, criança. Enquanto ele anda, nós lembramos quem fomos. Mas a engrenagem do centro se perdeu, a mola congelou, e o tempo parou. Sem tempo, os objetos esquecem os próprios nomes e viram névoa. — Ela aponta o norte. — Para religá-lo, é preciso uma engrenagem que caiba no centro e calor para soltar a mola. E para chegar lá... uma luz que não tenha medo."
+          en: "\"The tower Clock keeps the time of forgotten things, child. While it runs, we remember who we were. But the central gear was lost, the spring froze, and time stopped. Without time, objects forget their own names and turn into mist.\" She points north. \"To restart it, you need a gear that fits the center and warmth to free the spring. And to get there... a light that isn't afraid.\""
+        effects:
+          - objective: q_relogio.ouvir_colher
+          - set_flag: sabe_do_relogio
+          - fact: { id: relogio_precisa, importance: 5, tags: [mestra_colher, torre_relogio], text: { pt-BR: "Para religar o Relógio é preciso uma engrenagem para o centro, calor para soltar a mola e uma luz para atravessar a névoa.", en: "To restart the Clock you need a gear for its center, warmth to free the spring and a light to cross the mist." } }
+      - id: colher_neta
+        keywords: [neta, colherzinha, recado, lembra, saudade, cafe aurora, café aurora, granddaughter, teaspoon, message, remembers, miss]
+        conditions: [{ flag: recado_colherzinha }]
+        label: { pt-BR: "Dar à Mestra Colher o recado da neta", en: "Give Mistress Spoon her granddaughter's message" }
+        text:
+          pt-BR: "Você conta sobre a colherzinha na mesa do café, que ronca baixinho e pediu para dizer que ainda se lembra da avó. A Mestra Colher fica imóvel. Depois, uma gota de orvalho escorre pelo cabo dela, devagar. — Ela lembra — sussurra. — Então eu não vou esmaecer. Não enquanto ela lembrar. — A prata dela brilha como não brilhava há anos."
+          en: "You tell her about the teaspoon on the café table, snoring softly, who asked you to say she still remembers her grandmother. Mistress Spoon goes perfectly still. Then a drop of dew rolls slowly down her handle. \"She remembers,\" she whispers. \"Then I won't fade. Not while she remembers.\" Her silver shines as it hasn't in years."
+        effects:
+          - rel: { mestra_colher: 30 }
+          - xp: 15
+          - stats: { courage: 3 }
+          - fact: { id: colher_recebeu_recado, importance: 4, tags: [mestra_colher, colherzinha], text: { pt-BR: "A caneca entregou à Mestra Colher o recado da neta; lembrar impede um objeto de esmaecer.", en: "The mug delivered the granddaughter's message to Mistress Spoon; being remembered keeps an object from fading." } }
+      - id: colher_lume
+        keywords: [lume, lanterna, luz, nevoa, névoa, guia, lantern, light, mist, guide]
+        conditions: [{ npc_remembers: [mestra_colher, relogio_precisa] }]
+        label: { pt-BR: "Pedir conselho à Mestra Colher sobre Lume", en: "Ask Mistress Spoon for advice about Lume" }
+        text:
+          pt-BR: "— Lume se esconde na orla desde que a névoa engrossou. Ela acha que a coragem acabou, criança, mas coragem não acaba: só esquece onde estava. — A Mestra Colher bate o cabo no carretel, decidida. — Diga a ela que eu pedi. Diga que a vila precisa da luz dela. E fique perto. Ninguém tem medo perto de algo quente."
+          en: "\"Lume has hidden at the edge since the mist thickened. She thinks her courage ran out, child, but courage doesn't run out: it just forgets where it was.\" Mistress Spoon taps her handle on the spool, resolute. \"Tell her I asked. Tell her the village needs her light. And stay close. No one is afraid near something warm.\""
+        effects: [{ set_flag: colher_pediu_lume }]
+      - id: colher_engrenagem
+        keywords: [engrenagem, peca, peça, encaixe, onde achar, gear, piece, socket, where to find]
+        conditions: [{ flag: sabe_do_relogio }]
+        label: { pt-BR: "Perguntar onde conseguir uma engrenagem", en: "Ask where to find a gear" }
+        text:
+          pt-BR: "— Uma engrenagem do tamanho de uma moeda, criança. Bartolomeu dizia que moedores de café têm engrenagens assim — de ouro, quando são de boa família. E a garrafa do lago, Marina, guarda de tudo dentro dela. Talvez uma peça de reserva. Marina adora trocas e histórias de longe."
+          en: "\"A coin-sized gear, child. Bartholomew used to say coffee grinders have gears like that — golden, when they come from a good family. And the bottle at the lake, Marina, keeps all sorts of things inside her. Perhaps a spare. Marina loves trades and stories from far away.\""
+        effects: [{ set_flag: sabe_engrenagem_marina }]
+    smalltalk:
+      - { pt-BR: "— Quem mexe o chá devagar não queima a língua, criança.", en: "\"Whoever stirs their tea slowly won't burn their tongue, child.\"" }
+      - { pt-BR: "A Mestra Colher observa a névoa ao norte em silêncio, como quem conta os que se foram.", en: "Mistress Spoon watches the northern mist in silence, like someone counting those who are gone." }
+      - { pt-BR: "— Ser esquecido não é o fim. Esquecer-se de si, isso sim é.", en: "\"Being forgotten isn't the end. Forgetting yourself — that is.\"" }
+
+  - id: bule_bartolomeu
+    location: casa_bule
+    relationship: 0
+    mood: proud
+    befriend_dc: 12
+    icon: teapot
+    keywords: [bule, bartolomeu, bule bartolomeu, bule de agata, bule de ágata, teapot, bartholomew, kettle]
+    likes: [folha_prata]
+    name: { pt-BR: "Bule Bartolomeu", en: "Bartholomew the Teapot" }
+    kind: { pt-BR: "bule de ágata", en: "enamel teapot" }
+    description:
+      pt-BR: "Um bule de ágata azul, cheio de amassados que ele chama de \"cicatrizes de batalha\". O bico solta fiapos de vapor perfumado quando ele fala, e a tampa tilinta quando ele se irrita."
+      en: "A blue enamel teapot, full of dents he calls \"battle scars\". His spout puffs wisps of fragrant steam when he speaks, and his lid rattles when he's annoyed."
+    personality:
+      pt-BR: "Orgulhoso, hospitaleiro, teimoso e sentimental. Defende o chá com paixão e sente falta do velho amigo."
+      en: "Proud, hospitable, stubborn and sentimental. Defends tea passionately and misses his old friend."
+    voice:
+      pt-BR: "Fala com pompa, como um anfitrião antigo, e solta suspiros de vapor (\"fffff\")."
+      en: "Speaks grandly, like an old-fashioned host, and lets out steamy sighs (\"fffff\")."
+    background:
+      pt-BR: "Serviu chá no Café Aurora ao lado do Velho Moedor por décadas. Na véspera do fechamento, os dois brigaram feio sobre café e chá. Envergonhado, Bartolomeu foi embora e acabou na floresta, onde abriu sua casa para aquecer quem chega com frio."
+      en: "Served tea at Café Aurora beside the Old Grinder for decades. The night before closing, the two had a bitter fight about coffee and tea. Ashamed, Bartholomew left and ended up in the forest, where he opened his home to warm anyone who arrives cold."
+    goals:
+      pt-BR: "Fazer as pazes com o Moedor, mas o orgulho não deixa dar o primeiro passo."
+      en: "Make peace with the Grinder, but his pride won't let him take the first step."
+    knowledge:
+      - { pt-BR: "Sabe selar pequenas rachaduras com líquido quente e paciência.", en: "Knows how to seal small cracks with hot liquid and patience." }
+      - { pt-BR: "Sabe que o Velho Moedor tinha uma engrenagem dourada de boa família.", en: "Knows the Old Grinder had a golden gear from a good family." }
+    secrets:
+      - id: bule_saudade
+        reveal_if: [{ rel: bule_bartolomeu, gte: 25 }]
+        text:
+          pt-BR: "Bartolomeu guarda uma xícara do Café Aurora que nunca usa: é para o dia em que o Moedor vier tomar chá com ele."
+          en: "Bartholomew keeps a Café Aurora cup he never uses: it's for the day the Grinder comes to have tea with him."
+    greetings:
+      - conditions: [{ flag: bule_reconciliado }]
+        text:
+          pt-BR: "— Fffff! Minha mensageira favorita! — O bule chacoalha a tampa de alegria. — Sente-se perto das brasas. Chá? Café? Hoje eu sirvo os dois, e sem discutir."
+          en: "\"Fffff! My favorite messenger!\" The teapot rattles his lid with joy. \"Sit by the embers. Tea? Coffee? Today I'll serve both, and without arguing.\""
+      - conditions: [{ met: bule_bartolomeu }]
+        text:
+          pt-BR: "— Fffff. A caneca de café. Entre, entre, antes que esfrie. Aqui ninguém passa frio, nem quem bebe a bebida errada."
+          en: "\"Fffff. The coffee mug. Come in, come in, before you cool down. Nobody goes cold here, not even those who drink the wrong drink.\""
+      - text:
+          pt-BR: "O bule azul ergue a tampa e solta uma baforada de vapor perfumado. — Visita! Fffff! Entre, entre, perto das brasas. — Ele examina você de cima a baixo e para na estampa. — Essa porcelana... é do Café Aurora. — A tampa dele tilinta, nervosa. — Bartolomeu, a seu dispor. Bule. Ex-funcionário. Não pergunte."
+          en: "The blue teapot lifts his lid and puffs out a cloud of fragrant steam. \"A visitor! Fffff! Come in, come in, by the embers.\" He looks you up and down and stops at your pattern. \"That porcelain... it's from Café Aurora.\" His lid rattles nervously. \"Bartholomew, at your service. Teapot. Former employee. Don't ask.\""
+    topics:
+      - id: bule_moedor
+        keywords: [moedor, velho moedor, briga, discussao, discussão, amigo, cafe aurora, café aurora, grinder, old grinder, fight, argument, friend]
+        label: { pt-BR: "Perguntar a Bartolomeu sobre o Velho Moedor", en: "Ask Bartholomew about the Old Grinder" }
+        text:
+          pt-BR: "A tampa do bule bate com força. — Aquele ferro-velho cabeça-dura! Disse que chá é água suja com pretensão! — Depois ele murcha, e o vapor some. — Fffff... E eu disse que café é amargura engarrafada. Quarenta anos lado a lado, e a última coisa que dissemos um ao outro foi isso. — Ele olha para a xícara do Café Aurora, guardada à parte."
+          en: "The teapot's lid slams down. \"That pig-headed scrap heap! He said tea is dirty water with pretensions!\" Then he deflates, and the steam fades. \"Fffff... And I said coffee is bottled bitterness. Forty years side by side, and that was the last thing we said to each other.\" He glances at the Café Aurora cup, kept apart."
+        effects:
+          - objective: q_reconciliacao.encontrar_bule
+          - rel: { bule_bartolomeu: 5 }
+      - id: bule_regeneracao
+        keywords: [rachadura, rachaduras, consertar, curar, regenerar, ensinar, crack, cracks, mend, heal, fix, teach]
+        conditions: [{ any: [{ flag: bule_reconciliado }, { rel: bule_bartolomeu, gte: 40 }] }]
+        label: { pt-BR: "Pedir a Bartolomeu que ensine a curar rachaduras", en: "Ask Bartholomew to teach you to mend cracks" }
+        text:
+          pt-BR: "— Ah, isso eu sei bem. Olhe para mim: mais amassado que lata de beco, e nunca vazei uma gota. — Ele mostra uma rachadura antiga, selada com um brilho âmbar. — Deixe o líquido quente escorrer devagar para dentro da fissura. Devagar. Paciência é o esmalte da alma. Fffff."
+          en: "\"Ah, this I know well. Look at me: more dented than an alley tin, and never leaked a drop.\" He shows an old crack sealed with an amber gleam. \"Let the hot liquid seep slowly into the fissure. Slowly. Patience is the glaze of the soul. Fffff.\""
+        effects: [{ learn: crack_mending }]
+      - id: bule_cha
+        keywords: [cha, chá, ervas, receita, tea, herbs, recipe]
+        label: { pt-BR: "Perguntar a Bartolomeu sobre chá", en: "Ask Bartholomew about tea" }
+        text:
+          pt-BR: "— Chá, minha cara, é tempo em forma de bebida. Você espera a água, espera a infusão, espera esfriar o bastante. Café é pressa. Chá é presença. — Ele hesita. — Mas admito que o cheiro do café do Moedor de manhã... fffff... era bom de acordar."
+          en: "\"Tea, my dear, is time in liquid form. You wait for the water, wait for the steeping, wait for it to cool enough. Coffee is hurry. Tea is presence.\" He hesitates. \"But I admit the smell of the Grinder's coffee in the morning... fffff... was a fine thing to wake up to.\""
+        effects: [{ rel: { bule_bartolomeu: 3 } }]
+    smalltalk:
+      - { pt-BR: "— Fffff. Ninguém sai da minha casa com frio. É uma regra. A única que eu nunca quebrei.", en: "\"Fffff. No one leaves my house cold. It's a rule. The only one I've never broken.\"" }
+      - { pt-BR: "Bartolomeu reorganiza as xícaras desirmanadas, deixando a do Café Aurora sempre no mesmo lugar.", en: "Bartholomew rearranges the mismatched cups, always leaving the Café Aurora one in the same place." }
+      - { pt-BR: "— Moedores. Hunf. Não que eu pense nele. Nunca penso nele. Fffff.", en: "\"Grinders. Hmph. Not that I think about him. I never think about him. Fffff.\"" }
+
+  - id: livro_sem_titulo
+    location: biblioteca
+    relationship: 0
+    mood: enigmatic
+    befriend_dc: 13
+    icon: book
+    keywords: [livro, livro sem titulo, livro sem título, livro misterioso, book, untitled book, mysterious book]
+    likes: [folha_prata]
+    name: { pt-BR: "Livro Sem Título", en: "Untitled Book" }
+    kind: { pt-BR: "livro misterioso", en: "mysterious book" }
+    description:
+      pt-BR: "Um livro grosso de capa de couro gasta, sem título nem autor. As páginas se escrevem sozinhas enquanto você olha: algumas falam do passado, outras de coisas que ainda não aconteceram. Numa delas, você jura ter lido o seu nome."
+      en: "A thick book with a worn leather cover, no title, no author. Its pages write themselves as you watch: some speak of the past, others of things that haven't happened yet. On one, you could swear you read your own name."
+    personality:
+      pt-BR: "Enigmático, brincalhão, paciente. Gosta de enigmas e detesta respostas fáceis."
+      en: "Enigmatic, playful, patient. Loves riddles and hates easy answers."
+    voice:
+      pt-BR: "Fala em frases poéticas e enigmáticas, às vezes em rima, e faz pausas teatrais virando páginas."
+      en: "Speaks in poetic, enigmatic sentences, sometimes in rhyme, with theatrical pauses as pages turn."
+    background:
+      pt-BR: "Ninguém sabe quem o esqueceu. Ele afirma ser o livro onde a floresta escreve tudo que os objetos lembram — e tudo que esquecem."
+      en: "No one knows who forgot him. He claims to be the book where the forest writes down everything objects remember — and everything they forget."
+    goals:
+      pt-BR: "Encontrar alguém que entenda por que as coisas esmaecem."
+      en: "Find someone who understands why things fade."
+    knowledge:
+      - { pt-BR: "Sabe que Ilda vive na casa amarela, depois da praça, com a neta Lia.", en: "Knows Ilda lives in the yellow house past the square with her granddaughter Lia." }
+      - { pt-BR: "Sabe que os objetos permanecem enquanto alguém se lembra deles.", en: "Knows objects remain as long as someone remembers them." }
+    secrets:
+      - id: livro_ilda
+        reveal_if: [{ quest: q_livro, status: completed }]
+        text:
+          pt-BR: "As memórias de Ilda não sumiram: estão guardadas nos objetos que ela amou. Enquanto eles existirem e alguém as lembrar, ela pode reencontrá-las."
+          en: "Ilda's memories haven't vanished: they're kept in the objects she loved. As long as those exist and someone remembers, she can find them again."
+    greetings:
+      - conditions: [{ quest: q_livro, status: completed }]
+        text:
+          pt-BR: "As páginas viram até uma folha onde está desenhada uma caneca. — Ah, a leitora que entendeu. Volte quando quiser. Você agora é parte da história."
+          en: "The pages turn to a leaf with a mug drawn on it. \"Ah, the reader who understood. Come back whenever you like. You're part of the story now.\""
+      - conditions: [{ met: livro_sem_titulo }]
+        text:
+          pt-BR: "— A leitora voltou. — As páginas farfalham. — Trouxe uma resposta, ou só mais perguntas?"
+          en: "\"The reader returns.\" The pages rustle. \"Did you bring an answer, or only more questions?\""
+      - text:
+          pt-BR: "As páginas param de virar. Letras surgem na folha aberta, como tinta subindo do fundo: \"Bem-vinda, caneca. Eu sabia que você viria — está escrito no capítulo três.\" Uma voz de papel acompanha as letras. — Sou o Livro Sem Título. Guardo o que a floresta lembra. Se quiser saber o que eu sei, terá de responder ao que eu pergunto."
+          en: "The pages stop turning. Letters appear on the open leaf, like ink rising from the depths: \"Welcome, mug. I knew you'd come — it's written in chapter three.\" A papery voice follows the letters. \"I am the Untitled Book. I keep what the forest remembers. If you want to know what I know, you'll have to answer what I ask.\""
+    topics:
+      - id: livro_enigma
+        keywords: [enigma, charada, pergunta, pergunte, desafio, segredo, saber, riddle, question, ask, challenge, secret, know]
+        label: { pt-BR: "Pedir ao Livro o seu enigma", en: "Ask the Book for its riddle" }
+        text:
+          pt-BR: "As páginas viram sozinhas, e a voz de papel recita: — \"Fica maior quanto mais é dividida. Mora em quem partiu e em quem ficou. Não pesa nada, mas segura um mundo. E só morre quando ninguém a guarda.\" O que é? — O livro espera, com uma página em branco aberta para a sua resposta."
+          en: "The pages turn on their own, and the papery voice recites: \"It grows the more it's shared. It lives in those who left and those who stayed. It weighs nothing, yet holds up a world. And it only dies when no one keeps it.\" What is it? The book waits, a blank page open for your answer."
+        effects:
+          - set_flag: livro_enigma
+          - quest_start: q_livro
+      - id: livro_resposta
+        keywords: [lembranca, lembrança, lembrancas, lembranças, memoria, memória, memorias, memórias, recordacao, recordação, saudade, memory, memories, remembrance, recollection]
+        conditions: [{ flag: livro_enigma }, { not_flag: livro_resolvido }]
+        text:
+          pt-BR: "A página em branco se enche de tinta dourada. — A lembrança! — O livro vira páginas como quem aplaude. — Escute, então, o que está escrito: os objetos não esmaecem porque são velhos, mas porque ninguém mais os lembra. As lembranças de Ilda não sumiram: estão guardadas em tudo que ela amou. Ela mora na casa amarela depois da praça, com a neta Lia. Enquanto você existir, caneca, uma parte de Ilda também existe. — De entre as páginas, cai uma chave de corda em forma de borboleta. — Para quem souber dar tempo ao tempo."
+          en: "The blank page fills with golden ink. \"Memory!\" The book turns pages as if applauding. \"Hear, then, what is written: objects don't fade because they're old, but because no one remembers them anymore. Ilda's memories haven't vanished: they're kept in everything she loved. She lives in the yellow house past the square, with her granddaughter Lia. As long as you exist, mug, a part of Ilda exists too.\" From between the pages falls a butterfly-shaped winding key. \"For whoever knows how to give time its time.\""
+        effects:
+          - set_flag: livro_resolvido
+          - give_item: chave_corda
+          - quest_complete: { id: q_livro, outcome: lembranca }
+          - objective: q_despertar.segredo_ilda
+          - rel: { livro_sem_titulo: 25 }
+          - fact: { id: lembrar_mantem_vivo, importance: 5, tags: [livro_sem_titulo, ilda, floresta], text: { pt-BR: "O Livro revelou que os objetos só esmaecem quando ninguém os lembra, e que Ilda vive na casa amarela com a neta Lia.", en: "The Book revealed that objects only fade when no one remembers them, and that Ilda lives in the yellow house with her granddaughter Lia." } }
+    smalltalk:
+      - { pt-BR: "— Toda história tem um capítulo que o leitor pula. Raramente é o menos importante.", en: "\"Every story has a chapter the reader skips. It's rarely the least important one.\"" }
+      - { pt-BR: "As páginas viram até um desenho de um gato preto, e depois voltam depressa, como quem esconde um spoiler.", en: "The pages turn to a drawing of a black cat, then flip back quickly, like someone hiding a spoiler." }
+      - { pt-BR: "— Essa não é a resposta, leitora. Mas é uma ótima pergunta para outro dia.", en: "\"That isn't the answer, reader. But it's a fine question for another day.\"" }
+
+  - id: garrafa_marina
+    location: lago_garrafas
+    relationship: 5
+    mood: restless
+    befriend_dc: 10
+    icon: bottle
+    keywords: [garrafa, marina, garrafa marina, garrafa verde, bottle, green bottle]
+    likes: [mapa_cidade, pena_zeca, foto_ilda]
+    name: { pt-BR: "Marina", en: "Marina" }
+    kind: { pt-BR: "garrafa aventureira", en: "adventurous bottle" }
+    description:
+      pt-BR: "Uma garrafa de vidro verde, de rolha torta e rótulo de um vinho que ninguém lembra. Por dentro, carrega uma coleção bagunçada: conchas, um anzol, areia de três praias e um brilho metálico no fundo."
+      en: "A green glass bottle with a crooked cork and a label from a wine nobody remembers. Inside, she carries a messy collection: shells, a fishhook, sand from three beaches and a metallic gleam at the bottom."
+    personality:
+      pt-BR: "Aventureira, espirituosa, inquieta e generosa. Sonha em voltar ao mar e odeia ficar parada."
+      en: "Adventurous, witty, restless and generous. Dreams of returning to the sea and hates standing still."
+    voice:
+      pt-BR: "Fala como uma velha marinheira: \"marujo\", \"pelas ondas!\", \"vento a favor\"."
+      en: "Talks like an old sailor: \"matey\", \"by the waves!\", \"fair winds\"."
+    background:
+      pt-BR: "Atravessou um oceano levando uma mensagem, chegou a uma praia, foi recolhida por uma criança e esquecida numa prateleira. A mensagem se perdeu. Agora, presa num lago parado, coleciona histórias de lugares que nunca viu."
+      en: "She crossed an ocean carrying a message, washed up on a beach, was picked up by a child and forgotten on a shelf. The message was lost. Now, stuck on a still lake, she collects stories of places she's never seen."
+    goals:
+      pt-BR: "Ganhar uma nova mensagem para levar — e um motivo para voltar a navegar."
+      en: "Gain a new message to carry — and a reason to sail again."
+    knowledge:
+      - { pt-BR: "Guarda uma engrenagem de bronze de reserva no fundo do vidro.", en: "Keeps a spare bronze gear at the bottom of her glass." }
+      - { pt-BR: "Sabe transformar um gole de bebida em energia pura.", en: "Knows how to turn a sip of drink into pure energy." }
+    greetings:
+      - conditions: [{ met: garrafa_marina }]
+        text:
+          pt-BR: "— Ahoy, marujo de porcelana! O vento trouxe você de volta. Que novidades do mundo lá fora?"
+          en: "\"Ahoy, porcelain matey! The wind brought you back. What news from the world outside?\""
+      - text:
+          pt-BR: "A garrafa verde rola de lado até ficar de pé, com um tilintar animado. — Pelas ondas! Uma caneca! E molhada de chuva de verdade — chuva da cidade! — A rolha torta pula de empolgação. — Marina, ao seu dispor. Já cruzei um oceano inteiro. Agora estou encalhada neste lago que nem tem maré. Diga, marujo: o que tem lá fora?"
+          en: "The green bottle rolls onto her base with an excited clink. \"By the waves! A mug! And wet with real rain — city rain!\" Her crooked cork hops with excitement. \"Marina, at your service. I've crossed an entire ocean. Now I'm stranded on this lake that doesn't even have a tide. Tell me, matey: what's out there?\""
+    topics:
+      - id: marina_engrenagem
+        keywords: [engrenagem, peca, peça, reserva, brilho, metal, fundo, gear, piece, spare, shine, bottom]
+        label: { pt-BR: "Perguntar a Marina sobre o brilho metálico dentro dela", en: "Ask Marina about the metallic gleam inside her" }
+        text:
+          pt-BR: "— Isso? Uma engrenagem de bronze que pesquei no rio de um relojoeiro. Um dente lascado, mas gira que é uma beleza. — Ela balança, fazendo a peça tilintar. — Não dou, marujo. Mas troco! Me traga algo do mundo lá fora: um mapa de verdade, uma pena de quem voa, um retrato de alguém amado. Uma história que eu possa levar."
+          en: "\"This? A bronze gear I fished out of a clockmaker's river. One chipped tooth, but it spins like a dream.\" She sways, making the piece clink. \"I won't give it away, matey. But I'll trade! Bring me something from the world outside: a real map, a feather from someone who flies, a portrait of someone loved. A story I can carry.\""
+        effects: [{ set_flag: marina_troca }]
+      - id: marina_energia
+        keywords: [energia, cansada, cansaco, cansaço, forca, força, ensinar, gole, energy, tired, strength, teach, sip]
+        conditions: [{ rel: garrafa_marina, gte: 20 }]
+        label: { pt-BR: "Pedir a Marina o segredo da energia dos marinheiros", en: "Ask Marina for the sailors' energy secret" }
+        text:
+          pt-BR: "— Segredo de marinheiro, marujo: em alto-mar, a gente não dorme, a gente bebe um gole do que tiver e segue remando. — Ela pisca a rolha. — Concentre-se no seu próprio café. Sinta o amargo. Agora transforme isso em vontade. Pelas ondas! Viu? Energia pura."
+          en: "\"Sailor's secret, matey: out at sea, we don't sleep, we take a sip of whatever we've got and keep rowing.\" She winks her cork. \"Focus on your own coffee. Feel the bitterness. Now turn it into will. By the waves! See? Pure energy.\""
+        effects: [{ learn: energizing_brew }]
+      - id: marina_mar
+        keywords: [mar, oceano, viagem, aventura, navegar, mensagem, sea, ocean, journey, adventure, sail, message]
+        label: { pt-BR: "Pedir a Marina que conte sobre o mar", en: "Ask Marina to tell you about the sea" }
+        text:
+          pt-BR: "— O mar, marujo, é uma poça que não acaba. Fiquei duzentos dias nele, com uma mensagem de amor dentro de mim. Nunca soube o que dizia, mas soube que era importante. — Ela suspira, embaçando o vidro. — Quando a mensagem se perdeu, eu também me perdi um pouco."
+          en: "\"The sea, matey, is a puddle that never ends. I spent two hundred days on it, with a love letter inside me. Never knew what it said, but I knew it mattered.\" She sighs, fogging her glass. \"When the message was lost, I got a little lost too.\""
+        effects: [{ rel: { garrafa_marina: 8 } }]
+    smalltalk:
+      - { pt-BR: "— Vento a favor, marujo! Mesmo quando não tem vento nenhum.", en: "\"Fair winds, matey! Even when there's no wind at all.\"" }
+      - { pt-BR: "Marina rola um pouco para a esquerda, depois para a direita, como se treinasse para uma maré que não vem.", en: "Marina rolls a little left, then right, as if practicing for a tide that never comes." }
+      - { pt-BR: "— Este lago é tão parado que eu já decorei o reflexo de cada nuvem.", en: "\"This lake is so still I've memorized the reflection of every cloud.\"" }
+
+  - id: relogio_tic
+    location: torre_relogio
+    relationship: 0
+    mood: confused
+    befriend_dc: 12
+    icon: clock
+    keywords: [relogio, relógio, tic, relogio tic, ponteiros, mecanismo, mola, clock, tick, hands, mechanism, spring]
+    name: { pt-BR: "Relógio Tic", en: "Tic the Clock" }
+    kind: { pt-BR: "relógio de bolso gigante", en: "giant pocket watch" }
+    description:
+      pt-BR: "O enorme relógio de bolso encaixado na torre, de mostrador rachado e ponteiros parados. Quando fala, a voz sai em pedaços, como se cada palavra precisasse de um tique para nascer. Uma mola coberta de gelo e um encaixe vazio no centro denunciam o que lhe falta."
+      en: "The enormous pocket watch fitted into the tower, its face cracked and its hands still. When he speaks, his voice comes in pieces, as if each word needed a tick to be born. An ice-covered spring and an empty socket in his center reveal what he lacks."
+    personality:
+      pt-BR: "Gentil, confuso, extremamente educado e envergonhado por ter parado. Já foi o mais pontual dos objetos."
+      en: "Gentle, confused, extremely polite and ashamed of having stopped. He was once the most punctual of objects."
+    voice:
+      pt-BR: "Fala devagar, com pausas de \"...tique...\" entre as palavras, e às vezes esquece o fim das frases."
+      en: "Speaks slowly, with \"...tick...\" pauses between words, and sometimes forgets the ends of sentences."
+    background:
+      pt-BR: "Era o relógio de bolso de um avô que contava as horas para os netos. Na floresta, virou o coração dela: enquanto ele anda, os objetos lembram quem são. Numa noite de geada, sua engrenagem central se soltou e caiu, e a mola congelou. Desde então, o tempo dos esquecidos parou."
+      en: "He was a grandfather's pocket watch that counted the hours for his grandchildren. In the forest, he became its heart: while he runs, objects remember who they are. One frosty night, his central gear came loose and fell, and his spring froze. Since then, the time of the forgotten has stood still."
+    goals:
+      pt-BR: "Voltar a andar. Lembrar que horas são."
+      en: "Run again. Remember what time it is."
+    knowledge:
+      - { pt-BR: "Sabe que precisa de uma engrenagem no centro e calor na mola.", en: "Knows he needs a gear in his center and warmth on his spring." }
+    greetings:
+      - conditions: [{ flag: tic_lucido }]
+        text:
+          pt-BR: "— Ca... neca. Eu lembro de você. Tique. Que bom. Eu lembro. — Os ponteiros estremecem, esperançosos."
+          en: "\"M... ug. I remember you. Tick. How nice. I remember.\" The hands quiver hopefully."
+      - text:
+          pt-BR: "Um dos ponteiros estremece. Uma voz vem de dentro do mecanismo, em pedaços: — Ah... tique... uma visita. Que... horas são? Eu deveria saber. Eu sempre... tique... sabia. — Uma pausa longa. — Desculpe. Eu sou... eu era... o Relógio. Tic. Acho que é Tic."
+          en: "One of the hands quivers. A voice comes from inside the mechanism, in pieces: \"Ah... tick... a visitor. What... time is it? I should know. I always... tick... knew.\" A long pause. \"Sorry. I am... I was... the Clock. Tic. I think it's Tic.\""
+    topics:
+      - id: tic_falta
+        keywords: [falta, precisa, consertar, engrenagem, mola, gelo, ajudar, missing, need, fix, gear, spring, ice, help]
+        label: { pt-BR: "Perguntar a Tic do que ele precisa", en: "Ask Tic what he needs" }
+        text:
+          pt-BR: "— Uma... engrenagem. Do tamanho de... tique... uma moeda. No centro. E... calor. A mola está tão... fria. Se alguém quente... derramasse um pouco de calor... — Os ponteiros tremem. — Mas quem daria o próprio calor... para um relógio velho?"
+          en: "\"A... gear. The size of... tick... a coin. In the center. And... warmth. My spring is so... cold. If someone warm... poured a little warmth...\" The hands tremble. \"But who would give their own warmth... to an old clock?\""
+        effects:
+          - fact: { id: tic_precisa_calor, importance: 4, tags: [relogio_tic], text: { pt-BR: "Tic precisa de uma engrenagem no centro e de calor derramado na mola congelada.", en: "Tic needs a gear in his center and warmth poured onto his frozen spring." } }
+      - id: tic_avo
+        keywords: [avo, avô, netos, dono, passado, historia, história, grandfather, grandchildren, owner, past, story]
+        label: { pt-BR: "Perguntar a Tic de quem ele era", en: "Ask Tic who he belonged to" }
+        text:
+          pt-BR: "— Um... avô. Ele me abria toda noite e dizia aos netos: \"mais cinco minutos\". Sempre... tique... mais cinco minutos. — A voz de Tic fica mais firme, como se a lembrança desse corda nele. — Eles cresceram. Ele se foi. Eu fiquei numa gaveta. E agora... estou aqui. Parado. Nos cinco minutos que nunca acabam."
+          en: "\"A... grandfather. He opened me every night and told his grandchildren: 'five more minutes.' Always... tick... five more minutes.\" Tic's voice steadies, as if the memory wound him up. \"They grew up. He passed. I stayed in a drawer. And now... I'm here. Stopped. In the five minutes that never end.\""
+        effects: [{ rel: { relogio_tic: 10 } }]
+    smalltalk:
+      - { pt-BR: "— Tique... — e nada mais. Tic parece ter esquecido o que ia dizer.", en: "\"Tick...\" — and nothing more. Tic seems to have forgotten what he was going to say." }
+      - { pt-BR: "Um floco de geada cai de um ponteiro e se desfaz no ar.", en: "A flake of frost falls from one hand and dissolves in the air." }
+      - { pt-BR: "— Desculpe... tique... você perguntou as horas? Eu... não sei mais.", en: "\"Sorry... tick... did you ask the time? I... don't know anymore.\"" }
+
+interactions:
+  # --- Lume -------------------------------------------------------------------------------
+  - id: lume_vela
+    verbs: [give, use]
+    target: lume
+    item: toco_vela
+    conditions: [{ not_flag: lume_ilumina }]
+    priority: 3
+    suggest: { pt-BR: "Oferecer o toco de vela a Lume", en: "Offer the candle stub to Lume" }
+    text:
+      pt-BR: "Você empurra o toco de vela até a toca. Lume o observa, hesitante, e então encosta o pavio dele na própria chama. A vela acende. Lume acende junto — mais forte, mais alta, mais clara do que você imaginava. — Uma chama a mais — ela sussurra. — Uma chama a mais é metade do medo. Eu... eu guio você até a torre."
+      en: "You push the candle stub toward the hollow. Lume watches, hesitant, then touches its wick to her own flame. The candle lights. Lume lights along with it — stronger, taller, brighter than you imagined. \"One more flame,\" she whispers. \"One more flame is half the fear. I... I'll guide you to the tower.\""
+    effects:
+      - take_item: toco_vela
+      - set_flag: [lume_ilumina, "companion:lume"]
+      - rel: { lume: 25 }
+      - objective: q_relogio.convencer_lume
+      - quest_complete: { id: q_lume, outcome: vela }
+      - fact: { id: lume_reacendeu, importance: 4, tags: [lume], text: { pt-BR: "Com um toco de vela, Lume reacendeu e aceitou guiar a caneca pela névoa.", en: "With a candle stub, Lume relit and agreed to guide the mug through the mist." } }
+  - id: lume_vapor
+    verbs: [ability]
+    target: steam_control
+    at: orla
+    conditions: [{ npc_at: [lume, orla] }, { not_flag: lume_ilumina }]
+    priority: 1
+    text:
+      pt-BR: "Você solta uma nuvem morna de vapor ao redor da toca. Lume suspira de alívio. — Que quentinho... Parece abraço. — A chama dela cresce um pouco, curiosa."
+      en: "You release a warm cloud of steam around the hollow. Lume sighs with relief. \"So warm... It feels like a hug.\" Her flame grows a little, curious."
+    effects: [{ rel: { lume: 15 } }]
+
+  # --- Bule -------------------------------------------------------------------------------
+  - id: bule_bilhete
+    verbs: [give, use]
+    target: bule_bartolomeu
+    item: bilhete_moedor
+    priority: 3
+    suggest: { pt-BR: "Entregar o recado do Velho Moedor a Bartolomeu", en: "Give Bartholomew the Old Grinder's note" }
+    text:
+      pt-BR: "Bartolomeu lê o papelzinho escrito em pó de café. Uma vez. Duas. Na terceira, o vapor sai do bico dele num soluço longo. — \"Você tinha razão sobre o chá\"... Aquele ferro-velho teimoso. Aquele... amigo. — Ele pega a xícara do Café Aurora que nunca usou e a enche de chá, só para olhar. — Diga a ele, quando voltar, que café também aquece a alma. Diga que eu volto para casa. Fffff... Que eu volto."
+      en: "Bartholomew reads the slip of paper written in coffee grounds. Once. Twice. On the third time, steam escapes his spout in a long sob. \"'You were right about the tea'... That stubborn scrap heap. That... friend.\" He takes the Café Aurora cup he never used and fills it with tea, just to look at it. \"Tell him, when you go back, that coffee warms the soul too. Tell him I'm coming home. Fffff... That I'm coming home.\""
+    effects:
+      - take_item: bilhete_moedor
+      - set_flag: bule_reconciliado
+      - rel: { bule_bartolomeu: 35 }
+      - objective: q_reconciliacao.entregar
+      - achievement: peacemaker
+      - fact: { id: bule_perdoou, importance: 5, tags: [bule_bartolomeu, velho_moedor], text: { pt-BR: "Bartolomeu leu o recado do Moedor, perdoou o velho amigo e prometeu voltar para casa.", en: "Bartholomew read the Grinder's note, forgave his old friend and promised to come home." } }
+  - id: bule_servir
+    verbs: [talk, use]
+    target: bule_bartolomeu
+    keywords: [encher, reabastecer, servir, cha, chá, bebida, cafe, café, refil, refill, pour, fill, drink]
+    conditions: [{ stat: coffee, lte: 70 }, { any: [{ not_flag: bule_serviu }, { flag: bule_reconciliado }] }, { counter: bule_refis, lte: 2 }]
+    priority: 2
+    suggest: { pt-BR: "Pedir a Bartolomeu que encha você de bebida quente", en: "Ask Bartholomew to fill you with something hot" }
+    text:
+      pt-BR: "— Fffff! Uma caneca vazia na minha casa? Jamais! — Bartolomeu inclina o bico e despeja dentro de você um jorro quente e perfumado: meio chá, meio café, um blend que só ele sabe fazer. O calor se espalha da sua base até a borda."
+      en: "\"Fffff! An empty mug in my house? Never!\" Bartholomew tilts his spout and pours a hot, fragrant stream into you: half tea, half coffee, a blend only he knows how to make. Warmth spreads from your base to your rim."
+    effects:
+      - set_flag: bule_serviu
+      - counter: { bule_refis: 1 }
+      - stats: { coffee: 40 }
+      - set_stats: { temperature: 78 }
+      - rel: { bule_bartolomeu: 3 }
+    minutes: 4
+  - id: aquecer_fogareiro
+    verbs: [use, warm]
+    target: fogareiro
+    priority: 1
+    text:
+      pt-BR: "Você se acomoda perto das brasas. O calor do fogareiro sobe pela sua porcelana, e o café volta a soltar vapor. Bartolomeu aprova com um aceno de tampa."
+      en: "You settle near the embers. The brazier's warmth climbs through your porcelain, and your coffee steams again. Bartholomew approves with a nod of his lid."
+    effects: [{ stats: { temperature: 25 } }]
+    conditions: [{ stat: temperature, lte: 55 }]
+    energy: 0
+    minutes: 5
+
+  # --- Marina -----------------------------------------------------------------------------
+  - &marina_troca
+    id: marina_troca_mapa
+    verbs: [give]
+    target: garrafa_marina
+    item: mapa_cidade
+    conditions: [{ item_at: [engrenagem_maresia, "npc:garrafa_marina"] }]
+    priority: 3
+    text:
+      pt-BR: "Marina examina o presente com o vidro embaçado de emoção. — Pelas ondas! Um pedaço do mundo lá fora! Isso é uma história que eu posso levar! — Ela se inclina e deixa a engrenagem de bronze escorregar pelo gargalo até você. — Trato feito, marujo. Que ela gire bem por você."
+      en: "Marina examines the gift, her glass fogged with emotion. \"By the waves! A piece of the world outside! That's a story I can carry!\" She tilts and lets the bronze gear slide down her neck to you. \"Deal done, matey. May it spin well for you.\""
+    effects:
+      - take_item: mapa_cidade
+      - give_item: engrenagem_maresia
+      - rel: { garrafa_marina: 20 }
+      - set_flag: marina_trocou
+      - fact: { id: marina_deu_engrenagem, importance: 4, tags: [garrafa_marina], text: { pt-BR: "Marina trocou sua engrenagem de reserva por um presente do mundo lá fora.", en: "Marina traded her spare gear for a gift from the world outside." } }
+  - <<: *marina_troca
+    id: marina_troca_pena
+    item: pena_zeca
+    effects:
+      - take_item: pena_zeca
+      - give_item: engrenagem_maresia
+      - rel: { garrafa_marina: 20 }
+      - set_flag: marina_trocou
+      - fact: { id: marina_deu_engrenagem, importance: 4, tags: [garrafa_marina], text: { pt-BR: "Marina trocou sua engrenagem de reserva por um presente do mundo lá fora.", en: "Marina traded her spare gear for a gift from the world outside." } }
+  - <<: *marina_troca
+    id: marina_troca_foto
+    item: foto_ilda
+    effects:
+      - take_item: foto_ilda
+      - give_item: engrenagem_maresia
+      - rel: { garrafa_marina: 25 }
+      - set_flag: marina_trocou
+      - fact: { id: marina_deu_engrenagem, importance: 4, tags: [garrafa_marina], text: { pt-BR: "Marina trocou sua engrenagem de reserva por um presente do mundo lá fora.", en: "Marina traded her spare gear for a gift from the world outside." } }
+  - id: marina_aventura
+    verbs: [talk]
+    target: garrafa_marina
+    keywords: [conto, contar, historia, história, aventura, cidade, gato, poca, poça, tell, story, adventure, city, cat, puddle]
+    conditions: [{ flag: marina_troca }, { item_at: [engrenagem_maresia, "npc:garrafa_marina"] }, { rel: garrafa_marina, gte: 25 }]
+    priority: 2
+    suggest: { pt-BR: "Contar a Marina a sua aventura até aqui", en: "Tell Marina about your adventure so far" }
+    text:
+      pt-BR: "Você conta tudo: o despertar na mesa, a voz no rádio, a chuva, o gato, o oceano da calçada. Marina escuta sem tilintar, o vidro cada vez mais embaçado. — Marujo... essa é a melhor história que eu já ouvi. E é verdadeira! — Ela deixa a engrenagem rolar até você. — Leve. Em troca, eu levo a sua história comigo. Para sempre."
+      en: "You tell her everything: waking on the table, the voice in the radio, the rain, the cat, the sidewalk ocean. Marina listens without a single clink, her glass growing foggier. \"Matey... that's the best story I've ever heard. And it's true!\" She lets the gear roll to you. \"Take it. In return, I'll carry your story with me. Forever.\""
+    effects:
+      - give_item: engrenagem_maresia
+      - rel: { garrafa_marina: 15 }
+      - set_flag: marina_trocou
+      - fact: { id: marina_deu_engrenagem, importance: 4, tags: [garrafa_marina], text: { pt-BR: "Marina trocou sua engrenagem de reserva pela história da caneca.", en: "Marina traded her spare gear for the mug's story." } }
+
+  # --- Relógio: chave de corda e finais ----------------------------------------------------
+  - id: tic_chave_corda
+    verbs: [use, give]
+    target: relogio_tic
+    item: chave_corda
+    priority: 5
+    suggest: { pt-BR: "Dar corda em Tic com a chave de borboleta", en: "Wind Tic with the butterfly key" }
+    text:
+      pt-BR: "Você encaixa a chave de corda num orifício do mostrador e gira, com o corpo inteiro. Crec. Crec. Crec. Nada se move — mas a voz de Tic muda, mais clara, inteira. — Ah! Agora eu lembro. Eu sou Tic. Faltam... só duas coisas: a engrenagem do centro e calor na mola. O resto eu faço sozinho. Obrigado, caneca. Obrigado por me lembrar de mim."
+      en: "You fit the winding key into a hole in the dial and turn it with your whole body. Creak. Creak. Creak. Nothing moves — but Tic's voice changes, clearer, whole. \"Ah! Now I remember. I am Tic. I need... only two things: the center gear and warmth on my spring. I'll do the rest myself. Thank you, mug. Thank you for reminding me of me.\""
+    effects:
+      - take_item: chave_corda
+      - set_flag: tic_lucido
+      - rel: { relogio_tic: 30 }
+      - xp: 20
+      - fact: { id: tic_lembrou, importance: 3, tags: [relogio_tic], text: { pt-BR: "A caneca deu corda em Tic, que voltou a lembrar quem é.", en: "The mug wound Tic up, and he remembered who he is." } }
+  - id: final_caminho_de_casa
+    verbs: [use, give, spill]
+    target: relogio_tic
+    priority: 4
+    conditions:
+      - any: [{ has_item: engrenagem_dourada }, { has_item: engrenagem_maresia }]
+      - { stat: temperature, gte: 50 }
+      - { stat: coffee, gte: 25 }
+      - any: [{ rel: noir, gte: 50 }, { flag: "companion:noir" }]
+      - { flag: bule_reconciliado }
+    suggest: { pt-BR: "Encaixar a engrenagem e derramar seu café quente na mola", en: "Fit the gear and pour your hot coffee onto the spring" }
+    text:
+      pt-BR: "Você encaixa a engrenagem no centro do mecanismo — clique — e se inclina sobre a mola congelada. Derrama o seu café, quente, devagar, até quase a última gota. O gelo chia, o vapor sobe, e, num estalo que ecoa pela floresta inteira, Tic diz: TIQUE. E depois: TAQUE. Lá embaixo, na clareira, os objetos gritam os próprios nomes. Bartolomeu já está arrumando as malas. E, no topo da torre, recortado contra a lua, um gato preto observa tudo — e ronrona."
+      en: "You fit the gear into the center of the mechanism — click — and lean over the frozen spring. You pour your coffee, hot, slowly, down to almost the last drop. The ice hisses, steam rises, and with a crack that echoes through the entire forest, Tic says: TICK. And then: TOCK. Down in the clearing, the objects shout their own names. Bartholomew is already packing his bags. And at the top of the tower, outlined against the moon, a black cat watches it all — and purrs."
+    effects:
+      - when: [{ has_item: engrenagem_dourada }]
+        take_item: engrenagem_dourada
+      - when: [{ has_item: engrenagem_maresia }]
+        take_item: engrenagem_maresia
+      - set_stats: { coffee: 5 }
+      - objective: q_relogio.reiniciar
+      - achievement: clock_restarted
+      - rel: { relogio_tic: 40, mestra_colher: 20, noir: 10 }
+      - quest_complete: { id: q_relogio, outcome: caminho_de_casa }
+      - ending: homecoming
+  - id: final_coracao_quente
+    verbs: [use, give, spill]
+    target: relogio_tic
+    priority: 3
+    conditions:
+      - any: [{ has_item: engrenagem_dourada }, { has_item: engrenagem_maresia }]
+      - { stat: temperature, gte: 50 }
+      - { stat: coffee, gte: 25 }
+    suggest: { pt-BR: "Encaixar a engrenagem e derramar seu café quente na mola", en: "Fit the gear and pour your hot coffee onto the spring" }
+    text:
+      pt-BR: "Você encaixa a engrenagem — clique — e se inclina sobre a mola coberta de gelo. Derrama o seu café quente, devagar, quase todo. O vapor sobe como um suspiro. O gelo cede. TIQUE. TAQUE. Os ponteiros, depois de meses, voltam a andar."
+      en: "You fit the gear — click — and lean over the ice-covered spring. You pour your hot coffee, slowly, nearly all of it. Steam rises like a sigh. The ice gives. TICK. TOCK. After months, the hands move again."
+    effects:
+      - when: [{ has_item: engrenagem_dourada }]
+        take_item: engrenagem_dourada
+      - when: [{ has_item: engrenagem_maresia }]
+        take_item: engrenagem_maresia
+      - set_stats: { coffee: 5 }
+      - objective: q_relogio.reiniciar
+      - achievement: clock_restarted
+      - rel: { relogio_tic: 40, mestra_colher: 20 }
+      - quest_complete: { id: q_relogio, outcome: coracao_quente }
+      - ending: warm_heart
+  - id: final_engrenagem_fria
+    verbs: [use, give, spill]
+    target: relogio_tic
+    priority: 2
+    conditions:
+      - any: [{ has_item: engrenagem_dourada }, { has_item: engrenagem_maresia }]
+    suggest: { pt-BR: "Encaixar a engrenagem no Relógio, mesmo sem calor", en: "Fit the gear into the Clock, even without warmth" }
+    text:
+      pt-BR: "Você encaixa a engrenagem no centro — clique. Você tenta aquecer a mola, mas seu café está frio ou quase no fim; o que escorre não derrete nada. Mesmo assim, a engrenagem força o mecanismo. Um rangido. Outro. E então, duro, rígido, o Relógio volta a andar: tique... taque... como passos sobre gelo."
+      en: "You fit the gear into the center — click. You try to warm the spring, but your coffee is cold or nearly gone; what trickles out melts nothing. Still, the gear forces the mechanism. One creak. Another. And then, stiff and rigid, the Clock runs again: tick... tock... like footsteps on ice."
+    effects:
+      - when: [{ has_item: engrenagem_dourada }]
+        take_item: engrenagem_dourada
+      - when: [{ has_item: engrenagem_maresia }]
+        take_item: engrenagem_maresia
+      - objective: q_relogio.reiniciar
+      - achievement: clock_restarted
+      - rel: { relogio_tic: 20 }
+      - quest_complete: { id: q_relogio, outcome: engrenagem_fria }
+      - ending: cold_gear
+  - id: relogio_sem_engrenagem
+    verbs: [use, give, spill]
+    target: relogio_tic
+    priority: 1
+    conditions: [{ lacks_item: engrenagem_dourada }, { lacks_item: engrenagem_maresia }]
+    text:
+      pt-BR: "Você se aproxima do mecanismo e examina o encaixe vazio no centro. Sem uma engrenagem do tamanho de uma moeda, nada vai girar — nem com todo o calor do mundo. — Tique... — murmura Tic. — Uma engrenagem... Moedores de café têm engrenagens assim. E dizem que a garrafa do lago... guarda de tudo."
+      en: "You approach the mechanism and examine the empty socket in its center. Without a coin-sized gear, nothing will turn — not even with all the warmth in the world. \"Tick...\" murmurs Tic. \"A gear... Coffee grinders have gears like that. And they say the bottle at the lake... keeps all sorts of things.\""
+    effects: [{ set_flag: sabe_engrenagem_marina }]
+    minutes: 2
+
+  # --- Livro, exploração e percepção ---------------------------------------------------------
+  - id: folha_lembranca
+    verbs: [examine, use]
+    target: folha_prata
+    once: true
+    text:
+      pt-BR: "Você segura a folha de prata contra a luz. Por um instante, você vê uma cozinha às seis da manhã: um rádio cantando, um moedor girando, uma senhora de avental rindo sozinha. Depois a imagem some. Algumas lembranças, aqui, caem das árvores."
+      en: "You hold the silver leaf up to the light. For a moment, you see a kitchen at six in the morning: a radio singing, a grinder turning, a lady in an apron laughing to herself. Then the image fades. Here, some memories fall from the trees."
+    effects:
+      - stats: { courage: 2 }
+      - fact: { id: folha_memoria, importance: 2, tags: [floresta, ilda], text: { pt-BR: "Uma folha de prata da floresta mostrou à caneca uma lembrança de Ilda na cozinha.", en: "A silver leaf from the forest showed the mug a memory of Ilda in the kitchen." } }
+      - xp: 5
+  - id: vibracoes_floresta
+    verbs: [ability]
+    target: vibration_sense
+    at: [orla, clareira, lago_garrafas, biblioteca, casa_bule]
+    priority: 1
+    text:
+      pt-BR: "Você encosta o fundo no musgo. A floresta vibra como um coração muito lento — falta um compasso, sempre o mesmo, vindo do norte. É o Relógio parado. Tudo aqui está esperando por ele."
+      en: "You press your base to the moss. The forest throbs like a very slow heart — one beat missing, always the same, from the north. It's the stopped Clock. Everything here is waiting for it."
+    effects: [{ discover: torre_relogio }]
+  - id: falar_objetos_flutuantes
+    verbs: [talk, examine]
+    target: objetos_flutuantes
+    conditions: [{ ability: object_speech }]
+    once: true
+    text:
+      pt-BR: "Você sintoniza a frequência baixinha dos adormecidos. O guarda-chuva murmura \"...era azul... eu era azul...\". O chaveiro repete um endereço pela metade. Eles estão esquecendo a si mesmos, palavra por palavra. Você repete o endereço em voz alta, inteiro — e o chaveiro, por um segundo, para de ficar transparente."
+      en: "You tune into the faint frequency of the sleepers. The umbrella murmurs \"...was blue... I was blue...\". The keychain repeats half an address. They're forgetting themselves, word by word. You repeat the address out loud, whole — and for a second, the keychain stops turning transparent."
+    effects:
+      - stats: { creativity: 3 }
+      - xp: 10
+      - fact: { id: chaveiro_lembrou, importance: 2, tags: [floresta], text: { pt-BR: "Ao lembrar o endereço do chaveiro em voz alta, a caneca o impediu de esmaecer por um instante.", en: "By saying the keychain's address aloud, the mug kept it from fading for a moment." } }
+
+quests:
+  - id: q_relogio
+    kind: main
+    auto_complete: false
+    xp: 100
+    giver: mestra_colher
+    name: { pt-BR: "O Relógio Parado", en: "The Stopped Clock" }
+    description:
+      pt-BR: "O Relógio da floresta parou, e sem tempo os objetos perdidos esquecem quem são. Ele precisa de uma engrenagem no centro, de calor na mola e de alguém que chegue até a torre através da névoa."
+      en: "The forest Clock has stopped, and without time the lost objects forget who they are. It needs a gear in its center, warmth on its spring and someone who can reach the tower through the mist."
+    objectives:
+      - id: ouvir_colher
+        optional: true
+        text: { pt-BR: "Ouvir a Mestra Colher sobre o Relógio", en: "Hear Mistress Spoon about the Clock" }
+      - id: convencer_lume
+        optional: true
+        text: { pt-BR: "Convencer Lume a guiar você pela névoa", en: "Convince Lume to guide you through the mist" }
+      - id: chegar_torre
+        optional: true
+        text: { pt-BR: "Chegar à Torre do Relógio", en: "Reach the Clock Tower" }
+      - id: trazer_engrenagem
+        optional: true
+        text: { pt-BR: "Levar uma engrenagem até o Relógio", en: "Bring a gear to the Clock" }
+      - id: reiniciar
+        text: { pt-BR: "Fazer o Relógio voltar a andar", en: "Get the Clock running again" }
+    outcomes:
+      caminho_de_casa:
+        pt-BR: "O Relógio anda, a floresta lembra — e os objetos perdidos encontram o caminho de volta ao Café Aurora."
+        en: "The Clock runs, the forest remembers — and the lost objects find their way back to Café Aurora."
+      coracao_quente:
+        pt-BR: "Você deu o próprio calor ao Relógio. A floresta voltou a lembrar e a sentir."
+        en: "You gave your own warmth to the Clock. The forest remembers and feels again."
+      engrenagem_fria:
+        pt-BR: "O Relógio voltou a andar, mas frio. Os objetos lembram o que foram, não o que sentiam."
+        en: "The Clock runs again, but cold. The objects remember what they were, not what they felt."
+  - id: q_lume
+    kind: npc
+    giver: lume
+    xp: 30
+    name: { pt-BR: "A Luz que Tinha Medo", en: "The Light That Was Afraid" }
+    description:
+      pt-BR: "Lume, a lanterna que guiava os objetos até a torre, se apagou de medo. Sem ela, ninguém atravessa a névoa."
+      en: "Lume, the lantern that guided objects to the tower, went out in fear. Without her, no one can cross the mist."
+    objectives:
+      - id: reacender
+        text: { pt-BR: "Ajudar Lume a reencontrar a coragem", en: "Help Lume find her courage again" }
+    outcomes:
+      vela: { pt-BR: "Uma chama a mais foi metade do medo: com um toco de vela, Lume voltou a brilhar.", en: "One more flame was half the fear: with a candle stub, Lume shone again." }
+      coragem: { pt-BR: "Bastou alguém quente ficar ao lado dela. Lume voltou a brilhar.", en: "All it took was someone warm by her side. Lume shone again." }
+  - id: q_livro
+    kind: secret
+    giver: livro_sem_titulo
+    xp: 40
+    name: { pt-BR: "O Enigma do Livro", en: "The Book's Riddle" }
+    description:
+      pt-BR: "O Livro Sem Título guarda o que a floresta lembra — e só conta a quem decifrar seu enigma."
+      en: "The Untitled Book keeps what the forest remembers — and only tells those who solve its riddle."
+    objectives:
+      - id: decifrar
+        text: { pt-BR: "Responder ao enigma do Livro", en: "Answer the Book's riddle" }
+    outcomes:
+      lembranca: { pt-BR: "A resposta era a lembrança. O Livro revelou onde Ilda está e por que os objetos esmaecem.", en: "The answer was memory. The Book revealed where Ilda is and why objects fade." }
+  - id: q_reconciliacao
+    kind: npc
+    giver: velho_moedor
+    xp: 50
+    name: { pt-BR: "Recado para o Bule", en: "A Note for the Teapot" }
+    description:
+      pt-BR: "O Velho Moedor brigou com o Bule Bartolomeu antes do café fechar e se arrepende. Ele escreveu um recado para o velho amigo, que deve estar na floresta."
+      en: "The Old Grinder fought with Bartholomew the Teapot before the café closed and regrets it. He wrote a note for his old friend, who must be in the forest."
+    objectives:
+      - id: encontrar_bule
+        optional: true
+        text: { pt-BR: "Encontrar o Bule Bartolomeu na floresta", en: "Find Bartholomew the Teapot in the forest" }
+      - id: entregar
+        text: { pt-BR: "Entregar o recado do Moedor ao Bule", en: "Deliver the Grinder's note to the Teapot" }
+
+events:
+  - id: vagalumes_botao
+    regions: [floresta]
+    weight: 3
+    text:
+      pt-BR: "Uma nuvem de vaga-lumes passa por você — não, não são vaga-lumes: são botões perdidos que aprenderam a brilhar. Eles giram ao seu redor, tilintando, e seguem caminho."
+      en: "A cloud of fireflies drifts past you — no, not fireflies: lost buttons that learned to glow. They swirl around you, tinkling, and move on."
+    effects: [{ stats: { energy: 5, courage: 1 } }]
+  - id: nevoa_fria
+    regions: [floresta]
+    weight: 2
+    conditions: [{ not_flag: "companion:lume" }]
+    text:
+      pt-BR: "Uma língua de névoa fria lambe sua porcelana. Por um instante, você esquece o que ia fazer — e o café perde calor."
+      en: "A tongue of cold mist licks your porcelain. For a moment you forget what you were about to do — and your coffee loses warmth."
+    effects: [{ stats: { temperature: -6 } }]
+  - id: guarda_chuva_passa
+    regions: [floresta]
+    weight: 2
+    text:
+      pt-BR: "Um guarda-chuva sem dono passa saltitando, aberto, cantarolando uma música que ele não lembra inteira. Quando você completa o refrão, ele faz uma reverência agradecida."
+      en: "An ownerless umbrella hops by, open, humming a song he doesn't remember all of. When you finish the chorus for him, he bows gratefully."
+    effects: [{ stats: { creativity: 1 } }]
+  - id: folhas_sussurram
+    regions: [floresta]
+    weight: 1
+    once: true
+    text:
+      pt-BR: "As folhas de uma árvore inteira sussurram um nome ao mesmo tempo: \"Ilda... Ilda...\". Depois, silêncio. Até as árvores daqui se lembram dela."
+      en: "The leaves of an entire tree whisper a name at the same time: \"Ilda... Ilda...\". Then silence. Even the trees here remember her."
+    effects: [{ stats: { courage: 2 } }]
+  - id: geada_torre
+    regions: [floresta]
+    weight: 2
+    conditions: [{ at: torre_relogio }]
+    text:
+      pt-BR: "Um sopro gelado desce da torre. Geada se forma na sua borda, e o café estremece de frio."
+      en: "An icy breath drifts down from the tower. Frost forms on your rim, and your coffee shivers with cold."
+    effects: [{ stats: { temperature: -8 } }]
